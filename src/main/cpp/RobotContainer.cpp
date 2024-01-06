@@ -45,7 +45,8 @@ RobotContainer::RobotContainer() {
 void RobotContainer::ConfigureButtonBindings() {}
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
-  // Set up config for trajectory
+  /* Set up config for trajectory
+  Glock dOOkie*/
   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
                                AutoConstants::kMaxAcceleration);
   // Add kinematics to ensure max speed is actually obeyed

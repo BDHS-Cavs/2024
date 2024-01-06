@@ -12,9 +12,12 @@
 #include <frc/geometry/Rotation2d.h>
 #include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveModuleState.h>
-#include <frc/motorcontrol/Talon.h>
+//#include <frc/motorcontrol/Spark.h>
 #include <frc/trajectory/TrapezoidProfile.h>
 
+#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
+#include <ctre/phoenix/sensors/CANCoder.h> //use this or the TalonSRX::GetSensor stuff or frc::Encoder
+#include <ctre/phoenix/motorcontrol/TalonSRXControlMode.h>
 #include "Constants.h"
 
 class SwerveModule {
@@ -24,7 +27,6 @@ class SwerveModule {
                bool driveEncoderReversed, bool turningEncoderReversed);
 
   frc::SwerveModuleState GetState();
-
   frc::SwerveModulePosition GetPosition();
 
   void SetDesiredState(const frc::SwerveModuleState& state);
@@ -41,11 +43,11 @@ class SwerveModule {
   static constexpr auto kModuleMaxAngularAcceleration =
       units::radians_per_second_squared_t{std::numbers::pi * 2.0};
 
-  frc::Talon m_driveMotor;
-  frc::Talon m_turningMotor;
+    ctre::phoenix::motorcontrol::can::TalonSRX m_driveMotor;
+    ctre::phoenix::motorcontrol::can::TalonSRX m_turningMotor;
 
-  frc::Encoder m_driveEncoder;
-  frc::Encoder m_turningEncoder;
+    frc::Encoder m_driveEncoder;
+    frc::Encoder m_turningEncoder;
 
   bool m_reverseDriveEncoder;
   bool m_reverseTurningEncoder;

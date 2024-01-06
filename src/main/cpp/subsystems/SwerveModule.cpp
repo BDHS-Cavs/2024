@@ -64,8 +64,11 @@ void SwerveModule::SetDesiredState(
       units::radian_t{m_turningEncoder.GetDistance()}, state.angle.Radians());
 
   // Set the motor outputs.
-  m_driveMotor.Set(driveOutput);
-  m_turningMotor.Set(turnOutput);
+  //m_driveMotor.set(PercentOutput, driveOutput);
+  m_driveMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, driveOutput);
+  m_turningMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, turnOutput);
+  m_driveMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::can::TalonSRX::ConfigSelectedFeedbackSensor::QuadEncoder);
+  m_turningMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::can::TalonSRX::ConfigSelectedFeedbackSensor::QuadEncoder);
 }
 
 void SwerveModule::ResetEncoders() {
