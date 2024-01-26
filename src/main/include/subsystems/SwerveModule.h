@@ -12,13 +12,12 @@
 #include <frc/geometry/Rotation2d.h>
 #include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveModuleState.h>
-//#include <frc/motorcontrol/Spark.h>
 #include <frc/trajectory/TrapezoidProfile.h>
 
 #include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
-#include <ctre/phoenix/sensors/CANCoder.h> //use this or the TalonSRX::GetSensor stuff or frc::Encoder
-#include <ctre/phoenix/motorcontrol/TalonSRXControlMode.h>
 #include "Constants.h"
+
+//#include <ctre/Phoenix.h>
 
 class SwerveModule {
  public:
@@ -48,6 +47,12 @@ class SwerveModule {
 
     frc::Encoder m_driveEncoder;
     frc::Encoder m_turningEncoder;
+    //ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice m_driveEncoder; TO USE THIS UNCOMMENT THE PHOENIX.h
+    //ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice m_turningEncoder; TO USE THIS UNCOMMENT THE PHOENIX.h
+    //double driveEncoderPosition = m_driveMotor.GetSelectedSensorPosition(0);
+    //double driveEncoderVelocity = m_driveMotor.GetSelectedSensorVelocity(0);
+    //double turningEncoderPosition = m_turningMotor.GetSelectedSensorPosition(1);
+    //double turningEncoderVelocity = m_turningMotor.GetSelectedSensorVelocity(1);
 
   bool m_reverseDriveEncoder;
   bool m_reverseTurningEncoder;

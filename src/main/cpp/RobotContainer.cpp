@@ -35,9 +35,9 @@ RobotContainer::RobotContainer() {
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.Drive(
-            units::meters_per_second_t{m_driverController.GetLeftY()},
-            units::meters_per_second_t{m_driverController.GetLeftX()},
-            units::radians_per_second_t{m_driverController.GetRightX()}, false);
+            units::meters_per_second_t{m_driverController.GetY()},
+            units::meters_per_second_t{m_driverController.GetX()},
+            units::radians_per_second_t{m_driverController.GetZ()}, false);
       },
       {&m_drive}));
 }
@@ -45,8 +45,7 @@ RobotContainer::RobotContainer() {
 void RobotContainer::ConfigureButtonBindings() {}
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
-  /* Set up config for trajectory
-  Glock dOOkie*/
+  // Set up config for trajectory
   frc::TrajectoryConfig config(AutoConstants::kMaxSpeed,
                                AutoConstants::kMaxAcceleration);
   // Add kinematics to ensure max speed is actually obeyed

@@ -28,15 +28,16 @@
  */
 
 namespace DriveConstants {
-constexpr int kFrontLeftDriveMotorPort = 1;
-constexpr int kRearLeftDriveMotorPort = 3;
-constexpr int kFrontRightDriveMotorPort = 5;
-constexpr int kRearRightDriveMotorPort = 7;
+//driving ports (TalonSRX)
+constexpr int kFrontLeftDriveMotorPort = 4;
+constexpr int kRearLeftDriveMotorPort = 2;
+constexpr int kFrontRightDriveMotorPort = 3;
+constexpr int kRearRightDriveMotorPort = 1;
 
-constexpr int kFrontLeftTurningMotorPort = 2;
-constexpr int kRearLeftTurningMotorPort = 4;
-constexpr int kFrontRightTurningMotorPort = 6;
-constexpr int kRearRightTurningMotorPort = 8;
+constexpr int kFrontLeftTurningMotorPort = 8;
+constexpr int kRearLeftTurningMotorPort = 6;
+constexpr int kFrontRightTurningMotorPort = 7;
+constexpr int kRearRightTurningMotorPort = 5;
 
 constexpr int kFrontLeftTurningEncoderPorts[2]{0, 1};
 constexpr int kRearLeftTurningEncoderPorts[2]{2, 3};
@@ -62,9 +63,9 @@ constexpr bool kRearRightDriveEncoderReversed = true;
 // These characterization values MUST be determined either experimentally or
 // theoretically for *your* robot's drive. The SysId tool provides a convenient
 // method for obtaining these values for your robot.
-constexpr auto ks = 1_V;
-constexpr auto kv = 0.8 * 1_V * 1_s / 1_m;
-constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m;
+constexpr auto ks = 1_V; //volts
+constexpr auto kv = 0.8 * 1_V * 1_s / 1_m; //volts * seconds / meters
+constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m; //volts * seconds^2 / meters
 
 // Example value only - as above, this must be tuned for your drive!
 constexpr double kPFrontLeftVel = 0.5;
@@ -72,6 +73,23 @@ constexpr double kPRearLeftVel = 0.5;
 constexpr double kPFrontRightVel = 0.5;
 constexpr double kPRearRightVel = 0.5;
 }  // namespace DriveConstants
+
+namespace ClimberConstants {
+//climber (SparkMax)
+constexpr int kClimberMotor1Port = 1;
+constexpr int kClimberMotor2Port = 2;
+}
+
+namespace IntakeConstants {
+//intake (TalonFX)
+constexpr int kIntakeMotorPort = 11;
+}
+
+namespace ShooterConstants {
+//shooter (TalonSRX)
+constexpr int kShooterMotor1Port = 9;
+constexpr int kShooterMotor2Port = 10;
+}
 
 namespace ModuleConstants {
 constexpr int kEncoderCPR = 1024;
