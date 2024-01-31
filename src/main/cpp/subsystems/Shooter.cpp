@@ -36,12 +36,12 @@ void Shooter::SimulationPeriodic() {
 
 void Shooter::Shoot(){ 
     // Run Shooter
-        m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
-        m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35); 
+        m_shooterMotor1.Set(-0.35);
+        m_shooterMotor2.Set(-0.35); 
 } 
 
 void Shooter::ShooterStop(){
     // stop the Shooter Motors
-    m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0);
-    m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0);
+    m_shooterMotor1.Set(0);
+    m_shooterMotor2.Set(0);
 }
