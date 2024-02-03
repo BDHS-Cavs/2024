@@ -18,9 +18,12 @@ void Vision::SimulationPeriodic() {
 // Put methods for controlling this subsystem here and call from commands
 
 void Vision::Scan(){ 
-    
+        photon::PhotonPipelineResult result = camera.GetLatestResult();
+        photon::PhotonTrackedTarget target = result.GetBestTarget();
 } 
 
 void Vision::Track(){
-    
+        if (result.HasTargets()) {
+            frc::SmartDashboard::PutNumber("PhotonVision Target ID", target.GetFiducialId());
+        }
 }

@@ -1,6 +1,7 @@
 #include "Constants.h"
 
 #include <photon/PhotonCamera.h>
+#include <photon/PhotonUtils.h>
 
 #include <units/angle.h>
 #include <units/length.h>
@@ -10,7 +11,15 @@
 class Vision: public frc2::SubsystemBase {
 
 private:
-    photon::PhotonCamera camera{"LimelightTest"}; 
+    photon::PhotonCamera camera{"OV5647"}; 
+    photon::PhotonPipelineResult result;
+    photon::PhotonTrackedTarget target = result.GetBestTarget();
+
+    double yaw = target.GetYaw();
+    double pitch = target.GetPitch();
+    double area = target.GetArea();
+    double skew = target.GetSkew();
+
 public:
     Vision();
 
