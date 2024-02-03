@@ -19,8 +19,8 @@
 class Shooter: public frc2::SubsystemBase {
 
 private:
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port};
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port};
+    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port, "rio"};
+    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port, "rio"};
     ctre::phoenix6::hardware::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port, "rio"};
     ctre::phoenix6::hardware::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port, "rio"};
 
