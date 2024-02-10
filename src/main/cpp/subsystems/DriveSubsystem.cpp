@@ -43,6 +43,34 @@ DriveSubsystem::DriveSubsystem()
                  frc::Pose2d{}} {}
 
 void DriveSubsystem::Periodic() {
+    frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Percent)", m_frontLeft.m_driveMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Volts)", m_frontLeft.m_driveMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Percent)", m_frontLeft.m_turningMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Volts)", m_frontLeft.m_turningMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Amps)", m_frontLeft.m_driveMotor.GetOutputCurrent());
+    frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Amps)", m_frontLeft.m_turningMotor.GetOutputCurrent());
+
+    frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Percent)", m_frontRight.m_driveMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Volts)", m_frontRight.m_driveMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Percent)", m_frontRight.m_turningMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Volts)", m_frontRight.m_turningMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Amps)", m_frontRight.m_driveMotor.GetOutputCurrent());
+    frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Amps)", m_frontRight.m_turningMotor.GetOutputCurrent());
+
+    frc::SmartDashboard::PutNumber("Rear Left Drive Motor Output (Percent)", m_rearLeft.m_driveMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Rear Left Drive Motor Output (Volts)", m_rearLeft.m_driveMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Rear Left Turning Motor Output (Percent)", m_rearLeft.m_turningMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Rear Left Turning Motor Output (Volts)", m_rearLeft.m_turningMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Rear Left Drive Motor Output (Amps)", m_rearLeft.m_driveMotor.GetOutputCurrent());
+    frc::SmartDashboard::PutNumber("Rear Left Turning Motor Output (Amps)", m_rearLeft.m_turningMotor.GetOutputCurrent());
+
+    frc::SmartDashboard::PutNumber("Rear Right Drive Motor Output (Percent)", m_rearRight.m_driveMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Rear Right Drive Motor Output (Volts)", m_rearRight.m_driveMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Rear Right Turning Motor Output (Percent)", m_rearRight.m_turningMotor.GetMotorOutputPercent());
+    frc::SmartDashboard::PutNumber("Rear Right Turning Motor Output (Volts)", m_rearRight.m_turningMotor.GetMotorOutputVoltage());
+    frc::SmartDashboard::PutNumber("Rear Right Drive Motor Output (Amps)", m_rearRight.m_driveMotor.GetOutputCurrent());
+    frc::SmartDashboard::PutNumber("Rear Right Turning Motor Output (Amps)", m_rearRight.m_turningMotor.GetOutputCurrent());
+
   // Implementation of subsystem periodic method goes here.
   m_odometry.Update(m_gyro.GetRotation2d(),
                     {m_frontLeft.GetPosition(), m_rearLeft.GetPosition(),

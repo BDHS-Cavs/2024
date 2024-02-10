@@ -35,9 +35,13 @@ RobotContainer::RobotContainer() {
   m_drive.SetDefaultCommand(frc2::RunCommand(
       [this] {
         m_drive.Drive(
-            units::meters_per_second_t{m_driverController.GetY()},
-            units::meters_per_second_t{m_driverController.GetX()},
-            units::radians_per_second_t{m_driverController.GetZ()}, false);
+            // Multiply by max speed to map the joystick unitless inputs to
+            // actual units. This will map the [-1, 1] to [max speed backwards,
+            // max speed forwards], converting them to actual units.
+            m_driverController.GetY() * AutoConstants::kMaxSpeed,
+            m_driverController.GetX() * AutoConstants::kMaxSpeed,
+            m_driverController.GetZ() * AutoConstants::kMaxAngularSpeed,
+            true);
       },
       {&m_drive}));
 }
@@ -88,5 +92,5 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   return new frc2::SequentialCommandGroup(
       std::move(swerveControllerCommand),
       frc2::InstantCommand(
-          [this]() { m_drive.Drive(0_mps, 0_mps, 0_rad_per_s, false); }, {}));
+          [this]() { m_drive.Drive(0_mps, 0_mps, 0_rad_per_s, true); }, {}));
 }

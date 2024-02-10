@@ -32,6 +32,12 @@ class SwerveModule {
 
   void ResetEncoders();
 
+    ctre::phoenix::motorcontrol::can::TalonSRX m_driveMotor;
+    ctre::phoenix::motorcontrol::can::TalonSRX m_turningMotor;
+
+    frc::Encoder m_driveEncoder;
+    frc::Encoder m_turningEncoder;
+
  private:
   // We have to use meters here instead of radians due to the fact that
   // ProfiledPIDController's constraints only take in meters per second and
@@ -42,11 +48,6 @@ class SwerveModule {
   static constexpr auto kModuleMaxAngularAcceleration =
       units::radians_per_second_squared_t{std::numbers::pi * 2.0};
 
-    ctre::phoenix::motorcontrol::can::TalonSRX m_driveMotor;
-    ctre::phoenix::motorcontrol::can::TalonSRX m_turningMotor;
-
-    frc::Encoder m_driveEncoder;
-    frc::Encoder m_turningEncoder;
     //ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice m_driveEncoder; TO USE THIS UNCOMMENT THE PHOENIX.h
     //ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice m_turningEncoder; TO USE THIS UNCOMMENT THE PHOENIX.h
     //double driveEncoderPosition = m_driveMotor.GetSelectedSensorPosition(0);

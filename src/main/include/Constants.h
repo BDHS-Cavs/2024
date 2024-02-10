@@ -76,8 +76,8 @@ constexpr double kPRearRightVel = 0.5;
 
 namespace ClimberConstants {
 //climber (SparkMax)
-constexpr int kClimberMotor1Port = 1;
-constexpr int kClimberMotor2Port = 2;
+constexpr int kClimberMotor1Port = 9;
+constexpr int kClimberMotor2Port = 10;
 }
 
 namespace IntakeConstants {
@@ -87,8 +87,8 @@ constexpr int kIntakeMotorPort = 11;
 
 namespace ShooterConstants {
 //shooter (TalonSRX)
-constexpr int kShooterMotor1Port = 9;
-constexpr int kShooterMotor2Port = 10;
+constexpr int kShooterMotor1Port = 1;
+constexpr int kShooterMotor2Port = 2;
 }
 
 namespace ModuleConstants {

@@ -13,9 +13,14 @@
 #include <frc2/command/PIDCommand.h>
 #include <frc2/command/ParallelRaceGroup.h>
 #include <frc2/command/RunCommand.h>
+#include <frc/smartdashboard/SmartDashboard.h>
 
 #include "Constants.h"
 #include "subsystems/DriveSubsystem.h"
+#include "subsystems/Climber.h"
+#include "subsystems/Intake.h"
+#include "subsystems/Shooter.h"
+#include "subsystems/Vision.h"
 
 /**
  * This class is where the bulk of the robot should be declared.  Since
@@ -32,6 +37,7 @@ class RobotContainer {
 
  private:
   // The driver's controller
+
   frc::Joystick m_driverController{OIConstants::kDriverControllerPort};
 
   // The robot's subsystems and commands are defined here...

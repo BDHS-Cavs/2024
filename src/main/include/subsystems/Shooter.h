@@ -11,18 +11,16 @@
 #pragma once
 
 #include <frc2/command/SubsystemBase.h>
-//#include <ctre/phoenix/motorcontrol/can/TalonFX.h> //falcon 500 motors with talon fx's built in
-#include <ctre/phoenix6/TalonFX.hpp>
+#include <rev/CANSparkMax.h>
 
 #include "Constants.h"
 
 class Shooter: public frc2::SubsystemBase {
 
 private:
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port, "rio"};
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port, "rio"};
-    ctre::phoenix6::hardware::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port, "rio"};
-    ctre::phoenix6::hardware::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port, "rio"};
+    rev::CANSparkMax m_shooterMotor1{ShooterConstants::kShooterMotor1Port, rev::CANSparkMax::MotorType::kBrushless};
+    rev::CANSparkMax m_shooterMotor2{ShooterConstants::kShooterMotor2Port, rev::CANSparkMax::MotorType::kBrushless}; //falcons now, shooter NEO
+    //frc::MotorControllerGroup m_climberMotors{m_climberMotor1, m_climberMotor2};
 
 public:
     Shooter();
