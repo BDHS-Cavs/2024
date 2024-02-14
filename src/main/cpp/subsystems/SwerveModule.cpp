@@ -70,8 +70,6 @@ void SwerveModule::SetDesiredState(
   //m_driveMotor.set(driveOutput);
   m_driveMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, driveOutput);
   m_turningMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, turnOutput);
-  m_driveMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice::QuadEncoder);
-  m_turningMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::TalonSRXFeedbackDevice::QuadEncoder);
 }
 
 void SwerveModule::ResetEncoders() {

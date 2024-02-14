@@ -71,6 +71,28 @@ void DriveSubsystem::Periodic() {
     frc::SmartDashboard::PutNumber("Rear Right Drive Motor Output (Amps)", m_rearRight.m_driveMotor.GetOutputCurrent());
     frc::SmartDashboard::PutNumber("Rear Right Turning Motor Output (Amps)", m_rearRight.m_turningMotor.GetOutputCurrent());
 
+
+
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder Rate", m_frontLeft.m_driveEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Front Left Turning Encoder Rate", m_frontLeft.m_turningEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder Current Count", m_frontLeft.m_driveEncoder.Get());
+    frc::SmartDashboard::PutNumber("Front Left Turning Encoder Current Count", m_frontLeft.m_turningEncoder.Get());
+
+    frc::SmartDashboard::PutNumber("Front Right Drive Encoder Rate", m_frontRight.m_driveEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Front Right Turning Encoder Rate", m_frontRight.m_turningEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Front Right Drive Encoder Current Count", m_frontRight.m_driveEncoder.Get());
+    frc::SmartDashboard::PutNumber("Front Right Turning Encoder Current Count", m_frontRight.m_turningEncoder.Get());
+
+    frc::SmartDashboard::PutNumber("Rear Left Drive Encoder Rate", m_rearLeft.m_driveEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Rear Left Turning Encoder Rate", m_rearLeft.m_turningEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Rear Left Drive Encoder Current Count", m_rearLeft.m_driveEncoder.Get());
+    frc::SmartDashboard::PutNumber("Rear Left Turning Encoder Current Count", m_rearLeft.m_turningEncoder.Get());
+
+    frc::SmartDashboard::PutNumber("Rear Right Drive Encoder Rate", m_rearRight.m_driveEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Rear Right Turning Encoder Rate", m_rearRight.m_turningEncoder.GetRate());
+    frc::SmartDashboard::PutNumber("Rear Right Drive Encoder Current Count", m_rearRight.m_driveEncoder.Get());
+    frc::SmartDashboard::PutNumber("Rear Right Turning Encoder Current Count", m_rearRight.m_turningEncoder.Get());
+
   // Implementation of subsystem periodic method goes here.
   m_odometry.Update(m_gyro.GetRotation2d(),
                     {m_frontLeft.GetPosition(), m_rearLeft.GetPosition(),
