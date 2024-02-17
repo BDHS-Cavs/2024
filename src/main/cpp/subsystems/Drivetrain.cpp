@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "Drivetrain.h"
+#include "subsystems/Drivetrain.h"
 
 void Drivetrain::Drive(units::meters_per_second_t xSpeed,
                        units::meters_per_second_t ySpeed,
@@ -64,27 +64,46 @@ void Drivetrain::Drive(units::meters_per_second_t xSpeed,
     frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Amps)", m_backRight.m_driveMotor.GetOutputCurrent());
     frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Amps)", m_backRight.m_turningMotor.GetOutputCurrent());
 
+        frc::SmartDashboard::PutNumber("Back Right Turning Encoder", m_backRight.m_turningEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Back Right Drive Encoder", m_backRight.m_driveEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Front Right Turning Encoder", m_frontRight.m_turningEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Front Right Drive Encoder", m_frontRight.m_driveEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Back Left Turning Encoder", m_backLeft.m_turningEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Back Left Drive Encoder", m_backLeft.m_driveEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Front Left Turning Encoder", m_frontLeft.m_turningEncoder.GetDistance());
+        frc::SmartDashboard::PutNumber("Front Left Drive Encoder", m_frontLeft.m_driveEncoder.GetDistance());
 
 
-    frc::SmartDashboard::PutNumber("Front Left Drive Encoder Rate", m_frontLeft.m_driveEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Front Left Turning Encoder Rate", m_frontLeft.m_turningEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Front Left Drive Encoder Current Count", m_frontLeft.m_driveEncoder.Get());
-    frc::SmartDashboard::PutNumber("Front Left Turning Encoder Current Count", m_frontLeft.m_turningEncoder.Get());
 
-    frc::SmartDashboard::PutNumber("Front Right Drive Encoder Rate", m_frontRight.m_driveEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Front Right Turning Encoder Rate", m_frontRight.m_turningEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Front Right Drive Encoder Current Count", m_frontRight.m_driveEncoder.Get());
-    frc::SmartDashboard::PutNumber("Front Right Turning Encoder Current Count", m_frontRight.m_turningEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Front Left Drive Encoder Rate", m_frontLeft.m_driveEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Front Left Turning Encoder Rate", m_frontLeft.m_turningEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Front Left Drive Encoder Current Count", m_frontLeft.m_driveEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Front Left Turning Encoder Current Count", m_frontLeft.m_turningEncoder.Get());
 
-    frc::SmartDashboard::PutNumber("Back Left Drive Encoder Rate", m_backLeft.m_driveEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Back Left Turning Encoder Rate", m_backLeft.m_turningEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Back Left Drive Encoder Current Count", m_backLeft.m_driveEncoder.Get());
-    frc::SmartDashboard::PutNumber("Back Left Turning Encoder Current Count", m_backLeft.m_turningEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Front Right Drive Encoder Rate", m_frontRight.m_driveEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Front Right Turning Encoder Rate", m_frontRight.m_turningEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Front Right Drive Encoder Current Count", m_frontRight.m_driveEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Front Right Turning Encoder Current Count", m_frontRight.m_turningEncoder.Get());
 
-    frc::SmartDashboard::PutNumber("Back Right Drive Encoder Rate", m_backRight.m_driveEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Back Right Turning Encoder Rate", m_backRight.m_turningEncoder.GetRate());
-    frc::SmartDashboard::PutNumber("Back Right Drive Encoder Current Count", m_backRight.m_driveEncoder.Get());
-    frc::SmartDashboard::PutNumber("Back Right Turning Encoder Current Count", m_backRight.m_turningEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Back Left Drive Encoder Rate", m_backLeft.m_driveEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Back Left Turning Encoder Rate", m_backLeft.m_turningEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Back Left Drive Encoder Current Count", m_backLeft.m_driveEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Back Left Turning Encoder Current Count", m_backLeft.m_turningEncoder.Get());
+
+    //frc::SmartDashboard::PutNumber("Back Right Drive Encoder Rate", m_backRight.m_driveEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Back Right Turning Encoder Rate", m_backRight.m_turningEncoder.GetRate());
+    //frc::SmartDashboard::PutNumber("Back Right Drive Encoder Current Count", m_backRight.m_driveEncoder.Get());
+    //frc::SmartDashboard::PutNumber("Back Right Turning Encoder Current Count", m_backRight.m_turningEncoder.Get());
+
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_frontLeft.m_driveEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_frontRight.m_driveEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_backLeft.m_driveEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_backRight.m_driveEncoder.GetDistance());
+
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_frontLeft.m_turningEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_frontRight.m_turningEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_backLeft.m_turningEncoder.GetDistance());
+    frc::SmartDashboard::PutNumber("Front Left Drive Encoder GetDistance", m_backRight.m_turningEncoder.GetDistance());
 
     frc::SmartDashboard::PutNumber("gyro get angle", m_gyro.GetAngle());
     frc::SmartDashboard::PutNumber("gyro get rate", m_gyro.GetRate());

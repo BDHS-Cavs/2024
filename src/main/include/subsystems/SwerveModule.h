@@ -35,8 +35,8 @@ class SwerveModule {
   frc::Encoder m_turningEncoder;
 
  private:
-  static constexpr double kWheelRadius = 0.0508;
-  static constexpr int kEncoderResolution = 4096;
+  static constexpr double kWheelRadius = 0.0508; //need tuning?
+  static constexpr int kEncoderResolution = 4096; //need tuning?
 
   static constexpr auto kModuleMaxAngularVelocity =
       std::numbers::pi * 1_rad_per_s;  // radians per second

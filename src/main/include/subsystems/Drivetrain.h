@@ -13,6 +13,7 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 
 #include "SwerveModule.h"
+#include "Constants.h"
 
 /**
  * Represents a swerve drive style drivetrain.
@@ -27,9 +28,9 @@ class Drivetrain {
   void UpdateOdometry();
 
   static constexpr units::meters_per_second_t kMaxSpeed =
-      3.0_mps;  // 3 meters per second
+      /*3.0_mps;*/ 3.0_mps;  // 3 meters per second
   static constexpr units::radians_per_second_t kMaxAngularSpeed{
-      std::numbers::pi};  // 1/2 rotation per second
+      /*std::numbers::pi*/ std::numbers::pi};  // 1/2 rotation per second
 
  private:
   frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
@@ -41,10 +42,10 @@ class Drivetrain {
 int driveEncoderChannelA, int driveEncoderChannelB, 
 int turningEncoderChannelA, int turningEncoderChannelB);*/
 
-  SwerveModule m_frontLeft{4, 8, 0, 1, 2, 3};
-  SwerveModule m_frontRight{3, 7, 8, 9, 10, 11};
-  SwerveModule m_backLeft{2, 6, 4, 5, 6, 7};
-  SwerveModule m_backRight{1, 5, 12, 13, 14, 15};
+  SwerveModule m_frontLeft{DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort, DriveConstants::kFrontLeftDriveEncoderChannelA, DriveConstants::kFrontLeftDriveEncoderChannelB, DriveConstants::kFrontLeftTurningEncoderChannelA, DriveConstants::kFrontLeftTurningEncoderChannelB};
+  SwerveModule m_frontRight{DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightDriveEncoderChannelA, DriveConstants::kFrontRightDriveEncoderChannelB, DriveConstants::kFrontRightTurningEncoderChannelA, DriveConstants::kFrontRightTurningEncoderChannelB};
+  SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB};
+  SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB};
 
   frc::ADXRS450_Gyro m_gyro;
 
