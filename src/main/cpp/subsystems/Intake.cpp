@@ -29,12 +29,12 @@ void Intake::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 
-void Intake::RunIntake(){ 
+void Intake::IntakeRun(){ 
     // Run Intake
         m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, -0.35); 
 } 
 
-void Intake::Expel(){
+void Intake::IntakeExpel(){
     // Run Expel
     m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, 0.35);
 }

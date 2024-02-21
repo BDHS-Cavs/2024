@@ -22,8 +22,11 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
 
+#include "commands/ClimberLowerCommand.h"
 #include "commands/ClimberRaiseCommand.h"
 #include "commands/ShooterShootCommand.h"
+#include "commands/IntakeRunCommand.h"
+#include "commands/IntakeExpelCommand.h"
 
 class Robot : public frc::TimedRobot {
  public:

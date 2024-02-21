@@ -10,21 +10,23 @@
 
 #pragma once
 
-#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
-#include <frc2/command/SubsystemBase.h>
+#include <frc2/command/Command.h>
+#include <frc2/command/CommandHelper.h>
 
-#include "Constants.h"
+#include "subsystems/Climber.h"
 
-class Intake: public frc2::SubsystemBase {
+class ClimberLowerCommand: public frc2::CommandHelper<frc2::Command, ClimberLowerCommand> {
+
+public:
+
+    explicit ClimberLowerCommand(Climber* m_climber);
+
+    void Initialize() override;
+    void Execute() override;
+    bool IsFinished() override;
+    void End(bool interrupted) override;
+    bool RunsWhenDisabled() const override;
 
 private:
-    ctre::phoenix::motorcontrol::can::TalonSRX m_intakeMotor{IntakeConstants::kIntakeMotorPort}; //tuned value
-public:
-    Intake();
-
-    void Periodic() override;
-    void SimulationPeriodic() override;
-    void IntakeRun();
-    void IntakeExpel();
-    void IntakeStop();
+    Climber* m_climber;
 };

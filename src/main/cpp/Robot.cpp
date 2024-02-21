@@ -76,10 +76,10 @@ void Robot::TestPeriodic() {}
 void Robot::ConfigureButtonBindings() {
 //frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           // ? (1)
 frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Climber Raise (2)
-//frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Arm Extend (3)
+frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Climber Lower (3)
 frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};           // Shooter Shoot (4)
-//frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};  // Grabber Open (5)
-//frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // grabber Close (6)
+frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};  // Intake Run (5)
+frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Intake Expel (6)
 
 //frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
 //frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Cam Backwards (8)
@@ -87,9 +87,9 @@ frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController
 m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());               // Climber Raise (2)
 m_controllerButton4.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());              // Shooter Shoot (4)
 //m_controllerButton1.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());             // Arm Retract (1)
-//m_controllerButton3.WhileTrue(ArmExtendCommand(&m_arm).ToPtr());              // Arm Extend (3)
-//m_controllerButton5.OnTrue(GrabberOpenCommand(&m_grabber).ToPtr());           // Grabber Open (5)
-//m_controllerButton6.OnTrue(GrabberCloseCommand(&m_grabber).ToPtr());            // Grabber Close (6)
+m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());              // Climber Lower (3)
+m_controllerButton5.OnTrue(IntakeRunCommand(&m_intake).ToPtr());           // Intake Run (5)
+m_controllerButton6.OnTrue(IntakeExpelCommand(&m_intake).ToPtr());            // Intake Expel (6)
 
 //m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
 //m_controllerButton8.OnTrue(CamBackwardsCommand(&m_drive).ToPtr());       // Cam Backwards (8)
