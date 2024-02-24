@@ -8,6 +8,8 @@
 #include <frc2/command/CommandScheduler.h>
 
 void Robot::RobotInit() {
+  frc::CameraServer::GetVideo();
+  frc::CameraServer::StartAutomaticCapture();
   ConfigureButtonBindings();
 }
 
@@ -74,7 +76,7 @@ void Robot::TestPeriodic() {}
 
 
 void Robot::ConfigureButtonBindings() {
-//frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           // ? (1)
+//frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           //  (1)
 frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Climber Raise (2)
 frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Climber Lower (3)
 frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};           // Shooter Shoot (4)
@@ -86,7 +88,7 @@ frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController
 
 m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());               // Climber Raise (2)
 m_controllerButton4.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());              // Shooter Shoot (4)
-//m_controllerButton1.WhileTrue(ArmRetractCommand(&m_arm).ToPtr());             // Arm Retract (1)
+//m_controllerButton1.WhileTrue(sssssssCommand(&m_shooter).ToPtr());             //  (1)
 m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());              // Climber Lower (3)
 m_controllerButton5.OnTrue(IntakeRunCommand(&m_intake).ToPtr());           // Intake Run (5)
 m_controllerButton6.OnTrue(IntakeExpelCommand(&m_intake).ToPtr());            // Intake Expel (6)

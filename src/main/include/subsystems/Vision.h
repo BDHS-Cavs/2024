@@ -24,18 +24,38 @@
 
 #pragma once
 
+#include "Constants.h"
+
 #include <photon/PhotonCamera.h>
+#include <photon/PhotonUtils.h>
 #include <photon/PhotonPoseEstimator.h>
+
+#include <units/angle.h>
+#include <units/length.h>
+
+#include <frc2/command/SubsystemBase.h>
 
 #include <utility>
 
 #include <frc/apriltag/AprilTagFieldLayout.h>
 #include <frc/apriltag/AprilTagFields.h>
 
-class PhotonCameraWrapper {
- public:
-  photon::PhotonPoseEstimator m_poseEstimator{
-      frc::LoadAprilTagLayoutField(frc::AprilTagField::k2023ChargedUp),
+
+class Vision: public frc2::SubsystemBase {
+
+private:
+
+    photon::PhotonCamera camera{"OV5647"}; 
+    photon::PhotonPipelineResult result;
+    photon::PhotonTrackedTarget target = result.GetBestTarget();
+
+    double yaw = target.GetYaw();
+    double pitch = target.GetPitch();
+    double area = target.GetArea();
+    double skew = target.GetSkew();
+
+photon::PhotonPoseEstimator m_poseEstimator{
+      frc::LoadAprilTagLayoutField(frc::AprilTagField::k2024Crescendo),
       photon::MULTI_TAG_PNP_ON_RIO, std::move(photon::PhotonCamera{"OV5647"}),
       frc::Transform3d{}};
 
@@ -44,4 +64,12 @@ class PhotonCameraWrapper {
     m_poseEstimator.SetReferencePose(frc::Pose3d(estimatedPose));
     return m_poseEstimator.Update();
   }
+
+public:
+    Vision();
+
+    void Periodic() override;
+    void SimulationPeriodic() override;
+    void VisionScan();
+    void VisionTrack();
 };

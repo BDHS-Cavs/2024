@@ -1,0 +1,15 @@
+{
+  "NetworkTables": {
+    "transitory": {
+      "photonvision": {
+        "OV5647": {
+          "open": true
+        },
+        "open": true
+      }
+    },
+    "types": {
+      "/FMSInfo": "FMSInfo"
+    }
+  }
+}

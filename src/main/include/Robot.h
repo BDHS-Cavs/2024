@@ -16,11 +16,13 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <frc2/command/CommandPtr.h>
+#include <cameraserver/CameraServer.h>
 
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Climber.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
+#include "subsystems/Vision.h"
 
 #include "commands/ClimberLowerCommand.h"
 #include "commands/ClimberRaiseCommand.h"
@@ -30,8 +32,8 @@
 
 class Robot : public frc::TimedRobot {
  public:
-   void AutonomousPeriodic() override;
-    void TeleopPeriodic() override;
+  void AutonomousPeriodic() override;
+  void TeleopPeriodic() override;
   void RobotInit() override;
   void RobotPeriodic() override;
   void DisabledInit() override;
@@ -55,7 +57,7 @@ class Robot : public frc::TimedRobot {
   Climber m_climber;
   Shooter m_shooter;
   Intake m_intake;
-
+  Vision m_vision;
 
   // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0
   // to 1.

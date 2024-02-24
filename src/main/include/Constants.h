@@ -101,6 +101,12 @@ constexpr int kShooterMotor1Port = 1;
 constexpr int kShooterMotor2Port = 2;
 }
 
+namespace VisionConstants {
+//intake (limelight)
+//constexpr char kCameraName[5] = "OV5647";
+
+}
+
 namespace ModuleConstants {
 constexpr int kEncoderCPR = 1024;
 constexpr double kWheelDiameterMeters = 0.15;
