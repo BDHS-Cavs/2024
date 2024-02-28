@@ -10,7 +10,6 @@
 void Robot::RobotInit() {
   frc::CameraServer::GetVideo();
   frc::CameraServer::StartAutomaticCapture();
-  ConfigureButtonBindings();
 }
 
 /**
@@ -40,15 +39,17 @@ void Robot::DisabledPeriodic() {}
  */
 
 void Robot::AutonomousInit() {
-  //m_autonomousCommand = m_container.GetAutonomousCommand();
-  if (m_autonomousCommand) {
+  m_autonomousCommand = m_container->GetAutonomousCommand();
+
+  if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Schedule();
   }
 }
 
 void Robot::AutonomousPeriodic() {
   DriveWithJoystick(false);
-m_swerve.UpdateOdometry();
+m_container->m_swerve.UpdateOdometry();
+m_autonomousCommand->Execute();
 }
 
 void Robot::TeleopInit() {
@@ -56,9 +57,9 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
-  if (m_autonomousCommand) {
+  if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Cancel();
-    m_autonomousCommand.reset();
+    m_autonomousCommand = nullptr;
   }
 }
 
@@ -73,32 +74,6 @@ void Robot::TeleopPeriodic() {
  * This function is called periodically during test mode.
  */
 void Robot::TestPeriodic() {}
-
-
-void Robot::ConfigureButtonBindings() {
-//frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           //  (1)
-frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Climber Raise (2)
-frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Climber Lower (3)
-frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};           // Shooter Shoot (4)
-frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};  // Intake Run (5)
-frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Intake Expel (6)
-
-//frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
-//frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Cam Backwards (8)
-
-m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());               // Climber Raise (2)
-m_controllerButton4.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());              // Shooter Shoot (4)
-//m_controllerButton1.WhileTrue(sssssssCommand(&m_shooter).ToPtr());             //  (1)
-m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());              // Climber Lower (3)
-m_controllerButton5.OnTrue(IntakeRunCommand(&m_intake).ToPtr());           // Intake Run (5)
-m_controllerButton6.OnTrue(IntakeExpelCommand(&m_intake).ToPtr());            // Intake Expel (6)
-
-//m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
-//m_controllerButton8.OnTrue(CamBackwardsCommand(&m_drive).ToPtr());       // Cam Backwards (8)
-}
-
-
-
 
 #ifndef RUNNING_FRC_TESTS
 int main() {

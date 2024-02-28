@@ -4,31 +4,11 @@
 
 #pragma once
 
-#include <optional>
-
 #include <frc/TimedRobot.h>
 #include <frc2/command/Command.h>
-#include <frc/MathUtil.h>
-#include <frc/Joystick.h>
-#include <frc2/command/button/JoystickButton.h>
-#include <frc/XboxController.h>
-#include <frc/filter/SlewRateLimiter.h>
-#include <frc/smartdashboard/SmartDashboard.h>
-#include <frc/smartdashboard/SendableChooser.h>
-#include <frc2/command/CommandPtr.h>
 #include <cameraserver/CameraServer.h>
 
-#include "subsystems/Drivetrain.h"
-#include "subsystems/Climber.h"
-#include "subsystems/Shooter.h"
-#include "subsystems/Intake.h"
-#include "subsystems/Vision.h"
-
-#include "commands/ClimberLowerCommand.h"
-#include "commands/ClimberRaiseCommand.h"
-#include "commands/ShooterShootCommand.h"
-#include "commands/IntakeRunCommand.h"
-#include "commands/IntakeExpelCommand.h"
+#include "RobotContainer.h"
 
 class Robot : public frc::TimedRobot {
  public:
@@ -47,18 +27,10 @@ class Robot : public frc::TimedRobot {
  private:
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.
-  std::optional<frc2::CommandPtr> m_autonomousCommand;
+  //std::optional<frc2::CommandPtr> m_autonomousCommand;
 
-  frc::Joystick m_drivecontroller{0};
-  frc::XboxController m_controller{1};
-  
-  //the robot subsystems
-  Drivetrain m_swerve;
-  Climber m_climber;
-  Shooter m_shooter;
-  Intake m_intake;
-  Vision m_vision;
 
+       //set up default drive command real
   // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0
   // to 1.
   frc::SlewRateLimiter<units::scalar> m_xspeedLimiter{3 / 1_s};
@@ -69,7 +41,7 @@ class Robot : public frc::TimedRobot {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
     const auto xSpeed = -m_xspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_drivecontroller.GetX(), 0.2)) *
+                            frc::ApplyDeadband(m_container->m_drivecontroller.GetX(), 0.2)) *
                         Drivetrain::kMaxSpeed;
                         frc::SmartDashboard::PutNumber("xSpeed", xSpeed());
 
@@ -77,7 +49,7 @@ class Robot : public frc::TimedRobot {
     // we want a positive value when we pull to the left. Xbox controllers
     // return positive values when you pull to the right by default.
     const auto ySpeed = -m_yspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_drivecontroller.GetY(), 0.2)) *
+                            frc::ApplyDeadband(m_container->m_drivecontroller.GetY(), 0.2)) *
                         Drivetrain::kMaxSpeed;
                         frc::SmartDashboard::PutNumber("ySpeed", ySpeed());
 
@@ -86,12 +58,17 @@ class Robot : public frc::TimedRobot {
     // mathematics). Xbox controllers return positive values when you pull to
     // the right by default.
     const auto rot = -m_rotLimiter.Calculate(
-                         frc::ApplyDeadband(m_drivecontroller.GetZ(), 0.2)) *
+                         frc::ApplyDeadband(m_container->m_drivecontroller.GetZ(), 0.2)) *
                      Drivetrain::kMaxAngularSpeed;
                      frc::SmartDashboard::PutNumber("zSpeed", rot());
 
-    m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());
+    m_container->m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());
   }
 
+  // Have it null by default so that if testing teleop it
+  // doesn't have undefined behavior and potentially crash.
+  frc2::Command* m_autonomousCommand = nullptr;
+
+RobotContainer* m_container = RobotContainer::GetInstance();
 
 };
