@@ -31,12 +31,12 @@ void Intake::SimulationPeriodic() {
 
 void Intake::IntakeRun(){ 
     // Run Intake
-        m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, -0.35); 
+        m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, -0.8); 
 } 
 
 void Intake::IntakeExpel(){
     // Run Expel
-    m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, 0.35);
+    m_intakeMotor.Set(ctre::phoenix::motorcontrol::TalonSRXControlMode::PercentOutput, 0.8);
 }
 
 void Intake::IntakeStop(){

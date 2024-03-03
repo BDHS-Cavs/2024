@@ -30,12 +30,16 @@
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
 #include "subsystems/Vision.h"
+#include "subsystems/Conveyer.h"
 
 #include "commands/ClimberLowerCommand.h"
 #include "commands/ClimberRaiseCommand.h"
 #include "commands/ShooterShootCommand.h"
+#include "commands/ShooterRetractCommand.h"
 #include "commands/IntakeRunCommand.h"
 #include "commands/IntakeExpelCommand.h"
+#include "commands/ConveyerForwardCommand.h"
+#include "commands/ConveyerBackwardCommand.h"
 
 #include "commands/AutonomousCommand.h"
 
@@ -52,8 +56,7 @@ public:
     Shooter m_shooter;
     Intake m_intake;
     Vision m_vision;
-
-    AutonomousCommand m_autonomousCommand;
+    Conveyer m_conveyer;
 
     // Get the control values
     frc::Joystick *getJoystick();
@@ -79,7 +82,8 @@ private:
     //frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber);
     //frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber);
 
-    //TODO broken???        frc::SendableChooser<frc2::Command*> m_chooser;
+    frc::SendableChooser<frc2::Command*> m_chooser;
+
     static RobotContainer* m_robotContainer;
     void ConfigureButtonBindings();
 };

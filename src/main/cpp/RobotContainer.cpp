@@ -18,17 +18,18 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-//RobotContainer::RobotContainer() {
+RobotContainer::RobotContainer() {
 // TODO: DELETE???
-RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) {
-    //TODO broken????? frc::SmartDashboard::PutData(&m_swerve);
+//RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) {
+    //frc::SmartDashboard::PutData(&m_swerve);
     frc::SmartDashboard::PutData(&m_climber);
     frc::SmartDashboard::PutData(&m_shooter);
     frc::SmartDashboard::PutData(&m_intake);
     frc::SmartDashboard::PutData(&m_vision);
+    frc::SmartDashboard::PutData(&m_conveyer);
 
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision));
+    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
 	
     ConfigureButtonBindings();
 
@@ -49,8 +50,8 @@ RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m
     //TODO delete???     },
     //TODO delete???      {&m_drive}));
 //TODO delete??? 
-    //TODO delete??? m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision));
-    //TODO delete??? frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
+    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
+    frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }
 
 RobotContainer* RobotContainer::GetInstance() {
@@ -60,26 +61,24 @@ RobotContainer* RobotContainer::GetInstance() {
     return(m_robotContainer);
 }
 
-void RobotContainer::ConfigureButtonBindings() {
-//frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};           //  (1)
-frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};           // Climber Raise (2)
-frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};           // Climber Lower (3)
-frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};           // Shooter Shoot (4)
-frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};  // Intake Run (5)
-frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper}; // Intake Expel (6)
+void RobotContainer::ConfigureButtonBindings() {                                                           // MAKE SURE YOU ARE ON THE "X" NOT "D" ON BACK OF CONTROLLER
+frc2::JoystickButton m_controllerButton1{&m_controller, (int)frc::XboxController::Button::kA};             // Shooter Retract (1)   (A)
+frc2::JoystickButton m_controllerButton2{&m_controller, (int)frc::XboxController::Button::kB};             // Climber Raise (2)     (B)
+frc2::JoystickButton m_controllerButton3{&m_controller, (int)frc::XboxController::Button::kX};             // Climber Lower (3)     (X)
+frc2::JoystickButton m_controllerButton4{&m_controller, (int)frc::XboxController::Button::kY};             // Shooter Shoot (4)     (Y)
+frc2::JoystickButton m_controllerButton5{&m_controller, (int)frc::XboxController::Button::kLeftBumper};    // Intake Run (5)        (LB)
+frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController::Button::kRightBumper};   // Intake Expel (6)      (RB)
+frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};          // Conveyer Forward (7)  (back)
+frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};         // Conveyer Backward (8) (start)
 
-//frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};        // Compressor Enable (7)
-//frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};       // Cam Backwards (8)
-
-m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());               // Climber Raise (2)
-m_controllerButton4.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());              // Shooter Shoot (4)
-//m_controllerButton1.WhileTrue(sssssssCommand(&m_shooter).ToPtr());             //  (1)
-m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());              // Climber Lower (3)
-m_controllerButton5.OnTrue(IntakeRunCommand(&m_intake).ToPtr());           // Intake Run (5)
-m_controllerButton6.OnTrue(IntakeExpelCommand(&m_intake).ToPtr());            // Intake Expel (6)
-
-//m_controllerButton7.ToggleOnTrue(CompressorEnableCommand(&m_grabber).ToPtr()); // Compressor Enable (7)
-//m_controllerButton8.OnTrue(CamBackwardsCommand(&m_drive).ToPtr());       // Cam Backwards (8)
+m_controllerButton1.WhileTrue(ShooterRetractCommand(&m_shooter).ToPtr());                                  // Shooter Retract (1)   (A)
+m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());                                    // Climber Raise (2)     (B)
+m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());                                    // Climber Lower (3)     (X)
+m_controllerButton4.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());                                    // Shooter Shoot (4)     (Y)
+m_controllerButton5.WhileTrue(IntakeRunCommand(&m_intake).ToPtr());                                        // Intake Run (5)        (LB)
+m_controllerButton6.WhileTrue(IntakeExpelCommand(&m_intake).ToPtr());                                      // Intake Expel (6)      (RB)
+m_controllerButton7.WhileTrue(ConveyerForwardCommand(&m_conveyer).ToPtr());                                // Conveyer Forward (7)  (back)
+m_controllerButton8.WhileTrue(ConveyerBackwardCommand(&m_conveyer).ToPtr());                               // Conveyer Backward (8) (start)
 }
 
 frc::Joystick* RobotContainer::getJoystick() {
@@ -91,5 +90,5 @@ frc::XboxController* RobotContainer::getController() {
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // The selected command will be run in autonomous
-  //TODO broken???    return m_chooser.GetSelected();
+  return m_chooser.GetSelected();
 }

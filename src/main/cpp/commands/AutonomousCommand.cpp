@@ -14,12 +14,13 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision)
+AutonomousCommand::AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer)
 :m_swerve(m_swerve),
 m_climber(m_climber),
 m_shooter(m_shooter),
 m_intake(m_intake),
-m_vision(m_vision)
+m_vision(m_vision),
+m_conveyer(m_conveyer)
 {
 
     // Use AddRequirements() here to declare subsystem dependencies
@@ -30,6 +31,7 @@ m_vision(m_vision)
     AddRequirements(m_shooter);
     AddRequirements(m_intake);
     AddRequirements(m_vision);
+    AddRequirements(m_conveyer);
 
     m_firstTime = true;
     m_timer.Reset();
@@ -65,12 +67,15 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 (2s)
     {
-        //do nothing
+        //do nothing void Drivetrain::Drive(units::velocity::meters_per_second_t xSpeed, 
+        //units::velocity::meters_per_second_t ySpeed, units::angular_velocity::radians_per_second_t rot, 
+        //bool fieldRelative, units::time::second_t period)
+        
+        //TODO DRIVE THINGGGGG m_swerve->Drive();
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {
         //do nothing
-        frc::SmartDashboard::PutNumber("auto test thing", 9999);
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {
@@ -98,6 +103,7 @@ void AutonomousCommand::End(bool interrupted) {
     m_shooter->ShooterStop();
     m_intake->IntakeStop();
     m_climber->ClimberStop();
+    m_conveyer->ConveyerStop();
 
     m_firstTime = true;
 }

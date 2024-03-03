@@ -19,10 +19,10 @@ Shooter::Shooter(){
     SetSubsystem("Shooter");
 
     //AddChild("ShooterMotor1", &m_shooterMotor1);
-    m_shooterMotor1.SetInverted(true);
+    //TODO m_shooterMotor1.SetInverted(true);
 
     //AddChild("ShooterMotor2", &m_shooterMotor2);
-    m_shooterMotor2.SetInverted(true);
+    //TODO m_shooterMotor2.SetInverted(true);
 }
 
 void Shooter::Periodic() {
@@ -38,9 +38,17 @@ void Shooter::ShooterShoot(){
     // Run Shooter
         //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
         //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
-        m_shooterMotor1.Set(-0.35);
-        m_shooterMotor2.Set(-0.35);
+        m_shooterMotor1.Set(-0.25);
+        m_shooterMotor2.Set(-0.25);
 } 
+
+void Shooter::ShooterRetract(){
+    // Retract Shooter
+        //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
+        //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
+        m_shooterMotor1.Set(0.25);
+        m_shooterMotor2.Set(0.25);
+}
 
 void Shooter::ShooterStop(){
     // stop the Shooter Motors
@@ -48,4 +56,9 @@ void Shooter::ShooterStop(){
     //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0);
     m_shooterMotor1.Set(0);
     m_shooterMotor2.Set(0);
+}
+
+void Shooter::ShooterIdleMode(){
+    m_shooterMotor1.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
+    m_shooterMotor2.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
 }

@@ -29,25 +29,25 @@
 
 namespace DriveConstants {
 //driving ports (TalonSRX)
-constexpr int kFrontLeftDriveMotorPort = 4;
-constexpr int kRearLeftDriveMotorPort = 2;
-constexpr int kFrontRightDriveMotorPort = 3;
-constexpr int kRearRightDriveMotorPort = 1;
+constexpr int kFrontLeftDriveMotorPort = 3;  //sm4
+constexpr int kRearLeftDriveMotorPort = 5;   //sm3
+constexpr int kFrontRightDriveMotorPort = 9; //sm1
+constexpr int kRearRightDriveMotorPort = 7;  //sm2
 
-constexpr int kFrontLeftTurningMotorPort = 8;
+constexpr int kFrontLeftTurningMotorPort = 4;
 constexpr int kRearLeftTurningMotorPort = 6;
-constexpr int kFrontRightTurningMotorPort = 7;
-constexpr int kRearRightTurningMotorPort = 5;
+constexpr int kFrontRightTurningMotorPort = 10;
+constexpr int kRearRightTurningMotorPort = 2;
 
 constexpr int kFrontLeftTurningEncoderChannelA = 2;
 constexpr int kRearLeftTurningEncoderChannelA = 6;
-constexpr int kFrontRightTurningEncoderChannelA = 10;
-constexpr int kRearRightTurningEncoderChannelA = 14;
+constexpr int kFrontRightTurningEncoderChannelA = 12;
+constexpr int kRearRightTurningEncoderChannelA = 15;
 
 constexpr int kFrontLeftTurningEncoderChannelB = 3;
 constexpr int kRearLeftTurningEncoderChannelB = 7;
-constexpr int kFrontRightTurningEncoderChannelB = 11;
-constexpr int kRearRightTurningEncoderChannelB = 15;
+constexpr int kFrontRightTurningEncoderChannelB = 13;
+constexpr int kRearRightTurningEncoderChannelB = 14;
 
 constexpr bool kFrontLeftTurningEncoderReversed = false;
 constexpr bool kRearLeftTurningEncoderReversed = true;
@@ -56,13 +56,13 @@ constexpr bool kRearRightTurningEncoderReversed = true;
 
 constexpr int kFrontLeftDriveEncoderChannelA = 0;
 constexpr int kRearLeftDriveEncoderChannelA = 4;
-constexpr int kFrontRightDriveEncoderChannelA = 8;
-constexpr int kRearRightDriveEncoderChannelA = 12;
+constexpr int kFrontRightDriveEncoderChannelA = 10;
+constexpr int kRearRightDriveEncoderChannelA = 16;
 
 constexpr int kFrontLeftDriveEncoderChannelB = 1;
 constexpr int kRearLeftDriveEncoderChannelB = 5;
-constexpr int kFrontRightDriveEncoderChannelB = 9;
-constexpr int kRearRightDriveEncoderChannelB = 13;
+constexpr int kFrontRightDriveEncoderChannelB = 11;
+constexpr int kRearRightDriveEncoderChannelB = 17;
 
 constexpr bool kFrontLeftDriveEncoderReversed = false;
 constexpr bool kRearLeftDriveEncoderReversed = true;
@@ -86,23 +86,28 @@ constexpr double kPRearRightVel = 0.5;
 
 namespace ClimberConstants {
 //climber (SparkMax)
-constexpr int kClimberMotor1Port = 9;
-constexpr int kClimberMotor2Port = 10;
+constexpr int kClimberMotor1Port = 14; //spark
+constexpr int kClimberMotor2Port = 15; //spark
 }
 
 namespace IntakeConstants {
-//intake (TalonFX)
-constexpr int kIntakeMotorPort = 11;
+//intake (TalonSRX)
+constexpr int kIntakeMotorPort = 1;
 }
 
 namespace ShooterConstants {
-//shooter (TalonSRX)
-constexpr int kShooterMotor1Port = 1;
-constexpr int kShooterMotor2Port = 2;
+//shooter (SparkMax)
+constexpr int kShooterMotor1Port = 12; //spark
+constexpr int kShooterMotor2Port = 13; //spark
+}
+
+namespace ConveyerConstants {
+//conveyer (TalonSRX)
+constexpr int kConveyerMotorPort = 8;
 }
 
 namespace VisionConstants {
-//intake (limelight)
+//vision (limelight)
 //constexpr char kCameraName[5] = "OV5647";
 
 }

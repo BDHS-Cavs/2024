@@ -12,19 +12,19 @@
 
 //#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
 #include <frc2/command/SubsystemBase.h>
-//#include <ctre/phoenix/motorcontrol/can/TalonFX.h> //falcon 500 motors with talon fx's built in
-#include <ctre/phoenix6/TalonFX.hpp>
-//#include <frc/motorcontrol/MotorControllerGroup.h>
+#include <rev/CANSparkMax.h>
+#include <frc/motorcontrol/MotorControllerGroup.h>
 
 #include "Constants.h"
 
 class Climber: public frc2::SubsystemBase {
 
 private:
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor1{ShooterConstants::kShooterMotor1Port, "rio"};
-    //ctre::phoenix::motorcontrol::can::TalonFX m_shooterMotor2{ShooterConstants::kShooterMotor2Port, "rio"};
-    ctre::phoenix6::hardware::TalonFX m_climberMotor1{ClimberConstants::kClimberMotor1Port, "rio"};
-    ctre::phoenix6::hardware::TalonFX m_climberMotor2{ClimberConstants::kClimberMotor2Port, "rio"}; 
+    rev::CANSparkMax m_climberMotor1{ClimberConstants::kClimberMotor1Port, rev::CANSparkMax::MotorType::kBrushless};
+    rev::CANSparkMax m_climberMotor2{ClimberConstants::kClimberMotor2Port, rev::CANSparkMax::MotorType::kBrushless};
+    rev::SparkRelativeEncoder m_climberEncoder1 = m_climberMotor1.GetEncoder();
+    rev::SparkRelativeEncoder m_climberEncoder2 = m_climberMotor2.GetEncoder();
+    //frc::MotorControllerGroup m_climberMotors{m_climberMotor1, m_climberMotor2};
     
 public:
     Climber();
@@ -34,4 +34,5 @@ public:
     void ClimberRaise();
     void ClimberLower();
     void ClimberStop();
+    void ClimberIdleMode();
 };

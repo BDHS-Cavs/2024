@@ -19,7 +19,9 @@ class Shooter: public frc2::SubsystemBase {
 
 private:
     rev::CANSparkMax m_shooterMotor1{ShooterConstants::kShooterMotor1Port, rev::CANSparkMax::MotorType::kBrushless};
-    rev::CANSparkMax m_shooterMotor2{ShooterConstants::kShooterMotor2Port, rev::CANSparkMax::MotorType::kBrushless}; //falcons now, shooter NEO
+    rev::CANSparkMax m_shooterMotor2{ShooterConstants::kShooterMotor2Port, rev::CANSparkMax::MotorType::kBrushless};
+    rev::SparkRelativeEncoder m_shooterEncoder1 = m_shooterMotor1.GetEncoder();
+    rev::SparkRelativeEncoder m_shooterEncoder2 = m_shooterMotor2.GetEncoder();
     //frc::MotorControllerGroup m_climberMotors{m_climberMotor1, m_climberMotor2};
 
 public:
@@ -28,5 +30,7 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void ShooterShoot();
+    void ShooterRetract();
     void ShooterStop();
+    void ShooterIdleMode();
 };

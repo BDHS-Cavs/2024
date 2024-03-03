@@ -33,12 +33,6 @@ class Drivetrain {
   static constexpr units::radians_per_second_t kMaxAngularSpeed{
       /*std::numbers::pi*/ std::numbers::pi};  // 1/2 rotation per second
 
- private:
-  frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
-  frc::Translation2d m_frontRightLocation{+0.381_m, -0.381_m};
-  frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};
-  frc::Translation2d m_backRightLocation{-0.381_m, -0.381_m};
-
 /*(int driveMotorChannel, int turningMotorChannel, 
 int driveEncoderChannelA, int driveEncoderChannelB, 
 int turningEncoderChannelA, int turningEncoderChannelB);*/
@@ -47,6 +41,12 @@ int turningEncoderChannelA, int turningEncoderChannelB);*/
   SwerveModule m_frontRight{DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightDriveEncoderChannelA, DriveConstants::kFrontRightDriveEncoderChannelB, DriveConstants::kFrontRightTurningEncoderChannelA, DriveConstants::kFrontRightTurningEncoderChannelB};
   SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB};
   SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB};
+
+ private:
+  frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
+  frc::Translation2d m_frontRightLocation{+0.381_m, -0.381_m};
+  frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};
+  frc::Translation2d m_backRightLocation{-0.381_m, -0.381_m};
 
   frc::ADXRS450_Gyro m_gyro;
 

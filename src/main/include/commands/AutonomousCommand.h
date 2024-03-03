@@ -22,12 +22,13 @@
 #include "subsystems/Vision.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
+#include "subsystems/Conveyer.h"
 
 class AutonomousCommand: public frc2::CommandHelper<frc2::Command, AutonomousCommand> {
 
 public:
 
-    explicit AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision);
+    explicit AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer);
 
 void Initialize() override;
 void Execute() override;
@@ -45,9 +46,11 @@ private:
     Shooter*        m_shooter;
     Intake*         m_intake;
     Vision*         m_vision;
+    Conveyer*       m_conveyer;
 
+units::velocity::meters_per_second_t autoXSpeed = 0.2_mps;
+units::velocity::meters_per_second_t autoYSpeed = 0.2_mps;
+units::velocity::meters_per_second_t autoRot = 0.2_mps;
+bool autoFieldRelative = true;                          
 
-    units::meters_per_second_t autoxspeed = 0.2_mps;
-    units::meters_per_second_t autoyspeed = 0.2_mps;
-    units::meters_per_second_t autorot = 0.2_mps;
 };
