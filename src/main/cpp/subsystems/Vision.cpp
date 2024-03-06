@@ -20,6 +20,35 @@ Vision::Vision(){
 
 void Vision::Periodic() {
     // Put code here to be run every loop
+    photon::PhotonPipelineResult result = camera.GetLatestResult();;
+    bool hasTargets = result.HasTargets();
+    double yaw;
+    double pitch;
+    double area;
+    double skew;
+    int apriltagID;
+
+    if(hasTargets)
+    {
+        photon::PhotonTrackedTarget target = result.GetBestTarget();
+        double yaw = target.GetYaw();
+        double pitch = target.GetPitch();
+        double area = target.GetArea();
+        double skew = target.GetSkew();
+        int apriltagID = target.GetFiducialId();
+    }
+
+    else
+    {
+        //do nothing
+    }
+
+    frc::SmartDashboard::PutBoolean("Has AprilTag Targets", hasTargets);
+    frc::SmartDashboard::PutNumber("AprilTag Yaw", yaw);
+    frc::SmartDashboard::PutNumber("AprilTag Pitch", pitch);
+    frc::SmartDashboard::PutNumber("AprilTag Area", area);
+    frc::SmartDashboard::PutNumber("AprilTag Skew", skew);
+    frc::SmartDashboard::PutNumber("AprilTag ID", apriltagID);
 }
 
 void Vision::SimulationPeriodic() {
@@ -27,15 +56,15 @@ void Vision::SimulationPeriodic() {
 
 // Put methods for controlling this subsystem here and call from commands
 
-void Vision::VisionScan(){ 
-        photon::PhotonPipelineResult result = camera.GetLatestResult();
-        photon::PhotonTrackedTarget target = result.GetBestTarget();
-        frc::SmartDashboard::PutBoolean("Photon HasTargets", result.HasTargets());
-} 
-
-void Vision::VisionTrack(){
-        VisionScan();
-        if (result.HasTargets()) {
-            frc::SmartDashboard::PutNumber("PhotonVision Target ID", target.GetFiducialId());
-        }
-}
+//void Vision::VisionScan(){ 
+//        photon::PhotonPipelineResult result = camera.GetLatestResult();
+//        photon::PhotonTrackedTarget target = result.GetBestTarget();
+//        frc::SmartDashboard::PutBoolean("Photon HasTargets", result.HasTargets());
+//} 
+//
+//void Vision::VisionTrack(){
+//        VisionScan();
+//        if (result.HasTargets()) {
+//            frc::SmartDashboard::PutNumber("PhotonVision Target ID", target.GetFiducialId());
+//        }
+//}

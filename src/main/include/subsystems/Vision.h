@@ -40,13 +40,18 @@
 #include <frc/apriltag/AprilTagFieldLayout.h>
 #include <frc/apriltag/AprilTagFields.h>
 
-
 class Vision: public frc2::SubsystemBase {
 
 private:
 
     photon::PhotonCamera camera{"limelightcam"};
-
+    //photon::PhotonPipelineResult result;;
+    //bool hasTargets;
+    //double yaw;
+    //double pitch;
+    //double area;
+    //double skew;
+    //int apriltagID;
 
 
     //TODO: remove? double yaw = target.GetYaw();
@@ -70,15 +75,6 @@ public:
 
     void Periodic() override;
     void SimulationPeriodic() override;
-    void VisionScan();
-    void VisionTrack();
-
-
-
-//TODO: remove?    photon::PhotonPipelineResult result = camera.GetLatestResult();;
-//TODO: remove?    photon::PhotonTrackedTarget target = result.GetBestTarget();
-
-photon::PhotonPipelineResult result;
-photon::PhotonTrackedTarget target;
-
+    //void VisionScan();
+    //void VisionTrack();
 };

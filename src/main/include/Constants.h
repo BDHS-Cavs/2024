@@ -106,12 +106,6 @@ namespace ConveyerConstants {
 constexpr int kConveyerMotorPort = 8;
 }
 
-namespace VisionConstants {
-//vision (limelight)
-//constexpr char kCameraName[5] = "OV5647";
-
-}
-
 namespace ModuleConstants {
 constexpr int kEncoderCPR = 1024;
 constexpr double kWheelDiameterMeters = 0.15;

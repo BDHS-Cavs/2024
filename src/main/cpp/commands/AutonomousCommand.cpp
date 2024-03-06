@@ -76,14 +76,7 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {
-        if(m_vision->result.HasTargets())
-        {
-            frc::SmartDashboard::PutNumber("Photon Target", m_vision->target.GetFiducialId());
-        }
-        else
-        {
-           frc::SmartDashboard::PutString("Photon Target", "no target");
-        }
+        
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {

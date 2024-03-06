@@ -88,19 +88,23 @@ void Robot::RobotPeriodic() {
     frc::SmartDashboard::PutNumber("Climber Encoder 1 Position", m_container->m_climber.m_climberEncoder1.GetPosition());
     frc::SmartDashboard::PutNumber("Climber Encoder 2 Position", m_container->m_climber.m_climberEncoder2.GetPosition());
 
-    frc::SmartDashboard::PutNumber("Shooter Encoder 1 Velocity", m_container->m_shooter.m_shooterEncoder1.GetVelocity());
-    frc::SmartDashboard::PutNumber("Shooter Encoder 2 Velocity", m_container->m_shooter.m_shooterEncoder2.GetVelocity());
+    frc::SmartDashboard::PutNumber("Climber Encoder 1 Velocity", m_container->m_shooter.m_shooterEncoder1.GetVelocity());
+    frc::SmartDashboard::PutNumber("Climber Encoder 2 Velocity", m_container->m_shooter.m_shooterEncoder2.GetVelocity());
 
   //vision
-    m_container->m_vision.VisionTrack();
+    //TODO remove? m_container->m_vision.VisionTrack();
     //TODO remove? frc::SmartDashboard::PutNumber("Photon current ID", m_container->m_vision.target.GetFiducialId());
     //TODO remove? frc::SmartDashboard::PutBoolean("Photon HasTargets", m_container->m_vision.result.HasTargets());
-
-
+  
   frc::SmartDashboard::PutNumber("front left drive encoder resolution", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetEncodingScale());
   frc::SmartDashboard::PutNumber("front left turning encoder resolution", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetEncodingScale());
   frc::SmartDashboard::PutNumber("front left drive encoder distance per pulse", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetDistancePerPulse());
   frc::SmartDashboard::PutNumber("front left turning encoder distance per pulse", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetDistancePerPulse());
+
+  frc::SmartDashboard::PutNumber("back left drive encoder resolution", m_container->m_swerve.m_backLeft.m_driveEncoder.GetEncodingScale());
+  frc::SmartDashboard::PutNumber("back left turning encoder resolution", m_container->m_swerve.m_backLeft.m_turningEncoder.GetEncodingScale());
+  frc::SmartDashboard::PutNumber("back left drive encoder distance per pulse", m_container->m_swerve.m_backLeft.m_driveEncoder.GetDistancePerPulse());
+  frc::SmartDashboard::PutNumber("back left turning encoder distance per pulse", m_container->m_swerve.m_backLeft.m_turningEncoder.GetDistancePerPulse());
 
 }
 
