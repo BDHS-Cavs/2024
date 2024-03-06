@@ -37,10 +37,6 @@ void Drivetrain::Drive(units::meters_per_second_t xSpeed,
 
 
 
-    frc::SmartDashboard::PutNumber("gyro get angle", m_gyro.GetAngle());
-    frc::SmartDashboard::PutNumber("gyro get rate", m_gyro.GetRate());
-
-
 
 
 }
@@ -49,4 +45,16 @@ void Drivetrain::UpdateOdometry() {
   m_odometry.Update(m_gyro.GetRotation2d(),
                     {m_frontLeft.GetPosition(), m_frontRight.GetPosition(),
                      m_backLeft.GetPosition(), m_backRight.GetPosition()});
+}
+
+void Drivetrain::DrivetrainStop() {
+    m_frontLeft.m_driveMotor.SetVoltage(units::volt_t(0));
+    m_frontRight.m_driveMotor.SetVoltage(units::volt_t(0));
+    m_backLeft.m_driveMotor.SetVoltage(units::volt_t(0));
+    m_backRight.m_driveMotor.SetVoltage(units::volt_t(0));
+
+    m_frontLeft.m_turningMotor.SetVoltage(units::volt_t(0));
+    m_frontRight.m_turningMotor.SetVoltage(units::volt_t(0));
+    m_backLeft.m_turningMotor.SetVoltage(units::volt_t(0));
+    m_backRight.m_turningMotor.SetVoltage(units::volt_t(0));
 }

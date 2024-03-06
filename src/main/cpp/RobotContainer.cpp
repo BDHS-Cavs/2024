@@ -19,9 +19,8 @@
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
 RobotContainer::RobotContainer() {
-// TODO: DELETE???
-//RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) {
-    //frc::SmartDashboard::PutData(&m_swerve);
+//RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) { //broken??
+    //frc::SmartDashboard::PutData(&m_swerve); //broken but i dont think we need
     frc::SmartDashboard::PutData(&m_climber);
     frc::SmartDashboard::PutData(&m_shooter);
     frc::SmartDashboard::PutData(&m_intake);
@@ -33,23 +32,6 @@ RobotContainer::RobotContainer() {
 	
     ConfigureButtonBindings();
 
-
-
-
-
-
-
-
-    // Set up default drive command
-    //TODO delete??? m_drive.SetDefaultCommand(frc2::RunCommand(
-    //TODO delete???     [this]
-    //TODO delete???     {
-    //TODO delete???         m_drive.Motivate(
-    //TODO delete???             m_joystick.GetY(),
-    //TODO delete???             m_joystick.GetX());
-    //TODO delete???     },
-    //TODO delete???      {&m_drive}));
-//TODO delete??? 
     m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 }

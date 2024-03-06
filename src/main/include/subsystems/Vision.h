@@ -45,25 +45,25 @@ class Vision: public frc2::SubsystemBase {
 
 private:
 
-    photon::PhotonCamera camera{"OV5647"}; 
-    photon::PhotonPipelineResult result;
-    photon::PhotonTrackedTarget target = result.GetBestTarget();
+    photon::PhotonCamera camera{"limelightcam"};
 
-    double yaw = target.GetYaw();
-    double pitch = target.GetPitch();
-    double area = target.GetArea();
-    double skew = target.GetSkew();
 
-photon::PhotonPoseEstimator m_poseEstimator{
-      frc::LoadAprilTagLayoutField(frc::AprilTagField::k2024Crescendo),
-      photon::MULTI_TAG_PNP_ON_RIO, std::move(photon::PhotonCamera{"OV5647"}),
-      frc::Transform3d{}};
 
-  inline std::optional<photon::EstimatedRobotPose> Update(
-      frc::Pose2d estimatedPose) {
-    m_poseEstimator.SetReferencePose(frc::Pose3d(estimatedPose));
-    return m_poseEstimator.Update();
-  }
+    //TODO: remove? double yaw = target.GetYaw();
+    //TODO: remove? double pitch = target.GetPitch();
+    //TODO: remove? double area = target.GetArea();
+    //TODO: remove? double skew = target.GetSkew();
+
+//TODO: remove? photon::PhotonPoseEstimator m_poseEstimator{
+//TODO: remove?       frc::LoadAprilTagLayoutField(frc::AprilTagField::k2024Crescendo),
+//TODO: remove?       photon::MULTI_TAG_PNP_ON_RIO, std::move(photon::PhotonCamera{"OV5647"}),
+//TODO: remove?       frc::Transform3d{}};
+//TODO: remove? 
+//TODO: remove?   inline std::optional<photon::EstimatedRobotPose> Update(
+//TODO: remove?       frc::Pose2d estimatedPose) {
+//TODO: remove?     m_poseEstimator.SetReferencePose(frc::Pose3d(estimatedPose));
+//TODO: remove?     return m_poseEstimator.Update();
+//TODO: remove?   }
 
 public:
     Vision();
@@ -72,4 +72,13 @@ public:
     void SimulationPeriodic() override;
     void VisionScan();
     void VisionTrack();
+
+
+
+//TODO: remove?    photon::PhotonPipelineResult result = camera.GetLatestResult();;
+//TODO: remove?    photon::PhotonTrackedTarget target = result.GetBestTarget();
+
+photon::PhotonPipelineResult result;
+photon::PhotonTrackedTarget target;
+
 };

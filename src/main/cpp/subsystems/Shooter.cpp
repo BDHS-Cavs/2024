@@ -18,11 +18,11 @@ Shooter::Shooter(){
     SetName("Shooter");
     SetSubsystem("Shooter");
 
-    //AddChild("ShooterMotor1", &m_shooterMotor1);
-    //TODO m_shooterMotor1.SetInverted(true);
+    //AddChild("ShooterMotor1", &m_shooterMotor1); //BROKEN but i dont think we need
+    m_shooterMotor1.SetInverted(true);
 
-    //AddChild("ShooterMotor2", &m_shooterMotor2);
-    //TODO m_shooterMotor2.SetInverted(true);
+    //AddChild("ShooterMotor2", &m_shooterMotor2); //BROKEN but i dont think we need
+    m_shooterMotor2.SetInverted(true);
 }
 
 void Shooter::Periodic() {

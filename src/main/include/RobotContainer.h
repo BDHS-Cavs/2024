@@ -75,14 +75,14 @@ private:
     
     // For Multiple Autos
     // The chooser for the autonomous modes
-    //TODO broken????       frc::SendableChooser<frc2::Command*> m_chooser; //TODO delete???????? or fix????? same with thing below about the 3 auto modes
+    //frc::SendableChooser<frc2::Command*> m_chooser; //BROKEN chooser stuff
     
-    // The autonomous modes //TODO: DELETE???
+    // The autonomous modes //BROKEN chooser stuff
     //frc2::CommandPtr m_leftAuto = autos::LeftAuto(&m_arm, &m_drive, &m_grabber);
     //frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber);
     //frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber);
 
-    frc::SendableChooser<frc2::Command*> m_chooser;
+    frc::SendableChooser<frc2::Command*> m_chooser; //if i remove all the chooser stuff, auto crashes, so i just leave it alone but still use the single autonomouscommand.cpp
 
     static RobotContainer* m_robotContainer;
     void ConfigureButtonBindings();

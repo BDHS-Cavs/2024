@@ -22,8 +22,6 @@ class Climber: public frc2::SubsystemBase {
 private:
     rev::CANSparkMax m_climberMotor1{ClimberConstants::kClimberMotor1Port, rev::CANSparkMax::MotorType::kBrushless};
     rev::CANSparkMax m_climberMotor2{ClimberConstants::kClimberMotor2Port, rev::CANSparkMax::MotorType::kBrushless};
-    rev::SparkRelativeEncoder m_climberEncoder1 = m_climberMotor1.GetEncoder();
-    rev::SparkRelativeEncoder m_climberEncoder2 = m_climberMotor2.GetEncoder();
     //frc::MotorControllerGroup m_climberMotors{m_climberMotor1, m_climberMotor2};
     
 public:
@@ -35,4 +33,10 @@ public:
     void ClimberLower();
     void ClimberStop();
     void ClimberIdleMode();
+
+
+
+    rev::SparkRelativeEncoder m_climberEncoder1 = m_climberMotor1.GetEncoder();
+    rev::SparkRelativeEncoder m_climberEncoder2 = m_climberMotor2.GetEncoder();
+
 };

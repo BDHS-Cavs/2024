@@ -19,6 +19,9 @@
 #include <units/velocity.h>
 #include <units/voltage.h>
 
+#include <units/math.h>
+#include <frc/MathUtil.h>
+
 class SwerveModule {
  public:
   SwerveModule(int driveMotorChannel, int turningMotorChannel,

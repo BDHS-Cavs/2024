@@ -30,9 +30,11 @@ void Vision::SimulationPeriodic() {
 void Vision::VisionScan(){ 
         photon::PhotonPipelineResult result = camera.GetLatestResult();
         photon::PhotonTrackedTarget target = result.GetBestTarget();
+        frc::SmartDashboard::PutBoolean("Photon HasTargets", result.HasTargets());
 } 
 
 void Vision::VisionTrack(){
+        VisionScan();
         if (result.HasTargets()) {
             frc::SmartDashboard::PutNumber("PhotonVision Target ID", target.GetFiducialId());
         }

@@ -26,7 +26,7 @@ m_conveyer(m_conveyer)
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
     SetName("AutonomousCommand");
-    //TODO broken????? AddRequirements(m_swerve);
+    //AddRequirements(m_swerve); //BROKEN but i dont think we need
     AddRequirements(m_climber);
     AddRequirements(m_shooter);
     AddRequirements(m_intake);
@@ -67,15 +67,23 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 (2s)
     {
-        //do nothing void Drivetrain::Drive(units::velocity::meters_per_second_t xSpeed, 
+        //do nothing
+
+        //void Drivetrain::Drive(units::velocity::meters_per_second_t xSpeed, 
         //units::velocity::meters_per_second_t ySpeed, units::angular_velocity::radians_per_second_t rot, 
         //bool fieldRelative, units::time::second_t period)
-        
-        //TODO DRIVE THINGGGGG m_swerve->Drive();
+        m_swerve->Drive(1_m/1_s,1_m/1_s,1_rad/1_s,true,1_s);
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {
-        //do nothing
+        if(m_vision->result.HasTargets())
+        {
+            frc::SmartDashboard::PutNumber("Photon Target", m_vision->target.GetFiducialId());
+        }
+        else
+        {
+           frc::SmartDashboard::PutString("Photon Target", "no target");
+        }
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {
@@ -99,7 +107,7 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-    //TODO NOT MADE YET m_swerve->swervestop();
+    m_swerve->DrivetrainStop();
     m_shooter->ShooterStop();
     m_intake->IntakeStop();
     m_climber->ClimberStop();

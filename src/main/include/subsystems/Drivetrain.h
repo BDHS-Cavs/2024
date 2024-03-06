@@ -27,6 +27,7 @@ class Drivetrain {
              units::meters_per_second_t ySpeed, units::radians_per_second_t rot,
              bool fieldRelative, units::second_t period);
   void UpdateOdometry();
+  void DrivetrainStop();
 
   static constexpr units::meters_per_second_t kMaxSpeed =
       /*3.0_mps;*/ 3.0_mps;  // 3 meters per second
@@ -42,13 +43,13 @@ int turningEncoderChannelA, int turningEncoderChannelB);*/
   SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB};
   SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB};
 
+    frc::ADXRS450_Gyro m_gyro;
+
  private:
   frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
   frc::Translation2d m_frontRightLocation{+0.381_m, -0.381_m};
   frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};
   frc::Translation2d m_backRightLocation{-0.381_m, -0.381_m};
-
-  frc::ADXRS450_Gyro m_gyro;
 
   frc::SwerveDriveKinematics<4> m_kinematics{
       m_frontLeftLocation, m_frontRightLocation, m_backLeftLocation,
