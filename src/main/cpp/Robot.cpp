@@ -96,6 +96,12 @@ void Robot::RobotPeriodic() {
     //TODO remove? frc::SmartDashboard::PutNumber("Photon current ID", m_container->m_vision.target.GetFiducialId());
     //TODO remove? frc::SmartDashboard::PutBoolean("Photon HasTargets", m_container->m_vision.result.HasTargets());
 
+
+  frc::SmartDashboard::PutNumber("front left drive encoder resolution", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetEncodingScale());
+  frc::SmartDashboard::PutNumber("front left turning encoder resolution", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetEncodingScale());
+  frc::SmartDashboard::PutNumber("front left drive encoder distance per pulse", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetDistancePerPulse());
+  frc::SmartDashboard::PutNumber("front left turning encoder distance per pulse", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetDistancePerPulse());
+
 }
 
 /**
@@ -131,6 +137,9 @@ void Robot::TeleopInit() {
   // teleop starts running. If you want the autonomous to
   // continue until interrupted by another command, remove
   // this line or comment it out.
+
+  //TODO: might want to swerve update odometry and might want to reset climber/shooter encoders
+  
   if (m_autonomousCommand != nullptr) {
     m_autonomousCommand->Cancel();
     m_autonomousCommand = nullptr;
