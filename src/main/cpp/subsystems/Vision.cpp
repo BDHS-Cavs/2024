@@ -20,13 +20,15 @@ Vision::Vision(){
 
 void Vision::Periodic() {
     // Put code here to be run every loop
-    photon::PhotonPipelineResult result = camera.GetLatestResult();;
+    photon::PhotonPipelineResult result = camera.GetLatestResult();
     bool hasTargets = result.HasTargets();
     double yaw;
     double pitch;
     double area;
     double skew;
     int apriltagID;
+
+    //TODO do we need? - Estimating Field Relative Pose with AprilTags      BROKEN        frc::Pose3d robotpose = photon::PhotonUtils::EstimateFieldToRobot(result.GetBestTarget().GetBestCameraToTarget(), frc::AprilTagFieldLayout::GetTagPose(result.GetBestTarget().GetFiducialId()), photon::PhotonUtils::EstimateFieldToRobot);
 
     if(hasTargets)
     {
@@ -36,6 +38,9 @@ void Vision::Periodic() {
         double area = target.GetArea();
         double skew = target.GetSkew();
         int apriltagID = target.GetFiducialId();
+
+        //TODO do we need? it calculates distance to targer - we don't know camera height, target height, and camera pitch (1_m, 1_m, 1_rad)       units::meter_t range = photon::PhotonUtils::CalculateDistanceToTarget(1_m, 1_m, 1_rad, units::degree_t{result.GetBestTarget().GetPitch()});
+
     }
 
     else

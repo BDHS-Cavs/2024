@@ -33,12 +33,12 @@ void Conveyer::SimulationPeriodic() {
 
 void Conveyer::ConveyerForward(){ 
     // Run Conveyer Forward
-    m_conveyerMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, -0.1);
+    m_conveyerMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, -0.2);
 } 
 
 void Conveyer::ConveyerBackward(){
     // Run Conveyer Backward
-    m_conveyerMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.1);
+    m_conveyerMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.2);
 }
 
 void Conveyer::ConveyerStop(){

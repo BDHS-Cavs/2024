@@ -22,7 +22,7 @@ Shooter::Shooter(){
     m_shooterMotor1.SetInverted(true);
 
     //AddChild("ShooterMotor2", &m_shooterMotor2); //BROKEN but i dont think we need
-    m_shooterMotor2.SetInverted(true);
+    m_shooterMotor2.SetInverted(false);
 }
 
 void Shooter::Periodic() {
@@ -38,16 +38,16 @@ void Shooter::ShooterShoot(){
     // Run Shooter
         //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
         //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
-        m_shooterMotor1.Set(-0.25);
-        m_shooterMotor2.Set(-0.25);
+        m_shooterMotor1.Set(-1.0);
+        m_shooterMotor2.Set(-1.0);
 } 
 
 void Shooter::ShooterRetract(){
     // Retract Shooter
         //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
         //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
-        m_shooterMotor1.Set(0.25);
-        m_shooterMotor2.Set(0.25);
+        m_shooterMotor1.Set(1.0);
+        m_shooterMotor2.Set(1.0);
 }
 
 void Shooter::ShooterStop(){

@@ -41,7 +41,7 @@ class Robot : public frc::TimedRobot {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
     const auto xSpeed = -m_xspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_container->m_drivecontroller.GetX(), 0.2)) *
+                            frc::ApplyDeadband(m_container->m_controller.GetLeftX(), 0.2)) *
                         Drivetrain::kMaxSpeed;
                         frc::SmartDashboard::PutNumber("xSpeed", xSpeed());
 
@@ -49,7 +49,7 @@ class Robot : public frc::TimedRobot {
     // we want a positive value when we pull to the left. Xbox controllers
     // return positive values when you pull to the right by default.
     const auto ySpeed = -m_yspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_container->m_drivecontroller.GetY(), 0.2)) *
+                            frc::ApplyDeadband(m_container->m_controller.GetLeftY(), 0.2)) *
                         Drivetrain::kMaxSpeed;
                         frc::SmartDashboard::PutNumber("ySpeed", ySpeed());
 
@@ -58,7 +58,7 @@ class Robot : public frc::TimedRobot {
     // mathematics). Xbox controllers return positive values when you pull to
     // the right by default.
     const auto rot = -m_rotLimiter.Calculate(
-                         frc::ApplyDeadband(m_container->m_drivecontroller.GetZ(), 0.2)) *
+                         frc::ApplyDeadband(m_container->m_controller.GetRightX(), 0.2)) *
                      Drivetrain::kMaxAngularSpeed;
                      frc::SmartDashboard::PutNumber("zSpeed", rot());
 

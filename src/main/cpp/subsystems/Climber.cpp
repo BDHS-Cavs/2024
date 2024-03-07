@@ -38,29 +38,29 @@ void Climber::SimulationPeriodic() {
 
 void Climber::ClimberRaise(){ 
     // Run Climber
-    if(m_climberEncoder1.GetPosition() < 3) //TODO FIND REAL VALUE
-    {
-        m_climberMotor1.Set(-0.1);
-        m_climberMotor2.Set(-0.1); 
-    }
-    else
-    {
-        //do nothing
-    }
+    //AAA if(m_climberEncoder1.GetPosition() < 3) //TODO FIND REAL VALUE
+    //AAA {
+        m_climberMotor1.Set(-0.5);
+        m_climberMotor2.Set(-0.5); 
+    //AAA }
+    //AAA else
+    //AAA {
+    //AAA     //do nothing
+    //AAA }
 
 } 
 
 void Climber::ClimberLower(){
     // Run Expel
-    if(m_climberEncoder1.GetPosition() < -3) //TODO FIND REAL VALUE
-    {
-        m_climberMotor1.Set(0.1);
-        m_climberMotor2.Set(0.1);
-    }
-    else
-    {
-        //do nothing
-    }
+    //AAA if(m_climberEncoder1.GetPosition() < -3) //TODO FIND REAL VALUE
+    //AAA {
+        m_climberMotor1.Set(0.5);
+        m_climberMotor2.Set(0.5);
+    //AAA }
+    //AAA else
+    //AAA {
+    //AAA     //do nothing
+    //AAA }
 }
 
 void Climber::ClimberStop(){
