@@ -65,9 +65,9 @@ constexpr int kFrontRightTurningEncoderChannelB = 13;      //sm1s
 constexpr int kRearRightTurningEncoderChannelB = 19;       //sm2s
 
 constexpr bool kFrontLeftTurningEncoderReversed = false;   //sm4s
-constexpr bool kRearLeftTurningEncoderReversed = true;     //sm3s
+constexpr bool kRearLeftTurningEncoderReversed = false;     //sm3s
 constexpr bool kFrontRightTurningEncoderReversed = false;  //sm1s
-constexpr bool kRearRightTurningEncoderReversed = true;    //sm2s
+constexpr bool kRearRightTurningEncoderReversed = false;    //sm2s
 
 constexpr int kFrontLeftDriveEncoderChannelA = 1;          //sm4d
 constexpr int kRearLeftDriveEncoderChannelA = 5;           //sm3d
@@ -80,9 +80,9 @@ constexpr int kFrontRightDriveEncoderChannelB = 11;        //sm1d
 constexpr int kRearRightDriveEncoderChannelB = 9;          //sm2d
 
 constexpr bool kFrontLeftDriveEncoderReversed = false;     //sm4d
-constexpr bool kRearLeftDriveEncoderReversed = true;       //sm3d
+constexpr bool kRearLeftDriveEncoderReversed = false;       //sm3d
 constexpr bool kFrontRightDriveEncoderReversed = false;    //sm1d
-constexpr bool kRearRightDriveEncoderReversed = true;      //sm2d
+constexpr bool kRearRightDriveEncoderReversed = false;      //sm2d
 
 // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
 // These characterization values MUST be determined either experimentally or

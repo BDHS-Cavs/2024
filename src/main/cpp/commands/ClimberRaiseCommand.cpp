@@ -21,7 +21,7 @@ ClimberRaiseCommand::ClimberRaiseCommand(Climber* m_climber)
 
 // Called just before this Command runs the first time
 void ClimberRaiseCommand::Initialize() {
-   m_climber->ClimberRaise();
+        m_climber->ClimberRaise();
 }
 
 // Called repeatedly when this Command is scheduled to run

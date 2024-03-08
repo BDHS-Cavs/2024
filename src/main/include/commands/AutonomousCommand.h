@@ -51,6 +51,6 @@ private:
 units::velocity::meters_per_second_t autoXSpeed = 0.2_mps;
 units::velocity::meters_per_second_t autoYSpeed = 0.2_mps;
 units::velocity::meters_per_second_t autoRot = 0.2_mps;
-bool autoFieldRelative = true;                          
+bool autoFieldRelative = false;                          
 
 };

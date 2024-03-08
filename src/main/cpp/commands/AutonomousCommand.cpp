@@ -72,7 +72,7 @@ void AutonomousCommand::Execute() {
         //void Drivetrain::Drive(units::velocity::meters_per_second_t xSpeed, 
         //units::velocity::meters_per_second_t ySpeed, units::angular_velocity::radians_per_second_t rot, 
         //bool fieldRelative, units::time::second_t period)
-        m_swerve->Drive(1_m/1_s,1_m/1_s,1_rad/1_s,true,1_s);
+        m_swerve->Drive(1_m/1_s,1_m/1_s,1_rad/1_s,false,1_s);
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {

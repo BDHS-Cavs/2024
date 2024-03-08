@@ -37,7 +37,7 @@ class Robot : public frc::TimedRobot {
   frc::SlewRateLimiter<units::scalar> m_yspeedLimiter{3 / 1_s};
   frc::SlewRateLimiter<units::scalar> m_rotLimiter{3 / 1_s};
 
-  void DriveWithJoystick(bool fieldRelative) {
+  void DriveWithJoystick(bool fieldRelative = false) {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
     const auto xSpeed = -m_xspeedLimiter.Calculate(

@@ -19,7 +19,7 @@ Climber::Climber(){
     SetSubsystem("Climber");
 
     //AddChild("ClimberMotor1", &m_climberMotor1);
-    m_climberMotor1.SetInverted(true);
+    m_climberMotor1.SetInverted(false);
 
     //AddChild("ClimberMotor2", &m_climberMotor2);
     m_climberMotor2.SetInverted(true);
@@ -38,29 +38,38 @@ void Climber::SimulationPeriodic() {
 
 void Climber::ClimberRaise(){ 
     // Run Climber
-    //AAA if(m_climberEncoder1.GetPosition() < 3) //TODO FIND REAL VALUE
-    //AAA {
-        m_climberMotor1.Set(-0.5);
-        m_climberMotor2.Set(-0.5); 
-    //AAA }
-    //AAA else
-    //AAA {
-    //AAA     //do nothing
-    //AAA }
-
+    if(isRaiseLimit)
+    {
+        frc::SmartDashboard::PutBoolean("raise limit", false);
+        m_climberMotor1.Set(0.5);
+        m_climberMotor2.Set(0.5);
+    }
+    else
+    {
+        frc::SmartDashboard::PutBoolean("raise limit", true);
+        m_climberMotor1.Set(0.0);
+        m_climberMotor2.Set(0.0);
+    }
+        //m_climberMotor1.Set(-0.5);
+        //m_climberMotor2.Set(-0.5); 
 } 
 
 void Climber::ClimberLower(){
     // Run Expel
-    //AAA if(m_climberEncoder1.GetPosition() < -3) //TODO FIND REAL VALUE
-    //AAA {
+    if(isLowerLimit)
+    {
+        frc::SmartDashboard::PutBoolean("lower limit", false);
         m_climberMotor1.Set(0.5);
         m_climberMotor2.Set(0.5);
-    //AAA }
-    //AAA else
-    //AAA {
-    //AAA     //do nothing
-    //AAA }
+    }
+    else
+    {
+        frc::SmartDashboard::PutBoolean("lower limit", true);
+        m_climberMotor1.Set(0.0);
+        m_climberMotor2.Set(0.0);
+    }
+        //m_climberMotor1.Set(0.5);
+        //m_climberMotor2.Set(0.5);
 }
 
 void Climber::ClimberStop(){

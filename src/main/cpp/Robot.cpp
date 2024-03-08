@@ -132,7 +132,7 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 //TODO CRASHES AUTO? but i dont think we need bc joystick disabled in auto anyway //  DriveWithJoystick(false);
-//TODO CRASHES AUTO? //m_container->m_swerve.UpdateOdometry();
+m_container->m_swerve.UpdateOdometry();
 m_autonomousCommand->Execute();
 }
 
