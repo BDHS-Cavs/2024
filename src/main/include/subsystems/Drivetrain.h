@@ -38,10 +38,10 @@ class Drivetrain {
 int driveEncoderChannelA, int driveEncoderChannelB, 
 int turningEncoderChannelA, int turningEncoderChannelB);*/
 
-  SwerveModule m_frontLeft{DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort, DriveConstants::kFrontLeftDriveEncoderChannelA, DriveConstants::kFrontLeftDriveEncoderChannelB, DriveConstants::kFrontLeftTurningEncoderChannelA, DriveConstants::kFrontLeftTurningEncoderChannelB};
-  SwerveModule m_frontRight{DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightDriveEncoderChannelA, DriveConstants::kFrontRightDriveEncoderChannelB, DriveConstants::kFrontRightTurningEncoderChannelA, DriveConstants::kFrontRightTurningEncoderChannelB};
-  SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB};
-  SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB};
+  SwerveModule m_frontLeft{DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort/*, DriveConstants::kFrontLeftDriveEncoderChannelA, DriveConstants::kFrontLeftDriveEncoderChannelB, DriveConstants::kFrontLeftTurningEncoderChannelA, DriveConstants::kFrontLeftTurningEncoderChannelB*/};
+  SwerveModule m_frontRight{DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort/*, DriveConstants::kFrontRightDriveEncoderChannelA, DriveConstants::kFrontRightDriveEncoderChannelB, DriveConstants::kFrontRightTurningEncoderChannelA, DriveConstants::kFrontRightTurningEncoderChannelB*/};
+  SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort/*, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB*/};
+  SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort/*, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB*/};
 
     frc::ADXRS450_Gyro m_gyro;
 

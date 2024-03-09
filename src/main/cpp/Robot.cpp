@@ -38,8 +38,8 @@ void Robot::RobotPeriodic() {
     frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Volts)", m_container->m_swerve.m_frontLeft.m_turningMotor.GetMotorOutputVoltage());
     frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Amps)", m_container->m_swerve.m_frontLeft.m_driveMotor.GetStatorCurrent());
     frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Amps)", m_container->m_swerve.m_frontLeft.m_turningMotor.GetStatorCurrent());
-    frc::SmartDashboard::PutNumber("Front Left Drive Encoder", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetDistance());
-    frc::SmartDashboard::PutNumber("Front Left Turning Encoder", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Front Left Drive Encoder", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Front Left Turning Encoder", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetDistance());
 
     //front right
     frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Percent)", m_container->m_swerve.m_frontRight.m_driveMotor.GetMotorOutputPercent());
@@ -48,8 +48,8 @@ void Robot::RobotPeriodic() {
     frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Volts)", m_container->m_swerve.m_frontRight.m_turningMotor.GetMotorOutputVoltage());
     frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Amps)", m_container->m_swerve.m_frontRight.m_driveMotor.GetStatorCurrent());
     frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Amps)", m_container->m_swerve.m_frontRight.m_turningMotor.GetStatorCurrent());
-    frc::SmartDashboard::PutNumber("Front Right Drive Encoder", m_container->m_swerve.m_frontRight.m_driveEncoder.GetDistance());
-    frc::SmartDashboard::PutNumber("Front Right Turning Encoder", m_container->m_swerve.m_frontRight.m_turningEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Front Right Drive Encoder", m_container->m_swerve.m_frontRight.m_driveEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Front Right Turning Encoder", m_container->m_swerve.m_frontRight.m_turningEncoder.GetDistance());
 
     //back left
     frc::SmartDashboard::PutNumber("Back Left Drive Motor Output (Percent)", m_container->m_swerve.m_backLeft.m_driveMotor.GetMotorOutputPercent());
@@ -58,8 +58,8 @@ void Robot::RobotPeriodic() {
     frc::SmartDashboard::PutNumber("Back Left Turning Motor Output (Volts)", m_container->m_swerve.m_backLeft.m_turningMotor.GetMotorOutputVoltage());
     frc::SmartDashboard::PutNumber("Back Left Drive Motor Output (Amps)", m_container->m_swerve.m_backLeft.m_driveMotor.GetStatorCurrent());
     frc::SmartDashboard::PutNumber("Back Left Turning Motor Output (Amps)", m_container->m_swerve.m_backLeft.m_turningMotor.GetStatorCurrent());
-    frc::SmartDashboard::PutNumber("Back Left Drive Encoder", m_container->m_swerve.m_backLeft.m_driveEncoder.GetDistance());
-    frc::SmartDashboard::PutNumber("Back Left Turning Encoder", m_container->m_swerve.m_backLeft.m_turningEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Back Left Drive Encoder", m_container->m_swerve.m_backLeft.m_driveEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Back Left Turning Encoder", m_container->m_swerve.m_backLeft.m_turningEncoder.GetDistance());
 
     //back right
     frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Percent)", m_container->m_swerve.m_backRight.m_driveMotor.GetMotorOutputPercent());
@@ -68,8 +68,8 @@ void Robot::RobotPeriodic() {
     frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Volts)", m_container->m_swerve.m_backRight.m_turningMotor.GetMotorOutputVoltage());
     frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Amps)", m_container->m_swerve.m_backRight.m_driveMotor.GetStatorCurrent());
     frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Amps)", m_container->m_swerve.m_backRight.m_turningMotor.GetStatorCurrent());
-    frc::SmartDashboard::PutNumber("Back Right Drive Encoder", m_container->m_swerve.m_backRight.m_driveEncoder.GetDistance());
-    frc::SmartDashboard::PutNumber("Back Right Turning Encoder", m_container->m_swerve.m_backRight.m_turningEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Back Right Drive Encoder", m_container->m_swerve.m_backRight.m_driveEncoder.GetDistance());
+    //frc::SmartDashboard::PutNumber("Back Right Turning Encoder", m_container->m_swerve.m_backRight.m_turningEncoder.GetDistance());
 
     //gyro
     frc::SmartDashboard::PutNumber("gyro get angle", m_container->m_swerve.m_gyro.GetAngle());

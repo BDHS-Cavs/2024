@@ -9,47 +9,50 @@
 #include <frc/geometry/Rotation2d.h>
 
 SwerveModule::SwerveModule(const int driveMotorChannel,
-                           const int turningMotorChannel,
-                           const int driveEncoderChannelA,
-                           const int driveEncoderChannelB,
-                           const int turningEncoderChannelA,
-                           const int turningEncoderChannelB)
+                           const int turningMotorChannel//,
+                           //const int driveEncoderChannelA,
+                           //const int driveEncoderChannelB,
+                           //const int turningEncoderChannelA,
+                           //const int turningEncoderChannelB
+                           )
     : m_driveMotor(driveMotorChannel),
-      m_turningMotor(turningMotorChannel),
-      m_driveEncoder(driveEncoderChannelA, driveEncoderChannelB),
-      m_turningEncoder(turningEncoderChannelA, turningEncoderChannelB) {
+      m_turningMotor(turningMotorChannel)//,
+      //m_driveEncoder(driveEncoderChannelA, driveEncoderChannelB),
+      //m_turningEncoder(turningEncoderChannelA, turningEncoderChannelB) 
+      {
   // Set the distance per pulse for the drive encoder. We can simply use the
   // distance traveled for one rotation of the wheel divided by the encoder
   // resolution.
-  m_driveEncoder.SetDistancePerPulse(2 * std::numbers::pi * kWheelRadius /
-                                     kEncoderResolution);
+  //TODO "counts per degrees"? m_driveEncoder.SetDistancePerPulse(2 * std::numbers::pi * kWheelRadius /
+  //TODO "counts per degrees"?                                    kEncoderResolution);
 
   // Set the distance (in this case, angle) per pulse for the turning encoder.
   // This is the the angle through an entire rotation (2 * std::numbers::pi)
   // divided by the encoder resolution.
-  m_turningEncoder.SetDistancePerPulse(2 * std::numbers::pi /
-                                       kEncoderResolution);
+  //TODO "counts per degrees"? m_turningEncoder.SetDistancePerPulse(2 * std::numbers::pi /
+  //TODO "counts per degrees"?                                      kEncoderResolution);
 
   // Limit the PID Controller's input range between -pi and pi and set the input
   // to be continuous.
-  m_turningPIDController.EnableContinuousInput(
-      -units::radian_t{std::numbers::pi}, units::radian_t{std::numbers::pi});
+  //m_turningPIDController.EnableContinuousInput(
+  //    -units::radian_t{std::numbers::pi}, units::radian_t{std::numbers::pi});
 }//TODO TALON VERSION: CONFIGUREPEAKOUTPUT FORWARD/REVERSE
 
 frc::SwerveModuleState SwerveModule::GetState() const {
-  return {units::meters_per_second_t{m_driveEncoder.GetRate()},
-          units::radian_t{m_turningEncoder.GetDistance()}};
+  //TODO TALON get rate?????    return {units::meters_per_second_t{m_driveEncoder.GetRate()},
+  //TODO TALON GET SELECTED SENSOR POSITION?  CONFIGURE TO RESET EVERY ROTATION???? (is that what getdistance is???)            units::radian_t{m_turningEncoder.GetDistance()}};
 }
 
 frc::SwerveModulePosition SwerveModule::GetPosition() const {
-  return {units::meter_t{m_driveEncoder.GetDistance()},
-          units::radian_t{m_turningEncoder.GetDistance()}};
+  //TODO TALON GET SELECTED SENSOR POSITION?  CONFIGURE TO RESET EVERY ROTATION???? (is that what getdistance is???)    return {units::meter_t{m_driveEncoder.GetDistance()},
+  //TODO TALON GET SELECTED SENSOR POSITION?  CONFIGURE TO RESET EVERY ROTATION???? (is that what getdistance is???)            units::radian_t{m_turningEncoder.GetDistance()}};
 }
 
 void SwerveModule::SetDesiredState(
     const frc::SwerveModuleState& referenceState) {
   frc::Rotation2d encoderRotation{
-      units::radian_t{m_turningEncoder.GetDistance()}};
+      //TODO TALON GET SELECTED SENSOR POSITION?  CONFIGURE TO RESET EVERY ROTATION???? (is that what getdistance is???)            units::radian_t{m_turningEncoder.GetDistance()}
+      };
 
   // Optimize the reference state to avoid spinning further than 90 degrees
   auto state =
@@ -61,23 +64,23 @@ void SwerveModule::SetDesiredState(
   state.speed *= (state.angle - encoderRotation).Cos();
 
   // Calculate the drive output from the drive PID controller.
-  const auto driveOutput = m_drivePIDController.Calculate(
-      m_driveEncoder.GetRate(), state.speed.value());
+  //const auto driveOutput = m_drivePIDController.Calculate(
+  //    m_driveEncoder.GetRate(), state.speed.value());
       //TODO replace with WheelModule.java line 136???
       //TODO or replace with swerve.java calculatevectors line 78
 
-  const auto driveFeedforward = m_driveFeedforward.Calculate(state.speed);
+  //const auto driveFeedforward = m_driveFeedforward.Calculate(state.speed);
 
   // Calculate the turning motor output from the turning PID controller.
-  const auto turnOutput = m_turningPIDController.Calculate(
-      units::radian_t{m_turningEncoder.GetDistance()}, state.angle.Radians());
+  //const auto turnOutput = m_turningPIDController.Calculate(
+  //    units::radian_t{m_turningEncoder.GetDistance()}, state.angle.Radians());
 
-  const auto turnFeedforward = m_turnFeedforward.Calculate(
-      m_turningPIDController.GetSetpoint().velocity);
+  //const auto turnFeedforward = m_turnFeedforward.Calculate(
+  //    m_turningPIDController.GetSetpoint().velocity);
       //TODO dont even need this
 
   // Set the motor outputs.
-  m_driveMotor.SetVoltage(units::volt_t{driveOutput} + driveFeedforward);
-  m_turningMotor.SetVoltage(units::volt_t{turnOutput} + turnFeedforward);
+  //m_driveMotor.SetVoltage(units::volt_t{driveOutput} + driveFeedforward);
+  //m_turningMotor.SetVoltage(units::volt_t{turnOutput} + turnFeedforward);
   //TODO drive with percentoutput instead
 }

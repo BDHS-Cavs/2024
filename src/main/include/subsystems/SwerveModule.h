@@ -7,9 +7,9 @@
 #include <numbers>
 
 #include <frc/Encoder.h>
-#include <frc/controller/PIDController.h>
-#include <frc/controller/ProfiledPIDController.h>
-#include <frc/controller/SimpleMotorFeedforward.h>
+//#include <frc/controller/PIDController.h>
+//#include <frc/controller/ProfiledPIDController.h>
+//#include <frc/controller/SimpleMotorFeedforward.h>
 #include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveModuleState.h>
 //#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
@@ -24,9 +24,10 @@
 
 class SwerveModule {
  public:
-  SwerveModule(int driveMotorChannel, int turningMotorChannel,
-               int driveEncoderChannelA, int driveEncoderChannelB,
-               int turningEncoderChannelA, int turningEncoderChannelB);
+  SwerveModule(int driveMotorChannel, int turningMotorChannel//,
+               //int driveEncoderChannelA, int driveEncoderChannelB,
+               //int turningEncoderChannelA, int turningEncoderChannelB
+               );
   frc::SwerveModuleState GetState() const;
   frc::SwerveModulePosition GetPosition() const;
   void SetDesiredState(const frc::SwerveModuleState& state);
@@ -34,12 +35,12 @@ class SwerveModule {
   ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_driveMotor;
   ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_turningMotor;
 
-  frc::Encoder m_driveEncoder;
-  frc::Encoder m_turningEncoder;
+  //frc::Encoder m_driveEncoder;
+  //frc::Encoder m_turningEncoder;
 
  private:
   static constexpr double kWheelRadius = 0.0508; //need tuning?
-  static constexpr int kEncoderResolution = 4096; //need tuning?
+  //TODO needed? static constexpr int kEncoderResolution = 4096; //need tuning?
 
   static constexpr auto kModuleMaxAngularVelocity =
       std::numbers::pi * 1_rad_per_s;  // radians per second
@@ -48,16 +49,16 @@ class SwerveModule {
 
 
 
-  frc::PIDController m_drivePIDController{1.0, 0, 0};
-  frc::ProfiledPIDController<units::radians> m_turningPIDController{
-      1.0,
-      0.0,
-      0.0,
-      {kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration}};
-
-  frc::SimpleMotorFeedforward<units::meters> m_driveFeedforward{1_V,
-                                                                3_V / 1_mps};
-  frc::SimpleMotorFeedforward<units::radians> m_turnFeedforward{
-      1_V, 0.5_V / 1_rad_per_s};
+  //frc::PIDController m_drivePIDController{1.0, 0, 0};
+  //frc::ProfiledPIDController<units::radians> m_turningPIDController{
+  //    1.0,
+  //    0.0,
+  //    0.0,
+  //    {kModuleMaxAngularVelocity, kModuleMaxAngularAcceleration}};
+//
+  //frc::SimpleMotorFeedforward<units::meters> m_driveFeedforward{1_V,
+  //                                                              3_V / 1_mps};
+  //frc::SimpleMotorFeedforward<units::radians> m_turnFeedforward{
+  //    1_V, 0.5_V / 1_rad_per_s};
 
 };

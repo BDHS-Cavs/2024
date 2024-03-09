@@ -54,35 +54,35 @@ constexpr int kRearLeftTurningMotorPort = 6;               //sm3s
 constexpr int kFrontRightTurningMotorPort = 10;            //sm1s
 constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 
-constexpr int kFrontLeftTurningEncoderChannelA = 2;        //sm4s
-constexpr int kRearLeftTurningEncoderChannelA = 6;         //sm3s
-constexpr int kFrontRightTurningEncoderChannelA = 12;      //sm1s
-constexpr int kRearRightTurningEncoderChannelA = 18;       //sm2s
+//constexpr int kFrontLeftTurningEncoderChannelA = 2;        //sm4s
+//constexpr int kRearLeftTurningEncoderChannelA = 6;         //sm3s
+//constexpr int kFrontRightTurningEncoderChannelA = 12;      //sm1s
+//constexpr int kRearRightTurningEncoderChannelA = 18;       //sm2s
 
-constexpr int kFrontLeftTurningEncoderChannelB = 3;        //sm4s
-constexpr int kRearLeftTurningEncoderChannelB = 7;         //sm3s
-constexpr int kFrontRightTurningEncoderChannelB = 13;      //sm1s
-constexpr int kRearRightTurningEncoderChannelB = 19;       //sm2s
+//constexpr int kFrontLeftTurningEncoderChannelB = 3;        //sm4s
+//constexpr int kRearLeftTurningEncoderChannelB = 7;         //sm3s
+//constexpr int kFrontRightTurningEncoderChannelB = 13;      //sm1s
+//constexpr int kRearRightTurningEncoderChannelB = 19;       //sm2s
 
-constexpr bool kFrontLeftTurningEncoderReversed = false;   //sm4s
-constexpr bool kRearLeftTurningEncoderReversed = false;     //sm3s
-constexpr bool kFrontRightTurningEncoderReversed = false;  //sm1s
-constexpr bool kRearRightTurningEncoderReversed = false;    //sm2s
+//constexpr bool kFrontLeftTurningEncoderReversed = false;   //sm4s
+//constexpr bool kRearLeftTurningEncoderReversed = false;     //sm3s
+//constexpr bool kFrontRightTurningEncoderReversed = false;  //sm1s
+//constexpr bool kRearRightTurningEncoderReversed = false;    //sm2s
 
-constexpr int kFrontLeftDriveEncoderChannelA = 1;          //sm4d
-constexpr int kRearLeftDriveEncoderChannelA = 5;           //sm3d
-constexpr int kFrontRightDriveEncoderChannelA = 10;        //sm1d
-constexpr int kRearRightDriveEncoderChannelA = 8;          //sm2d
+//constexpr int kFrontLeftDriveEncoderChannelA = 1;          //sm4d
+//constexpr int kRearLeftDriveEncoderChannelA = 5;           //sm3d
+//constexpr int kFrontRightDriveEncoderChannelA = 10;        //sm1d
+//constexpr int kRearRightDriveEncoderChannelA = 8;          //sm2d
 
-constexpr int kFrontLeftDriveEncoderChannelB = 0;          //sm4d
-constexpr int kRearLeftDriveEncoderChannelB = 4;           //sm3d
-constexpr int kFrontRightDriveEncoderChannelB = 11;        //sm1d
-constexpr int kRearRightDriveEncoderChannelB = 9;          //sm2d
+//constexpr int kFrontLeftDriveEncoderChannelB = 0;          //sm4d
+//constexpr int kRearLeftDriveEncoderChannelB = 4;           //sm3d
+//constexpr int kFrontRightDriveEncoderChannelB = 11;        //sm1d
+//constexpr int kRearRightDriveEncoderChannelB = 9;          //sm2d
 
-constexpr bool kFrontLeftDriveEncoderReversed = false;     //sm4d
-constexpr bool kRearLeftDriveEncoderReversed = false;       //sm3d
-constexpr bool kFrontRightDriveEncoderReversed = false;    //sm1d
-constexpr bool kRearRightDriveEncoderReversed = false;      //sm2d
+//constexpr bool kFrontLeftDriveEncoderReversed = false;     //sm4d
+//constexpr bool kRearLeftDriveEncoderReversed = false;       //sm3d
+//constexpr bool kFrontRightDriveEncoderReversed = false;    //sm1d
+//constexpr bool kRearRightDriveEncoderReversed = false;      //sm2d
 
 // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
 // These characterization values MUST be determined either experimentally or
@@ -90,7 +90,7 @@ constexpr bool kRearRightDriveEncoderReversed = false;      //sm2d
 // method for obtaining these values for your robot.
 constexpr auto ks = 1_V; //volts
 constexpr auto kv = 0.8 * 1_V * 1_s / 1_m; //volts * seconds / meters
-constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m; //volts * seconds^2 / meters
+constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m; //volts * seconds^2 / meters      //TODO KV AND KA ARE FOR MOTION MAGIC (not needed?)
 
 // Example value only - as above, this must be tuned for your drive!
 constexpr double kPFrontLeftVel = 0.5;
@@ -122,17 +122,17 @@ constexpr int kConveyerMotorPort = 8;
 }
 
 namespace ModuleConstants {
-constexpr int kDriveEncoderCPR = 5;
-constexpr double kTurningEncoderCPR = 615;
+//TODO needed? constexpr int kDriveEncoderCPR = 5;
+//TODO needed? constexpr double kTurningEncoderCPR = 615;
 constexpr double kWheelDiameterMeters = 0.1016;
-constexpr double kDriveEncoderDistancePerPulse =
-    // Assumes the encoders are directly mounted on the wheel shafts
-    (kWheelDiameterMeters * std::numbers::pi) /
-    static_cast<double>(kDriveEncoderCPR);
+//TODO needed? constexpr double kDriveEncoderDistancePerPulse =
+//TODO needed?     // Assumes the encoders are directly mounted on the wheel shafts
+//TODO needed?     (kWheelDiameterMeters * std::numbers::pi) /
+//TODO needed?     static_cast<double>(kDriveEncoderCPR);
 
-constexpr double kTurningEncoderDistancePerPulse =
-    // Assumes the encoders are directly mounted on the wheel shafts
-    (std::numbers::pi * 2) / static_cast<double>(kTurningEncoderCPR);
+//TODO needed? constexpr double kTurningEncoderDistancePerPulse =
+//TODO needed?     // Assumes the encoders are directly mounted on the wheel shafts
+//TODO needed?     (std::numbers::pi * 2) / static_cast<double>(kTurningEncoderCPR);
 
 constexpr double kPModuleTurningController = 1;
 constexpr double kPModuleDriveController = 1;
