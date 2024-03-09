@@ -41,8 +41,8 @@ void Climber::ClimberRaise(){
     // Run Climber
     if(ClimberEncoder2Value > -492)
     {
-        m_climberMotor1.Set(-0.5);
-        m_climberMotor2.Set(-0.5);
+        m_climberMotor1.Set(-1.0);
+        m_climberMotor2.Set(-1.0);
     }
     else
     {
@@ -58,8 +58,8 @@ void Climber::ClimberLower(){
 
     if(ClimberEncoder2Value < 0)
     {
-        m_climberMotor1.Set(0.5);
-        m_climberMotor2.Set(0.5);
+        m_climberMotor1.Set(1.0);
+        m_climberMotor2.Set(1.0);
     }
     else
     {
