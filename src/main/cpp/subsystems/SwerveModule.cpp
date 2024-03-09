@@ -34,7 +34,7 @@ SwerveModule::SwerveModule(const int driveMotorChannel,
   // to be continuous.
   m_turningPIDController.EnableContinuousInput(
       -units::radian_t{std::numbers::pi}, units::radian_t{std::numbers::pi});
-}
+}//TODO TALON VERSION: CONFIGUREPEAKOUTPUT FORWARD/REVERSE
 
 frc::SwerveModuleState SwerveModule::GetState() const {
   return {units::meters_per_second_t{m_driveEncoder.GetRate()},
@@ -63,6 +63,8 @@ void SwerveModule::SetDesiredState(
   // Calculate the drive output from the drive PID controller.
   const auto driveOutput = m_drivePIDController.Calculate(
       m_driveEncoder.GetRate(), state.speed.value());
+      //TODO replace with WheelModule.java line 136???
+      //TODO or replace with swerve.java calculatevectors line 78
 
   const auto driveFeedforward = m_driveFeedforward.Calculate(state.speed);
 
@@ -72,8 +74,10 @@ void SwerveModule::SetDesiredState(
 
   const auto turnFeedforward = m_turnFeedforward.Calculate(
       m_turningPIDController.GetSetpoint().velocity);
+      //TODO dont even need this
 
   // Set the motor outputs.
   m_driveMotor.SetVoltage(units::volt_t{driveOutput} + driveFeedforward);
   m_turningMotor.SetVoltage(units::volt_t{turnOutput} + turnFeedforward);
+  //TODO drive with percentoutput instead
 }

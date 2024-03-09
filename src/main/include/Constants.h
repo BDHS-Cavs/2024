@@ -123,7 +123,7 @@ constexpr int kConveyerMotorPort = 8;
 
 namespace ModuleConstants {
 constexpr int kDriveEncoderCPR = 5;
-constexpr double kTurningEncoderCPR = 7/4;
+constexpr double kTurningEncoderCPR = 615;
 constexpr double kWheelDiameterMeters = 0.1016;
 constexpr double kDriveEncoderDistancePerPulse =
     // Assumes the encoders are directly mounted on the wheel shafts

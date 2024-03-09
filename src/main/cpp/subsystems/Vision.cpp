@@ -22,6 +22,7 @@ void Vision::Periodic() {
     // Put code here to be run every loop
     photon::PhotonPipelineResult result = camera.GetLatestResult();
     bool hasTargets = result.HasTargets();
+    frc::SmartDashboard::PutBoolean("Has AprilTag Targets", hasTargets);
     double yaw;
     double pitch;
     double area;
@@ -39,6 +40,12 @@ void Vision::Periodic() {
         double skew = target.GetSkew();
         int apriltagID = target.GetFiducialId();
 
+        frc::SmartDashboard::PutNumber("AprilTag Yaw", yaw);
+        frc::SmartDashboard::PutNumber("AprilTag Pitch", pitch);
+        frc::SmartDashboard::PutNumber("AprilTag Area", area);
+        frc::SmartDashboard::PutNumber("AprilTag Skew", skew);
+        frc::SmartDashboard::PutNumber("AprilTag ID", apriltagID);
+
         //TODO do we need? it calculates distance to targer - we don't know camera height, target height, and camera pitch (1_m, 1_m, 1_rad)       units::meter_t range = photon::PhotonUtils::CalculateDistanceToTarget(1_m, 1_m, 1_rad, units::degree_t{result.GetBestTarget().GetPitch()});
 
     }
@@ -47,13 +54,6 @@ void Vision::Periodic() {
     {
         //do nothing
     }
-
-    frc::SmartDashboard::PutBoolean("Has AprilTag Targets", hasTargets);
-    frc::SmartDashboard::PutNumber("AprilTag Yaw", yaw);
-    frc::SmartDashboard::PutNumber("AprilTag Pitch", pitch);
-    frc::SmartDashboard::PutNumber("AprilTag Area", area);
-    frc::SmartDashboard::PutNumber("AprilTag Skew", skew);
-    frc::SmartDashboard::PutNumber("AprilTag ID", apriltagID);
 }
 
 void Vision::SimulationPeriodic() {
