@@ -29,6 +29,7 @@ Climber::Climber(){
 
 void Climber::Periodic() {
     // Put code here to be run every loop
+    ClimberScanEncoders();
 }
 
 void Climber::SimulationPeriodic() {
@@ -38,15 +39,13 @@ void Climber::SimulationPeriodic() {
 
 void Climber::ClimberRaise(){ 
     // Run Climber
-    if(isRaiseLimit)
+    if(ClimberEncoder2Value > -492)
     {
-        frc::SmartDashboard::PutBoolean("raise limit", false);
-        m_climberMotor1.Set(0.5);
-        m_climberMotor2.Set(0.5);
+        m_climberMotor1.Set(-0.5);
+        m_climberMotor2.Set(-0.5);
     }
     else
     {
-        frc::SmartDashboard::PutBoolean("raise limit", true);
         m_climberMotor1.Set(0.0);
         m_climberMotor2.Set(0.0);
     }
@@ -56,15 +55,14 @@ void Climber::ClimberRaise(){
 
 void Climber::ClimberLower(){
     // Run Expel
-    if(isLowerLimit)
+
+    if(ClimberEncoder2Value < 0)
     {
-        frc::SmartDashboard::PutBoolean("lower limit", false);
         m_climberMotor1.Set(0.5);
         m_climberMotor2.Set(0.5);
     }
     else
     {
-        frc::SmartDashboard::PutBoolean("lower limit", true);
         m_climberMotor1.Set(0.0);
         m_climberMotor2.Set(0.0);
     }
@@ -82,4 +80,10 @@ void Climber::ClimberIdleMode(){
     // set their idle mode to brake
     m_climberMotor1.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
     m_climberMotor2.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
+}
+
+void Climber::ClimberScanEncoders(){
+    // get climberencoder values for limit switch thingy
+    ClimberEncoder2Value = m_climberEncoder2.GetPosition();
+    frc::SmartDashboard::PutNumber("climberencoder2value", ClimberEncoder2Value);
 }

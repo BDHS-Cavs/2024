@@ -33,12 +33,11 @@ public:
     void ClimberLower();
     void ClimberStop();
     void ClimberIdleMode();
-
-
+    void ClimberScanEncoders();
 
     rev::SparkRelativeEncoder m_climberEncoder1 = m_climberMotor1.GetEncoder();
     rev::SparkRelativeEncoder m_climberEncoder2 = m_climberMotor2.GetEncoder();
-    bool isRaiseLimit = m_climberEncoder2.GetPosition() < -492;
-    bool isLowerLimit = m_climberEncoder2.GetPosition() > 0;
+
+    double ClimberEncoder2Value;
 
 };
