@@ -67,20 +67,18 @@ void AutonomousCommand::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 (2s)
     {
-        //do nothing
-
-        //void Drivetrain::Drive(units::velocity::meters_per_second_t xSpeed, 
-        //units::velocity::meters_per_second_t ySpeed, units::angular_velocity::radians_per_second_t rot, 
-        //bool fieldRelative, units::time::second_t period)
-        //TODO fix??? m_swerve->Drive(1_m/1_s,1_m/1_s,1_rad/1_s,false,1_s);
+        m_shooter->ShooterShoot();
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 (3s)
     {
-        
+        m_conveyer->ConveyerBackward();
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {
         //do nothing
+        m_shooter->ShooterStop();
+        m_conveyer->ConveyerStop();
+        //TODO m_swerve->calculateVectors(1, 1, 1);
     }
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 8 (1s)
     {
