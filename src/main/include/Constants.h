@@ -100,14 +100,17 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 
 
 //pid stuff
-constexpr int TIMEOUT = 0;
-constexpr double angleP = 0.0; //double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
-constexpr double angleI = 0.0;
-constexpr double angleD = 0.0;
-constexpr double angleF = 0.0;
+constexpr int TIMEOUT = 0; //TODO find
+constexpr double L = 0; //TODO find
+constexpr double W = 0; //TODO find
+constexpr double COUNTPERDEG = 0; //TODO find        //L = 29.75; W = 29.75; COUNTPERDEG = 16.2539;
+constexpr double angleP = 0.0; //TODO find           //double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
+constexpr double angleI = 0.0; //TODO find
+constexpr double angleD = 0.0; //TODO find
+constexpr double angleF = 0.0; //TODO find
 
-constexpr int angleV = 0;
-constexpr int angleA = 0;
+constexpr int angleV = 0; //TODO find? or do we want motion magic
+constexpr int angleA = 0; //TODO find? or do we want motion magic
 
 
 }  // namespace DriveConstants

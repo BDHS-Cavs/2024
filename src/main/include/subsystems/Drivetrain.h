@@ -21,16 +21,23 @@
  */
 class Drivetrain {
  public:
-  Drivetrain() { m_gyro.Reset(); }
+  Drivetrain() : 
+    fl(DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort),
+    fr(DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort),
+    bl(DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort),
+    br(DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort),
+    m_gyro() {
+      m_gyro.Reset();
+  }
 
   void Drive(double speed, double angle);
-  void UpdateOdometry();
+  //TODO needed? void UpdateOdometry();
   void DrivetrainStop();
 
-  static constexpr units::meters_per_second_t kMaxSpeed =
-      /*3.0_mps;*/ 10.0_mps;  // 3 meters per second
-  static constexpr units::radians_per_second_t kMaxAngularSpeed{
-      /*std::numbers::pi*/ std::numbers::pi};  // 1/2 rotation per second
+  //TODO needed? static constexpr units::meters_per_second_t kMaxSpeed =
+  //TODO needed?     /*3.0_mps;*/ 3.0_mps;  // 3 meters per second
+  //TODO needed? static constexpr units::radians_per_second_t kMaxAngularSpeed{
+  //TODO needed?     /*std::numbers::pi*/ std::numbers::pi};  // 1/2 rotation per second
 
 /*(int driveMotorChannel, int turningMotorChannel, 
 int driveEncoderChannelA, int driveEncoderChannelB, 
@@ -41,11 +48,18 @@ int turningEncoderChannelA, int turningEncoderChannelB);*/
   //TODO delete? SwerveModule m_backLeft{DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort/*, DriveConstants::kRearLeftDriveEncoderChannelA, DriveConstants::kRearLeftDriveEncoderChannelB, DriveConstants::kRearLeftTurningEncoderChannelA, DriveConstants::kRearLeftTurningEncoderChannelB*/};
   //TODO delete? SwerveModule m_backRight{DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort/*, DriveConstants::kRearRightDriveEncoderChannelA, DriveConstants::kRearRightDriveEncoderChannelB, DriveConstants::kRearRightTurningEncoderChannelA, DriveConstants::kRearRightTurningEncoderChannelB*/};
 
-    SwerveModule fl, fr, bl, br;
 
-    frc::ADXRS450_Gyro m_gyro;
+
+
 
  private:
+ 
+    SwerveModule fl;
+    SwerveModule fr;
+    SwerveModule bl;
+    SwerveModule br;
+
+    frc::ADXRS450_Gyro m_gyro;
 //TODO broken  frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
 //TODO broken  frc::Translation2d m_frontRightLocation{+0.381_m, -0.381_m};
 //TODO broken  frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};

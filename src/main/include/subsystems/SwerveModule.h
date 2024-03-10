@@ -25,7 +25,7 @@
 
 class SwerveModule {
  public:
-  SwerveModule();
+  SwerveModule(int driveMotorPort, int turningMotorPort);
   //frc::SwerveModuleState GetState() const;
   //frc::SwerveModulePosition GetPosition() const;
   //void SetDesiredState(const frc::SwerveModuleState& state);

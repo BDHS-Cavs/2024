@@ -5,6 +5,20 @@
 #include "subsystems/Drivetrain.h"
 
 void Drivetrain::Drive(double speed, double angle) {
+
+    angle *= DriveConstants::COUNTPERDEG;
+
+        m_driveMotor.set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, speed);
+        m_turningMotor.set(ControlMode.MotionMagic, angle);
+
+
+
+
+
+
+
+
+
   //TODO needed? auto states =
   //TODO needed?     m_kinematics.ToSwerveModuleStates(frc::ChassisSpeeds::Discretize(
   //TODO needed?         fieldRelative ? frc::ChassisSpeeds::FromFieldRelativeSpeeds(
@@ -43,13 +57,13 @@ void Drivetrain::Drive(double speed, double angle) {
 //TODO needed? }
 
 void Drivetrain::DrivetrainStop() {
-    m_frontLeft.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_frontRight.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_backLeft.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_backRight.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    fl.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    fr.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    bl.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    br.m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
 
-    m_frontLeft.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_frontRight.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_backLeft.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
-    m_backRight.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    fl.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    fr.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    bl.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
+    br.m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, 0.0);
 }

@@ -8,7 +8,9 @@
 
 #include <frc/geometry/Rotation2d.h>
 
-SwerveModule::SwerveModule()
+SwerveModule::SwerveModule(int driveMotorPort, int turningMotorPort)
+                           : m_driveMotor(driveMotorPort),
+                           m_turningMotor(turningMotorPort)
     {
 
   // Set the distance per pulse for the drive encoder. We can simply use the
