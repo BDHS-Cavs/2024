@@ -9,7 +9,7 @@
 
 void Robot::RobotInit() {
   frc::CameraServer::GetVideo(); //i dont know if we need this line because it says use this if you want to use vision processing on the roborio but we do it on the 2nd camera (the limelight 2+) with photonvision
-  frc::CameraServer::StartAutomaticCapture(); //make microsoft lifecam hd-3000 work
+  frc::CameraServer::StartAutomaticCapture(); //make usb cam (microsoft lifecam hd-3000) work
 
   m_container->m_climber.ClimberIdleMode(); //set climber spark max's idle mode to brake
   m_container->m_shooter.ShooterIdleMode(); //set shooter spark max's idle mode to brake
