@@ -100,17 +100,16 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 
 
 //pid stuff
-constexpr int TIMEOUT = 0; //TODO find
-constexpr double L = 20.125; //wheelbase
-constexpr double W = 22.25; //trackwidth
-constexpr double COUNTPERDEG = 0; //TODO find        //L = 29.75; W = 29.75; COUNTPERDEG = 16.2539;
-constexpr double angleP = 0.0; //TODO find           //double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
-constexpr double angleI = 0.0; //TODO find
-constexpr double angleD = 0.0; //TODO find
-constexpr double angleF = 0.0; //TODO find
-
-constexpr int angleV = 0; //TODO find? or do we want motion magic
-constexpr int angleA = 0; //TODO find? or do we want motion magic
+constexpr int TIMEOUT = 0;                           //time? like 0ms?
+constexpr double L = 20.125;                         //wheelbase
+constexpr double W = 22.25;                          //trackwidth
+constexpr double COUNTPERDEG = 0.0;                  //nicks number is 16.2539
+constexpr double angleP = 0.0;                       //TODO find              //nicks numbers: double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
+constexpr double angleI = 0.0;                       //TODO find
+constexpr double angleD = 0.0;                       //TODO find
+constexpr double angleF = 3.95;                      //(91% (the speed we ran it at) * 1023) / 236 (phoenix tuner x pid0 velocity while running at 91% speed)
+constexpr int angleV = 0;                            //TODO find //motion magic
+constexpr int angleA = 0;                            //TODO find //motion magic
 
 //joystick stuff
 constexpr double DEADZONE_XY = 0.1;
