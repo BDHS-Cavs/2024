@@ -18,7 +18,13 @@
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
-RobotContainer::RobotContainer() {
+RobotContainer::RobotContainer() 
+: fl(DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort),
+  fr(DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort),
+  bl(DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort),
+  br(DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort),
+  m_swerve(fl, fr, bl, br)
+{
 //RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) { //broken??
     //frc::SmartDashboard::PutData(&m_swerve); //broken but i dont think we need
     frc::SmartDashboard::PutData(&m_climber);
@@ -74,17 +80,20 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   // The selected command will be run in autonomous
   return m_chooser.GetSelected();
 }
-//TODO double getX() {
-//TODO         return abs(m_drivecontroller.getX()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.getX() : 0;
-//TODO     }
-//TODO double getY() {
-//TODO         return abs(m_drivecontroller.getY()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.getY() : 0;
-//TODO     }
-//TODO double getZ() {
-//TODO         double z = m_drivecontroller.getZ();
-//TODO         // double adjustedZ = RobotMap.SENSITIVITY_Z % 2 == 0 ? Math.signum(z) * Math.pow(z,
-//TODO         // RobotMap.SENSITIVITY_Z);
-//TODO         return abs(z) > DriveConstants::DEADZONE_Z
-//TODO                 ? (z * pow(z, DriveConstants::SENSITIVITY_Z)) / DriveConstants::REDUCER_Z
-//TODO                 : 0;
-//TODO     }
+
+
+
+ double RobotContainer::getX() {
+         return abs(m_drivecontroller.GetX()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.GetX() : 0;
+     }
+ double RobotContainer::getY() {
+         return abs(m_drivecontroller.GetY()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.GetY() : 0;
+     }
+ double RobotContainer::getZ() {
+         double z = m_drivecontroller.GetZ();
+         // double adjustedZ = RobotMap.SENSITIVITY_Z % 2 == 0 ? Math.signum(z) * Math.pow(z,
+         // RobotMap.SENSITIVITY_Z);
+         return abs(z) > DriveConstants::DEADZONE_Z
+                 ? (z * pow(z, DriveConstants::SENSITIVITY_Z)) / DriveConstants::REDUCER_Z
+                 : 0;
+     }

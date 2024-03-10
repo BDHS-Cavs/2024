@@ -60,19 +60,16 @@ public:
     static RobotContainer* GetInstance();
 
     // The robot's subsystems
-    SwerveModule bl, br, fl, fr;
+    SwerveModule fl; //SWERVEMODULE PORTS ASSIGNED IN TOP OF ROBOTCONTAINER.CPP
+    SwerveModule fr;
+    SwerveModule bl;
+    SwerveModule br;
     Drivetrain m_swerve;
     Climber m_climber;
     Shooter m_shooter;
     Intake m_intake;
     Vision m_vision;
     Conveyer m_conveyer;
-
-        //TODO SwerveModule bl(DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveMotorPort);
-        //TODO SwerveModule br(DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveMotorPort);
-        //TODO SwerveModule fl(DriveConstants::kFrontLeftTurningMotorPort, DriveConstants::kFrontLeftDriveMotorPort);
-        //TODO SwerveModule fr(DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightDriveMotorPort);
-
 
     // Get the control values
     frc::Joystick *getJoystick();
