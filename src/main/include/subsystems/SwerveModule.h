@@ -6,34 +6,32 @@
 
 #include <numbers>
 
-#include <frc/Encoder.h>
+//#include <frc/Encoder.h>
 //#include <frc/controller/PIDController.h>
 //#include <frc/controller/ProfiledPIDController.h>
 //#include <frc/controller/SimpleMotorFeedforward.h>
 #include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveModuleState.h>
-//#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
-#include <ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h>
+#include <ctre/phoenix/motorcontrol/can/TalonSRX.h>
 #include <units/angular_velocity.h>
 #include <units/time.h>
 #include <units/velocity.h>
 #include <units/voltage.h>
+
+#include "Constants.h"
 
 #include <units/math.h>
 #include <frc/MathUtil.h>
 
 class SwerveModule {
  public:
-  SwerveModule(int driveMotorChannel, int turningMotorChannel//,
-               //int driveEncoderChannelA, int driveEncoderChannelB,
-               //int turningEncoderChannelA, int turningEncoderChannelB
-               );
-  frc::SwerveModuleState GetState() const;
-  frc::SwerveModulePosition GetPosition() const;
-  void SetDesiredState(const frc::SwerveModuleState& state);
+  SwerveModule();
+  //frc::SwerveModuleState GetState() const;
+  //frc::SwerveModulePosition GetPosition() const;
+  //void SetDesiredState(const frc::SwerveModuleState& state);
 
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_driveMotor;
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_turningMotor;
+  ctre::phoenix::motorcontrol::can::TalonSRX m_driveMotor;
+  ctre::phoenix::motorcontrol::can::TalonSRX m_turningMotor;
 
   //frc::Encoder m_driveEncoder;
   //frc::Encoder m_turningEncoder;
@@ -42,10 +40,10 @@ class SwerveModule {
   static constexpr double kWheelRadius = 0.0508; //need tuning?
   //TODO needed? static constexpr int kEncoderResolution = 4096; //need tuning?
 
-  static constexpr auto kModuleMaxAngularVelocity =
-      std::numbers::pi * 1_rad_per_s;  // radians per second
-  static constexpr auto kModuleMaxAngularAcceleration =
-      std::numbers::pi * 2_rad_per_s / 1_s;  // radians per second^2
+  //static constexpr auto kModuleMaxAngularVelocity =
+  //    std::numbers::pi * 1_rad_per_s;  // radians per second
+  //static constexpr auto kModuleMaxAngularAcceleration =
+  //    std::numbers::pi * 2_rad_per_s / 1_s;  // radians per second^2
 
 
 

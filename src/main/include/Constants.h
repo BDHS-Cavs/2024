@@ -88,15 +88,28 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 // These characterization values MUST be determined either experimentally or
 // theoretically for *your* robot's drive. The SysId tool provides a convenient
 // method for obtaining these values for your robot.
-constexpr auto ks = 1_V; //volts
-constexpr auto kv = 0.8 * 1_V * 1_s / 1_m; //volts * seconds / meters
-constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m; //volts * seconds^2 / meters      //TODO KV AND KA ARE FOR MOTION MAGIC (not needed?)
+//TODO needed? constexpr auto ks = 1_V; //volts
+//TODO needed? constexpr auto kv = 0.8 * 1_V * 1_s / 1_m; //volts * seconds / meters
+//TODO needed? constexpr auto ka = 0.15 * 1_V * 1_s * 1_s / 1_m; //volts * seconds^2 / meters      //TODO KV AND KA ARE FOR MOTION MAGIC (not needed?)
 
 // Example value only - as above, this must be tuned for your drive!
-constexpr double kPFrontLeftVel = 0.5;
-constexpr double kPRearLeftVel = 0.5;
-constexpr double kPFrontRightVel = 0.5;
-constexpr double kPRearRightVel = 0.5;
+//TODO needed? constexpr double kPFrontLeftVel = 0.5;
+//TODO needed? constexpr double kPRearLeftVel = 0.5;
+//TODO needed? constexpr double kPFrontRightVel = 0.5;
+//TODO needed? constexpr double kPRearRightVel = 0.5;
+
+
+//pid stuff
+constexpr int TIMEOUT = 0;
+constexpr double angleP = 0.0; //double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
+constexpr double angleI = 0.0;
+constexpr double angleD = 0.0;
+constexpr double angleF = 0.0;
+
+constexpr int angleV = 0;
+constexpr int angleA = 0;
+
+
 }  // namespace DriveConstants
 
 namespace ClimberConstants {
