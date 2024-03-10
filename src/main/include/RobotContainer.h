@@ -25,6 +25,9 @@
 #include <frc2/command/CommandPtr.h>
 #include <cameraserver/CameraServer.h>
 
+#include "Constants.h"
+
+#include "subsystems/SwerveModule.h"
 #include "subsystems/Drivetrain.h"
 #include "subsystems/Climber.h"
 #include "subsystems/Shooter.h"
@@ -47,16 +50,29 @@ class RobotContainer {
 
 public:
 
+
+    double getX();
+    double getY();
+    double getZ();
+
+
     frc2::Command* GetAutonomousCommand();
     static RobotContainer* GetInstance();
 
     // The robot's subsystems
+    SwerveModule bl, br, fl, fr;
     Drivetrain m_swerve;
     Climber m_climber;
     Shooter m_shooter;
     Intake m_intake;
     Vision m_vision;
     Conveyer m_conveyer;
+
+        //TODO SwerveModule bl(DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftDriveMotorPort);
+        //TODO SwerveModule br(DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightDriveMotorPort);
+        //TODO SwerveModule fl(DriveConstants::kFrontLeftTurningMotorPort, DriveConstants::kFrontLeftDriveMotorPort);
+        //TODO SwerveModule fr(DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightDriveMotorPort);
+
 
     // Get the control values
     frc::Joystick *getJoystick();

@@ -30,9 +30,25 @@ class Drivetrain {
       m_gyro.Reset();
   }
 
-  void Drive(double speed, double angle);
+  //moved to swervemodule void Drive(double speed, double angle);
   //TODO needed? void UpdateOdometry();
+  double getGyro();
+  void calculateVectors(double x, double y, double z);
   void DrivetrainStop();
+
+SwerveModule getFL();
+SwerveModule getFR();
+SwerveModule getBL();
+SwerveModule getBR();
+
+  frc::ADXRS450_Gyro m_gyro;
+
+  bool fieldCentric = true;
+
+    SwerveModule fl;
+    SwerveModule fr;
+    SwerveModule bl;
+    SwerveModule br;
 
   //TODO needed? static constexpr units::meters_per_second_t kMaxSpeed =
   //TODO needed?     /*3.0_mps;*/ 3.0_mps;  // 3 meters per second
@@ -54,12 +70,7 @@ int turningEncoderChannelA, int turningEncoderChannelB);*/
 
  private:
  
-    SwerveModule fl;
-    SwerveModule fr;
-    SwerveModule bl;
-    SwerveModule br;
 
-    frc::ADXRS450_Gyro m_gyro;
 //TODO broken  frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
 //TODO broken  frc::Translation2d m_frontRightLocation{+0.381_m, -0.381_m};
 //TODO broken  frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};

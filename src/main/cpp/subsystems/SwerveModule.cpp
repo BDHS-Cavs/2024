@@ -8,9 +8,9 @@
 
 #include <frc/geometry/Rotation2d.h>
 
-SwerveModule::SwerveModule(int driveMotorPort, int turningMotorPort)
-                           : m_driveMotor(driveMotorPort),
-                           m_turningMotor(turningMotorPort)
+SwerveModule::SwerveModule(int turningMotorPort, int driveMotorPort)
+                           : m_turningMotor(turningMotorPort),
+                             m_driveMotor(driveMotorPort)
     {
 
   // Set the distance per pulse for the drive encoder. We can simply use the
@@ -47,7 +47,33 @@ SwerveModule::SwerveModule(int driveMotorPort, int turningMotorPort)
     m_driveMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
     m_turningMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
 
+    m_driveMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+    m_turningMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+
 }//TODO TALON VERSION: CONFIGUREPEAKOUTPUT FORWARD/REVERSE
+
+
+
+void SwerveModule::Drive(double speed, double angle)
+{
+  angle *= DriveConstants::COUNTPERDEG;
+
+    m_driveMotor.Set(ctre::phoenix::motorcontrol::ControlMode::PercentOutput, speed);
+    m_turningMotor.Set(ctre::phoenix::motorcontrol::ControlMode::MotionMagic, angle);
+}
+
+int SwerveModule::getAnglePosition() {
+    return m_turningMotor.GetSelectedSensorPosition(0);
+}
+
+int SwerveModule::getDrivePosition() {
+    return m_driveMotor.GetSelectedSensorPosition(0);
+}
+
+
+
+
+
 
 //TODO needed? frc::SwerveModuleState SwerveModule::GetState() const {
   //TODO TALON get rate?????    return {units::meters_per_second_t{m_driveEncoder.GetRate()},

@@ -30,40 +30,45 @@ class Robot : public frc::TimedRobot {
   //std::optional<frc2::CommandPtr> m_autonomousCommand;
 
 
+
+
+
+
+
        //set up default drive command real
   // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0
   // to 1.
-  frc::SlewRateLimiter<units::scalar> m_xspeedLimiter{3 / 1_s};
-  frc::SlewRateLimiter<units::scalar> m_yspeedLimiter{3 / 1_s};
-  frc::SlewRateLimiter<units::scalar> m_rotLimiter{3 / 1_s};
-
-  void DriveWithJoystick(bool fieldRelative = false) {
-    // Get the x speed. We are inverting this because Xbox controllers return
-    // negative values when we push forward.
-    const auto xSpeed = -m_xspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_container->m_controller.GetLeftX(), 0.2)) *
-                        Drivetrain::kMaxSpeed;
-                        frc::SmartDashboard::PutNumber("xSpeed", xSpeed());
-
-    // Get the y speed or sideways/strafe speed. We are inverting this because
-    // we want a positive value when we pull to the left. Xbox controllers
-    // return positive values when you pull to the right by default.
-    const auto ySpeed = -m_yspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_container->m_controller.GetLeftY(), 0.2)) *
-                        Drivetrain::kMaxSpeed;
-                        frc::SmartDashboard::PutNumber("ySpeed", ySpeed());
-
-    // Get the rate of angular rotation. We are inverting this because we want a
-    // positive value when we pull to the left (remember, CCW is positive in
-    // mathematics). Xbox controllers return positive values when you pull to
-    // the right by default.
-    const auto rot = -m_rotLimiter.Calculate(
-                         frc::ApplyDeadband(m_container->m_controller.GetRightX(), 0.2)) *
-                     Drivetrain::kMaxAngularSpeed;
-                     frc::SmartDashboard::PutNumber("zSpeed", rot());
-
-    m_container->m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());
-  }
+//  frc::SlewRateLimiter<units::scalar> m_xspeedLimiter{3 / 1_s};
+//  frc::SlewRateLimiter<units::scalar> m_yspeedLimiter{3 / 1_s};
+//  frc::SlewRateLimiter<units::scalar> m_rotLimiter{3 / 1_s};
+//
+//  void DriveWithJoystick(bool fieldRelative = false) {
+//    // Get the x speed. We are inverting this because Xbox controllers return
+//    // negative values when we push forward.
+//    const auto xSpeed = -m_xspeedLimiter.Calculate(
+//                            frc::ApplyDeadband(m_container->m_controller.GetLeftX(), 0.2)) *
+//                        Drivetrain::kMaxSpeed;
+//                        frc::SmartDashboard::PutNumber("xSpeed", xSpeed());
+//
+//    // Get the y speed or sideways/strafe speed. We are inverting this because
+//    // we want a positive value when we pull to the left. Xbox controllers
+//    // return positive values when you pull to the right by default.
+//    const auto ySpeed = -m_yspeedLimiter.Calculate(
+//                            frc::ApplyDeadband(m_container->m_controller.GetLeftY(), 0.2)) *
+//                        Drivetrain::kMaxSpeed;
+//                        frc::SmartDashboard::PutNumber("ySpeed", ySpeed());
+//
+//    // Get the rate of angular rotation. We are inverting this because we want a
+//    // positive value when we pull to the left (remember, CCW is positive in
+//    // mathematics). Xbox controllers return positive values when you pull to
+//    // the right by default.
+//    const auto rot = -m_rotLimiter.Calculate(
+//                         frc::ApplyDeadband(m_container->m_controller.GetRightX(), 0.2)) *
+//                     Drivetrain::kMaxAngularSpeed;
+//                     frc::SmartDashboard::PutNumber("zSpeed", rot());
+//
+//    m_container->m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());
+//  }
 
   // Have it null by default so that if testing teleop it
   // doesn't have undefined behavior and potentially crash.

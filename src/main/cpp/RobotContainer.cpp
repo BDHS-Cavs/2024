@@ -74,3 +74,17 @@ frc2::Command* RobotContainer::GetAutonomousCommand() {
   // The selected command will be run in autonomous
   return m_chooser.GetSelected();
 }
+//TODO double getX() {
+//TODO         return abs(m_drivecontroller.getX()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.getX() : 0;
+//TODO     }
+//TODO double getY() {
+//TODO         return abs(m_drivecontroller.getY()) > DriveConstants::DEADZONE_XY ? m_drivecontroller.getY() : 0;
+//TODO     }
+//TODO double getZ() {
+//TODO         double z = m_drivecontroller.getZ();
+//TODO         // double adjustedZ = RobotMap.SENSITIVITY_Z % 2 == 0 ? Math.signum(z) * Math.pow(z,
+//TODO         // RobotMap.SENSITIVITY_Z);
+//TODO         return abs(z) > DriveConstants::DEADZONE_Z
+//TODO                 ? (z * pow(z, DriveConstants::SENSITIVITY_Z)) / DriveConstants::REDUCER_Z
+//TODO                 : 0;
+//TODO     }

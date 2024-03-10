@@ -101,8 +101,8 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 
 //pid stuff
 constexpr int TIMEOUT = 0; //TODO find
-constexpr double L = 0; //TODO find
-constexpr double W = 0; //TODO find
+constexpr double L = 20.125; //wheelbase
+constexpr double W = 22.25; //trackwidth
 constexpr double COUNTPERDEG = 0; //TODO find        //L = 29.75; W = 29.75; COUNTPERDEG = 16.2539;
 constexpr double angleP = 0.0; //TODO find           //double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
 constexpr double angleI = 0.0; //TODO find
@@ -111,6 +111,22 @@ constexpr double angleF = 0.0; //TODO find
 
 constexpr int angleV = 0; //TODO find? or do we want motion magic
 constexpr int angleA = 0; //TODO find? or do we want motion magic
+
+//joystick stuff
+constexpr double DEADZONE_XY = 0.1;
+constexpr double DEADZONE_Z = 0.3;
+
+    // How sensitive the Z axis is.
+    // 0 = no effect
+    // 1 = square the output
+    // 2 = cube the output
+constexpr int SENSITIVITY_Z = 2;
+
+    // Reduces the maximum output for the Z axis.
+    // 1 = full speed
+    // 2 = half speed
+    // etc
+constexpr int REDUCER_Z = 2;
 
 
 }  // namespace DriveConstants

@@ -25,7 +25,10 @@
 
 class SwerveModule {
  public:
-  SwerveModule(int driveMotorPort, int turningMotorPort);
+  SwerveModule(int turningMotorPort, int driveMotorPort);
+  void Drive(double speed, double angle);
+  int getAnglePosition();
+  int getDrivePosition();
   //frc::SwerveModuleState GetState() const;
   //frc::SwerveModulePosition GetPosition() const;
   //void SetDesiredState(const frc::SwerveModuleState& state);
@@ -37,7 +40,9 @@ class SwerveModule {
   //frc::Encoder m_turningEncoder;
 
  private:
-  static constexpr double kWheelRadius = 0.0508; //need tuning?
+ double lastAngle = 0;
+
+//  static constexpr double kWheelRadius = 0.0508; //need tuning?
   //TODO needed? static constexpr int kEncoderResolution = 4096; //need tuning?
 
   //static constexpr auto kModuleMaxAngularVelocity =
