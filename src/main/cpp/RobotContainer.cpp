@@ -40,7 +40,13 @@ RobotContainer::RobotContainer()
 
     m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
     frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
+
+
+
 }
+
+
+
 
 RobotContainer* RobotContainer::GetInstance() {
     if (m_robotContainer == NULL) {

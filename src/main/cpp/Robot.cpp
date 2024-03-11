@@ -98,6 +98,12 @@ void Robot::RobotPeriodic() {
     //TODO remove? frc::SmartDashboard::PutNumber("Photon current ID", m_container->m_vision.target.GetFiducialId());
     //TODO remove? frc::SmartDashboard::PutBoolean("Photon HasTargets", m_container->m_vision.result.HasTargets());
 
+    frc::SmartDashboard::PutNumber("FL turning motor error", m_container->m_swerve.m_fl.m_turningMotor.GetClosedLoopError());
+    frc::SmartDashboard::PutNumber("bl turnin motor error", m_container->m_swerve.m_bl.m_turningMotor.GetClosedLoopError());
+
+        frc::SmartDashboard::PutNumber("bl turn encoder position", m_container->m_swerve.m_bl.m_turningMotor.GetSelectedSensorPosition());
+        frc::SmartDashboard::PutNumber("bl turn encoder velocity", m_container->m_swerve.m_bl.m_turningMotor.GetSelectedSensorVelocity());
+
 }
 
 /**
@@ -147,6 +153,11 @@ void Robot::TeleopInit() {
  */
 void Robot::TeleopPeriodic() {
   //DriveWithJoystick(true);
+
+//swerve drive with joystick
+//m_container->m_swerve.calculateVectors(m_container->getX(), m_container->getY(), m_container->getZ());
+//m_container->m_swerve.calculateVectors(1, 1, 0);
+
 }
 
 /**
