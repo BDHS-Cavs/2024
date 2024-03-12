@@ -30,7 +30,6 @@ public:
     void ShooterShoot();
     void ShooterRetract();
     void ShooterStop();
-    void ShooterIdleMode();
 
 
 

@@ -27,8 +27,7 @@
 
 #include "Constants.h"
 
-#include "subsystems/SwerveModule.h"
-#include "subsystems/Drivetrain.h"
+#include "subsystems/Drive.h"
 #include "subsystems/Climber.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
@@ -51,20 +50,12 @@ class RobotContainer {
 public:
 
 
-    double getX();
-    double getY();
-    double getZ();
-
 
     frc2::Command* GetAutonomousCommand();
     static RobotContainer* GetInstance();
 
     // The robot's subsystems
-    SwerveModule fl; //SWERVEMODULE PORTS ASSIGNED IN TOP OF ROBOTCONTAINER.CPP
-    SwerveModule fr;
-    SwerveModule bl;
-    SwerveModule br;
-    Drivetrain m_swerve;
+    Drive m_drive;
     Climber m_climber;
     Shooter m_shooter;
     Intake m_intake;

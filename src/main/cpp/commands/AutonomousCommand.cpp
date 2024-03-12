@@ -14,8 +14,8 @@
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <wpi/raw_ostream.h> // for wpi outs()
 
-AutonomousCommand::AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer)
-:m_swerve(m_swerve),
+AutonomousCommand::AutonomousCommand(Drive* m_drive, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer)
+:m_drive(m_drive),
 m_climber(m_climber),
 m_shooter(m_shooter),
 m_intake(m_intake),
@@ -26,7 +26,7 @@ m_conveyer(m_conveyer)
     // Use AddRequirements() here to declare subsystem dependencies
     // eg. AddRequirements(m_Subsystem);
     SetName("AutonomousCommand");
-    //AddRequirements(m_swerve); //BROKEN but i dont think we need
+    AddRequirements(m_drive);
     AddRequirements(m_climber);
     AddRequirements(m_shooter);
     AddRequirements(m_intake);
@@ -98,7 +98,7 @@ bool AutonomousCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void AutonomousCommand::End(bool interrupted) {
-    m_swerve->DrivetrainStop();
+    m_drive->DriveStop();
     m_shooter->ShooterStop();
     m_intake->IntakeStop();
     m_climber->ClimberStop();

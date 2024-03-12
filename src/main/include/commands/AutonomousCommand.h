@@ -18,7 +18,7 @@
 #include <frc2/command/WaitCommand.h>
 
 #include "subsystems/Climber.h"
-#include "subsystems/Drivetrain.h"
+#include "subsystems/Drive.h"
 #include "subsystems/Vision.h"
 #include "subsystems/Shooter.h"
 #include "subsystems/Intake.h"
@@ -28,7 +28,7 @@ class AutonomousCommand: public frc2::CommandHelper<frc2::Command, AutonomousCom
 
 public:
 
-    explicit AutonomousCommand(Drivetrain* m_swerve, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer);
+    explicit AutonomousCommand(Drive* m_drive, Climber* m_climber, Shooter* m_shooter, Intake* m_intake, Vision* m_vision, Conveyer* m_conveyer);
 
 void Initialize() override;
 void Execute() override;
@@ -41,7 +41,7 @@ private:
     bool       m_firstTime;
     frc::Timer m_timer; 
 
-    Drivetrain*     m_swerve;
+    Drive*          m_drive;
     Climber*        m_climber;
     Shooter*        m_shooter;
     Intake*         m_intake;
@@ -51,6 +51,6 @@ private:
 units::velocity::meters_per_second_t autoXSpeed = 0.2_mps;
 units::velocity::meters_per_second_t autoYSpeed = 0.2_mps;
 units::velocity::meters_per_second_t autoRot = 0.2_mps;
-bool autoFieldRelative = false;                          
+//bool autoFieldRelative = false;                          
 
 };

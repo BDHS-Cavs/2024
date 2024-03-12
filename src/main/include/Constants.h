@@ -44,10 +44,10 @@ FOR THE MXP ENCODER PORTS
 9 is 23 etc.
 */
 
-constexpr int kFrontLeftDriveMotorPort = 3;                //sm4d
-constexpr int kRearLeftDriveMotorPort = 5;                 //sm3d
-constexpr int kFrontRightDriveMotorPort = 9;               //sm1d
-constexpr int kRearRightDriveMotorPort = 7;                //sm2d
+constexpr int kFrontLeftMotorPort = 3;                //sm4d
+constexpr int kRearLeftMotorPort = 5;                 //sm3d
+constexpr int kFrontRightMotorPort = 9;               //sm1d
+constexpr int kRearRightMotorPort = 7;                //sm2d
 
 constexpr int kFrontLeftTurningMotorPort = 4;              //sm4s
 constexpr int kRearLeftTurningMotorPort = 6;               //sm3s
