@@ -45,6 +45,10 @@
 
 #include "commands/AutonomousCommand.h"
 
+#include "commands/LeftAuto.h"
+#include "commands/RightAuto.h"
+#include "commands/CenterAuto.h"
+
 class RobotContainer {
 
 public:
@@ -68,6 +72,17 @@ public:
 
     frc::Joystick m_drivecontroller{0};
     frc::XboxController m_controller{1};
+
+
+  // The autonomous routines
+  LeftAuto m_leftAuto{&m_drive, &m_shooter, &m_conveyer};
+  RightAuto m_rightAuto{&m_drive, &m_shooter, &m_conveyer};
+  CenterAuto m_centerAuto{&m_drive, &m_shooter, &m_conveyer};
+
+  // The chooser for the autonomous routines
+  frc::SendableChooser<frc2::Command*> m_chooser;
+
+
 
 private:
 

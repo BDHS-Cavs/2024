@@ -28,13 +28,18 @@ RobotContainer::RobotContainer()
     frc::SmartDashboard::PutData(&m_vision);
     frc::SmartDashboard::PutData(&m_conveyer);
 
+  // Add commands to the autonomous command chooser
+  m_chooser.SetDefaultOption("Left Auto", &m_leftAuto);
+  m_chooser.AddOption("Right Auto", &m_rightAuto);
+  m_chooser.AddOption("Center Auto", &m_centerAuto)
+
     // SmartDashboard Buttons
-    frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
+    //frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
 	
     ConfigureButtonBindings();
 
-    m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
-    frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
+    //m_chooser.SetDefaultOption("Autonomous Command", new AutonomousCommand(&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
+    //frc::SmartDashboard::PutData("Auto Mode", &m_chooser);
 
 
 m_drive.SetDefaultCommand(frc2::RunCommand(
@@ -86,5 +91,7 @@ frc::XboxController* RobotContainer::getController() {
 
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // The selected command will be run in autonomous
-  return m_chooser.GetSelected();
+  //return m_chooser.GetSelected();
+  // Put the chooser on the dashboard
+frc::SmartDashboard::PutData(&m_chooser);
 }
