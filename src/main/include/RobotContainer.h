@@ -43,7 +43,7 @@
 #include "commands/ConveyerForwardCommand.h"
 #include "commands/ConveyerBackwardCommand.h"
 
-#include "commands/AutonomousCommand.h"
+//#include "commands/AutonomousCommand.h"
 
 #include "commands/LeftAuto.h"
 #include "commands/RightAuto.h"
@@ -75,9 +75,9 @@ public:
 
 
   // The autonomous routines
-  LeftAuto m_leftAuto{&m_drive, &m_shooter, &m_conveyer};
-  RightAuto m_rightAuto{&m_drive, &m_shooter, &m_conveyer};
-  CenterAuto m_centerAuto{&m_drive, &m_shooter, &m_conveyer};
+  LeftAuto m_leftAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  RightAuto m_rightAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  CenterAuto m_centerAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
 
   // The chooser for the autonomous routines
   frc::SendableChooser<frc2::Command*> m_chooser;
@@ -101,7 +101,7 @@ private:
     //frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber);
     //frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber);
 
-    frc::SendableChooser<frc2::Command*> m_chooser; //if i remove all the chooser stuff, auto crashes, so i just leave it alone but still use the single autonomouscommand.cpp
+    //frc::SendableChooser<frc2::Command*> m_chooser; //if i remove all the chooser stuff, auto crashes, so i just leave it alone but still use the single autonomouscommand.cpp
 
     static RobotContainer* m_robotContainer;
     void ConfigureButtonBindings();

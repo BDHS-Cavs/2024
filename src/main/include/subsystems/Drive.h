@@ -36,8 +36,9 @@ public:
     void Periodic() override;
     void SimulationPeriodic() override;
     void Motivate(double leftSpeed, double rightSpeed);
-    void AutoMotivateRotate();
-    void AutoBackwards();
+    void AutoMotivateRotateLeft();
+    void AutoMotivateRotateRight();
+    void AutoMotivateBackward();
     void DriveStop();
     bool CompareAngles(double x, double y, double epsilon);
     bool CalculateAverageEncoderDistance();

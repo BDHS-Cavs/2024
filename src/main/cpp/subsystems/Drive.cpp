@@ -73,10 +73,17 @@ void Drive::Motivate(double leftSpeed, double rightSpeed) {
     m_differentialDrive.ArcadeDrive(leftSpeed, rightSpeed, true);
 }
 
-void Drive::AutoMotivateRotate() {
+void Drive::AutoMotivateRotateLeft() {
 
     double autoLeftSpeed = 1;
     double autoRightSpeed = -1;
+    m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+}
+
+void Drive::AutoMotivateRotateRight() {
+
+    double autoLeftSpeed = -1;
+    double autoRightSpeed = 1;
     m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
@@ -104,7 +111,7 @@ void Drive::DriveStop(){
     m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
 }
 
-void Drive::AutoBackwards(){
+void Drive::AutoMotivateBackward(){
     double autoBackwardsLeftSpeed = 0.55;
     double autoBackwardsRightSpeed = 0; //rotation!!!!!
     m_differentialDrive.ArcadeDrive(autoBackwardsLeftSpeed, autoBackwardsRightSpeed, true);
