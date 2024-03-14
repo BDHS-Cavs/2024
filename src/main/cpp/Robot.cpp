@@ -8,8 +8,19 @@
 #include <frc2/command/CommandScheduler.h>
 
 void Robot::RobotInit() {
-  frc::CameraServer::GetVideo(); //i dont know if we need this line because it says use this if you want to use vision processing on the roborio but we do it on the 2nd camera (the limelight 2+) with photonvision
-  frc::CameraServer::StartAutomaticCapture(); //make usb cam (microsoft lifecam hd-3000) work
+  //TODO frc::CameraServer::GetVideo(); //i dont know if we need this line because it says use this if you want to use vision processing on the roborio but we do it on the 2nd camera (the limelight 2+) with photonvision
+  //TODO frc::CameraServer::StartAutomaticCapture(); //make usb cam (microsoft lifecam hd-3000) work
+
+    usbcamera1 = frc::CameraServer::StartAutomaticCapture(0);
+    usbcamera2 = frc::CameraServer::StartAutomaticCapture(1);
+    //ethernetcamera = frc::CameraServer::AddAxisCamera("10.29.78.11");
+//    ethernetcamera = frc::CameraServer::StartAutomaticCapture(2);
+
+    cameraserver = frc::CameraServer::GetServer();
+
+    usbcamera1.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
+    usbcamera2.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
+    //ethernetcamera.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
 
   m_container->m_drive.m_drivegyro.Calibrate(); //calibrate gyro
 }
