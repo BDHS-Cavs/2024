@@ -15,6 +15,7 @@
 #include <frc2/command/ParallelRaceGroup.h>
 #include <frc2/command/RunCommand.h>
 #include <frc/smartdashboard/SmartDashboard.h>
+//#include "frc/shuffleboard/Shuffleboard.h"
 
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
@@ -32,6 +33,11 @@ RobotContainer::RobotContainer()
   m_chooser.SetDefaultOption("Left Auto", &m_leftAuto);
   m_chooser.AddOption("Right Auto", &m_rightAuto);
   m_chooser.AddOption("Center Auto", &m_centerAuto);
+
+//  frc::Shuffleboard::GetTab("Autonomous").Add(m_chooser); //add chooser to shuffleboard
+  frc::SmartDashboard::PutData(&m_chooser);
+
+
 
     // SmartDashboard Buttons
     //frc::SmartDashboard::PutData("Autonomous Command", new AutonomousCommand(&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer));
@@ -92,6 +98,4 @@ frc::XboxController* RobotContainer::getController() {
 frc2::Command* RobotContainer::GetAutonomousCommand() {
   // The selected command will be run in autonomous
   return m_chooser.GetSelected();
-  // Put the chooser on the dashboard
-frc::SmartDashboard::PutData(&m_chooser);
 }

@@ -74,13 +74,7 @@ public:
     frc::XboxController m_controller{1};
 
 
-  // The autonomous routines
-  LeftAuto m_leftAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
-  RightAuto m_rightAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
-  CenterAuto m_centerAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
 
-  // The chooser for the autonomous routines
-  frc::SendableChooser<frc2::Command*> m_chooser;
 
 
 
@@ -105,4 +99,15 @@ private:
 
     static RobotContainer* m_robotContainer;
     void ConfigureButtonBindings();
+
+
+
+
+      // The autonomous routines
+  LeftAuto m_leftAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  RightAuto m_rightAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  CenterAuto m_centerAuto{&m_drive, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+
+  // The chooser for the autonomous routines
+  frc::SendableChooser<frc2::Command*> m_chooser;
 };

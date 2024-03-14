@@ -90,7 +90,7 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
 //TODO CRASHES AUTO? but i dont think we need bc joystick disabled in auto anyway //  DriveWithJoystick(false);
 //TODO remove? remove the whole function? m_container->m_swerve.UpdateOdometry();
-m_autonomousCommand->Execute();
+//m_autonomousCommand->Execute();
 }
 
 void Robot::TeleopInit() {

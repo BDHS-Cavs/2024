@@ -67,6 +67,7 @@ void CenterAuto::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 ends at 3 (2s)
     {
+        frc::SmartDashboard::PutString("current auto: ", "CenterAuto");
         m_shooter->ShooterShoot(); //spin shooter
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 ends at 5 (2s)

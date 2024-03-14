@@ -44,7 +44,7 @@ class Vision: public frc2::SubsystemBase {
 
 private:
 
-    photon::PhotonCamera camera{"limelightcam"};
+    //TODO photon::PhotonCamera camera{"limelightcam"};
     //photon::PhotonPipelineResult result;;
     //bool hasTargets;
     //double yaw;
