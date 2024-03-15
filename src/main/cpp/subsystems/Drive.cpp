@@ -24,7 +24,7 @@ Drive::Drive(){
     //BROKEN AddChild("m_controllerRight", &m_controllerRight);
 
     //BROKEN AddChild("m_rightFront", &m_rightFront);
-    m_rightFront.SetInverted(true);
+    m_rightFront.SetInverted(false);
 
     //BROKEN AddChild("m_rightRear", &m_rightRear);
     m_rightRear.SetInverted(true);
@@ -35,7 +35,7 @@ Drive::Drive(){
     m_leftFront.SetInverted(false);
 
     //BROKEN AddChild("m_leftRear", &m_leftRear);
-    m_leftRear.SetInverted(false);
+    m_leftRear.SetInverted(true);
 
     AddChild("m_drivegyro", &m_drivegyro);
 
@@ -43,10 +43,10 @@ Drive::Drive(){
     m_rightRear.Set(ctre::phoenix::motorcontrol::ControlMode::Follower, DriveConstants::kFrontRightMotorPort);
 
         //drive
-    m_leftFront.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-    m_leftRear.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-    m_rightFront.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-    m_rightRear.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+    m_leftFront.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Coast);
+    m_leftRear.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Coast);
+    m_rightFront.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Coast);
+    m_rightRear.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Coast);
 
     //turning
     m_turningLeftFront.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
@@ -70,21 +70,21 @@ void Drive::SimulationPeriodic() {
 // Functions called by robot commands
 void Drive::Motivate(double leftSpeed, double rightSpeed) {
 
-    m_differentialDrive.ArcadeDrive(leftSpeed, rightSpeed, true);
+    m_differentialDrive.TankDrive(leftSpeed, rightSpeed, true);
 }
 
 void Drive::AutoMotivateRotateLeft() {
 
     double autoLeftSpeed = 1;
     double autoRightSpeed = -1;
-    m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+    m_differentialDrive.TankDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
 void Drive::AutoMotivateRotateRight() {
 
     double autoLeftSpeed = -1;
     double autoRightSpeed = 1;
-    m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
+    m_differentialDrive.TankDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
 bool Drive::CompareAngles(double x, double y, double epsilon = 0.01)
@@ -108,11 +108,11 @@ bool Drive::CalculateAverageEncoderDistance() {
 
 void Drive::DriveStop(){
     // cease your actions!!
-    m_differentialDrive.ArcadeDrive(0.0, 0.0, true);
+    m_differentialDrive.TankDrive(0.0, 0.0, true);
 }
 
 void Drive::AutoMotivateBackward(){
     double autoBackwardsLeftSpeed = 0.55;
     double autoBackwardsRightSpeed = 0; //rotation!!!!!
-    m_differentialDrive.ArcadeDrive(autoBackwardsLeftSpeed, autoBackwardsRightSpeed, true);
+    m_differentialDrive.TankDrive(autoBackwardsLeftSpeed, autoBackwardsRightSpeed, true);
 }

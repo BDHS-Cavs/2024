@@ -52,8 +52,8 @@ m_drive.SetDefaultCommand(frc2::RunCommand(
         [this]
         {
             m_drive.Motivate(
-                m_drivecontroller.GetY(),
-                m_drivecontroller.GetX());
+                m_drivecontroller.GetLeftY(),
+                m_drivecontroller.GetRightY());
         },
          {&m_drive}));
 }
@@ -88,7 +88,7 @@ m_controllerButton7.WhileTrue(ConveyerBackwardCommand(&m_conveyer).ToPtr());    
 m_controllerButton8.WhileTrue(ConveyerForwardCommand(&m_conveyer).ToPtr());                                // Conveyer Forward (8)  (start)
 }
 
-frc::Joystick* RobotContainer::getJoystick() {
+frc::XboxController* RobotContainer::getJoystick() {
    return &m_drivecontroller;
 }
 frc::XboxController* RobotContainer::getController() {

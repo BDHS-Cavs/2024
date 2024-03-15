@@ -67,10 +67,11 @@ public:
     Conveyer m_conveyer;
 
     // Get the control values
-    frc::Joystick *getJoystick();
+    frc::XboxController *getJoystick();
     frc::XboxController *getController();
 
-    frc::Joystick m_drivecontroller{0};
+    frc::XboxController m_drivecontroller{0};
+  
     frc::XboxController m_controller{1};
 
 
