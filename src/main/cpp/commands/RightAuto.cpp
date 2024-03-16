@@ -47,7 +47,7 @@ void RightAuto::Execute() {
 
     units::second_t period1 = 1_s; //starts at 1 (2s)
     units::second_t period2 = 3_s; //starts at 3 (3s)
-    units::second_t period3 = 5_s; //starts at 5 (5s)
+    units::second_t period3 = 5_s; //starts at 5 (2s)
     units::second_t period4 = 6_s; //starts at 6 (1s)
     units::second_t period5 = 8_s; //starts at 8 (2s)
 
@@ -73,7 +73,7 @@ void RightAuto::Execute() {
     {
         m_conveyer->ConveyerForward(); //run conveyer
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.5 (0.5s)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 6 (1s)
     {
         m_shooter->ShooterStop(); //stop spinning shooter
         m_conveyer->ConveyerStop(); //stop running conveyer
