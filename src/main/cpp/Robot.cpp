@@ -16,11 +16,11 @@ void Robot::RobotInit() {
     //ethernetcamera = frc::CameraServer::AddAxisCamera("10.29.78.11");
 //    ethernetcamera = frc::CameraServer::StartAutomaticCapture(2);
 
-    cameraserver = frc::CameraServer::GetServer();
-
     usbcamera1.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
     usbcamera2.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
     //ethernetcamera.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
+
+    cameraserver = frc::CameraServer::GetServer();
 
   m_container->m_drive.m_drivegyro.Calibrate(); //calibrate gyro
 }
