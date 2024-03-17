@@ -78,10 +78,10 @@ frc2::JoystickButton m_controllerButton6{&m_controller, (int)frc::XboxController
 frc2::JoystickButton m_controllerButton7{&m_controller, (int)frc::XboxController::Button::kBack};          // Conveyer Backward (7) (back)
 frc2::JoystickButton m_controllerButton8{&m_controller, (int)frc::XboxController::Button::kStart};         // Conveyer Forward (8)  (start)
 
-m_controllerButton1.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());                                  // Shooter Shoot (1)   (A)
+m_controllerButton1.WhileTrue(ShooterShootCommand(&m_shooter).ToPtr());                                    // Shooter Shoot (1)   (A)
 m_controllerButton2.WhileTrue(ClimberRaiseCommand(&m_climber).ToPtr());                                    // Climber Raise (2)     (B)
 m_controllerButton3.WhileTrue(ClimberLowerCommand(&m_climber).ToPtr());                                    // Climber Lower (3)     (X)
-m_controllerButton4.WhileTrue(ShooterRetractCommand(&m_shooter).ToPtr());                                    // Shooter Retract (4)     (Y)
+m_controllerButton4.WhileTrue(ShooterRetractCommand(&m_shooter).ToPtr());                                  // Shooter Retract (4)     (Y)
 m_controllerButton5.WhileTrue(IntakeExpelCommand(&m_intake).ToPtr());                                      // Intake Expel (5)      (LB)
 m_controllerButton6.WhileTrue(IntakeRunCommand(&m_intake).ToPtr());                                        // Intake Run (6)        (RB)
 m_controllerButton7.WhileTrue(ConveyerBackwardCommand(&m_conveyer).ToPtr());                               // Conveyer Backward (7) (back)
