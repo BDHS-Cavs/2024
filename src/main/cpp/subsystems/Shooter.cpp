@@ -41,16 +41,16 @@ void Shooter::ShooterShoot(){
     // Run Shooter
         //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
         //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, -0.35);
-        m_shooterMotor1.Set(-1.0);
-        m_shooterMotor2.Set(-1.0);
+        m_shooterMotor1.Set(1.0);
+        m_shooterMotor2.Set(1.0);
 } 
 
 void Shooter::ShooterRetract(){
     // Retract Shooter
         //m_shooterMotor1.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
         //m_shooterMotor2.Set(ctre::phoenix::motorcontrol::TalonFXControlMode::PercentOutput, 0.35);
-        m_shooterMotor1.Set(1.0);
-        m_shooterMotor2.Set(1.0);
+        m_shooterMotor1.Set(-1.0);
+        m_shooterMotor2.Set(-1.0);
 }
 
 void Shooter::ShooterStop(){

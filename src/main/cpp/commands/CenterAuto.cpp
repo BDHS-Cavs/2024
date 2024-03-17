@@ -49,7 +49,7 @@ void CenterAuto::Execute() {
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (5s)
     units::second_t period4 = 6_s; //starts at 6 (1s)
-    units::second_t period5 = 8_s; //starts at 8 (2s)
+    units::second_t period5 = 6.85_s; //starts at 6.85 (0.85s)
 
     if(m_firstTime)
     {
@@ -78,9 +78,9 @@ void CenterAuto::Execute() {
         m_shooter->ShooterStop(); //stop spinning shooter
         m_conveyer->ConveyerStop(); //stop running conveyer
     }
-    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 8 (2s)
+    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 6.85 (0.85s)
     {
-        m_drive->AutoMotivateBackward(); //drive back for 2s
+        m_drive->AutoMotivateBackward(); //drive for 0.85s
     }
     else
     {
