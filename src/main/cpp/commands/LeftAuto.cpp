@@ -49,8 +49,8 @@ void LeftAuto::Execute() {
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (2s)
     units::second_t period4 = 5.5_s; //starts at 5.5 (0.5s)
-    units::second_t period5 = 6.25_s; //starts at 6s (0.5s)
-    units::second_t period6 = 7.25_s; //starts at 6.5 (0.5s)
+    units::second_t period5 = 6.25_s; //starts at 6.25 (0.75s)
+    units::second_t period6 = 7.25_s; //starts at 7.25 (1s)
 
     if(m_firstTime)
     {
@@ -74,20 +74,19 @@ void LeftAuto::Execute() {
     {
         m_conveyer->ConveyerForward(); //run conveyer
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.3 (0.3s)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.5 (0.5s)
     {
         m_shooter->ShooterStop(); //stop spinning shooter
         m_conveyer->ConveyerStop(); //stop running conveyer
-//        m_drive->AutoMotivateRotateRight(); //rotate right
-        m_drive->AutoMotivateBackward();
-    }
-    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 5.3 ends at 5.8 (0.5s)
-    {
-        m_drive->AutoMotivateRotateLeft(); //drive back for 0.5s
-    }
-    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 5.8 ends at 6.3 (0.5s)
-    {
         m_drive->AutoMotivateBackward(); //drive back for 0.5s
+    }
+    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 5.5 ends at 6.25 (0.75s)
+    {
+        m_drive->AutoMotivateRotateLeft(); //rotate for 0.75s
+    }
+    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.25 ends at 7.25 (1s)
+    {
+        m_drive->AutoMotivateBackward(); //drive back for 1s
     }
     else
     {
