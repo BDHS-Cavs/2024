@@ -53,7 +53,7 @@ m_drive.SetDefaultCommand(frc2::RunCommand(
         {
             m_drive.Motivate(
                 m_drivecontroller.GetLeftY(),
-                m_drivecontroller.GetRightY());
+                m_drivecontroller.GetLeftX());
         },
          {&m_drive}));
 }
