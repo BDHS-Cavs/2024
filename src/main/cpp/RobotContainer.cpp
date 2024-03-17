@@ -88,8 +88,11 @@ m_controllerButton7.WhileTrue(ConveyerBackwardCommand(&m_conveyer).ToPtr());    
 m_controllerButton8.WhileTrue(ConveyerForwardCommand(&m_conveyer).ToPtr());                                // Conveyer Forward (8)  (start)
 }
 
-frc::XboxController* RobotContainer::getJoystick() {
-   return &m_drivecontroller;
+//frc::XboxController* RobotContainer::getJoystick() {
+//   return &m_drivecontroller;
+//}
+frc::PS4Controller* RobotContainer::getJoystick() {
+    return &m_drivecontroller;
 }
 frc::XboxController* RobotContainer::getController() {
    return &m_controller;

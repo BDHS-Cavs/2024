@@ -19,6 +19,7 @@
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
 #include <frc/XboxController.h>
+#include <frc/PS4Controller.h>
 #include <frc/filter/SlewRateLimiter.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/smartdashboard/SendableChooser.h>
@@ -67,11 +68,12 @@ public:
     Conveyer m_conveyer;
 
     // Get the control values
-    frc::XboxController *getJoystick(); //drivecontroller
+//    frc::XboxController *getJoystick(); //drivecontroller
+    frc::PS4Controller *getJoystick();
     frc::XboxController *getController();
 
-    frc::XboxController m_drivecontroller{0}; //drivecontroller
-  
+//    frc::XboxController m_drivecontroller{0}; //drivecontroller
+    frc::PS4Controller m_drivecontroller{0};  
     frc::XboxController m_controller{1};
 
 
