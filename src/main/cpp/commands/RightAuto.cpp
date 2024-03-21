@@ -48,9 +48,9 @@ void RightAuto::Execute() {
     units::second_t period1 = 1_s; //starts at 1 (2s)
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (2s)
-    units::second_t period4 = 5.5_s; //starts at 5.5 (0.5s)
-    units::second_t period5 = 6.25_s; //starts at 6.25s (0.75s)
-    units::second_t period6 = 7.65_s; //starts at 7.65 (1.4s)
+    units::second_t period4 = 5.6_s; //starts at 5.5 (0.5s)
+    units::second_t period5 = 6.35_s; //starts at 6.25s (0.75s)
+    units::second_t period6 = 7.75_s; //starts at 7.65 (1.4s)
 
     if(m_firstTime)
     {
