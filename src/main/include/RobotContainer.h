@@ -15,6 +15,7 @@
 #include <optional>
 
 #include <frc2/command/Commands.h>
+#include <frc2/command/button/POVButton.h>
 #include <frc/MathUtil.h>
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
