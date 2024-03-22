@@ -48,8 +48,15 @@ void CenterAuto::Execute() {
     units::second_t period1 = 1_s; //starts at 1 (2s)
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (5s)
-    units::second_t period4 = 6_s; //starts at 6 (1s)
-    units::second_t period5 = 6.85_s; //starts at 6.85 (0.85s)
+    units::second_t period4 = 5.3_s; //starts at 6 (1s)
+    units::second_t period5 = 6.6_s; //starts at 7 (1s)
+    units::second_t period6 = 8.1_s; 
+    units::second_t period7 = 9.4_s;
+    units::second_t period8 = 10.5_s;
+    units::second_t period9 = 12.5_s;
+    units::second_t period10 = 13.5_s;
+    units::second_t period11 = 14.8_s;
+    units::second_t period12 = 14.9_s;
 
     if(m_firstTime)
     {
@@ -81,6 +88,38 @@ void CenterAuto::Execute() {
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 6.85 (0.85s)
     {
         m_drive->AutoMotivateBackward(); //drive for 0.85s
+        m_intake->IntakeRun();
+    }
+    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6 ends at 6.85 (0.85s)
+    {
+        m_drive->AutoMotivateForward(); //drive for 0.85s
+    }
+    else if(m_timer.Get() >= period6 && m_timer.Get() < period7) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_drive->DriveStop();
+            m_shooter->ShooterShoot();
+            m_intake->IntakeStop();
+    }
+    else if(m_timer.Get() >= period7 && m_timer.Get() < period8) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_shooter->ShooterShoot();
+    }
+    else if(m_timer.Get() >= period8 && m_timer.Get() < period9) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_conveyer->ConveyerForward();
+    }
+    else if(m_timer.Get() >= period9 && m_timer.Get() < period10) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_conveyer->ConveyerStop();
+            m_shooter->ShooterStop();
+    }
+    else if(m_timer.Get() >= period10 && m_timer.Get() < period11) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_drive->AutoMotivateBackward();
+    }
+    else if(m_timer.Get() >= period11 && m_timer.Get() < period12) //starts at 6 ends at 6.85 (0.85s)
+    {
+            m_drive->DriveStop();
     }
     else
     {

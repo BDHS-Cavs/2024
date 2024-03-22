@@ -21,11 +21,11 @@ ShooterRetractCommand::ShooterRetractCommand(Shooter* m_shooter)
 
 // Called just before this Command runs the first time
 void ShooterRetractCommand::Initialize() {
-   m_shooter->ShooterRetract();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterRetractCommand::Execute() {
+   m_shooter->ShooterShoot();
 }
 
 // Make this return true when this Command no longer needs to run execute()

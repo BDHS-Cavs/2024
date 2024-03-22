@@ -42,6 +42,7 @@ public:
     void DriveStop();
     bool CompareAngles(double x, double y, double epsilon);
     bool CalculateAverageEncoderDistance();
+    void AutoMotivateForward();
 
     frc::ADXRS450_Gyro m_drivegyro;
     

@@ -50,7 +50,7 @@ void LeftAuto::Execute() {
     units::second_t period3 = 5_s; //starts at 5 (2s)
     units::second_t period4 = 5.5_s; //starts at 5.5 (0.5s)
     units::second_t period5 = 6.25_s; //starts at 6.25 (0.75s)
-    units::second_t period6 = 7.25_s; //starts at 7.25 (1s)
+    units::second_t period6 = 7.55_s; //starts at 7.55 (1.3s)
 
     if(m_firstTime)
     {
@@ -84,7 +84,7 @@ void LeftAuto::Execute() {
     {
         m_drive->AutoMotivateRotateLeft(); //rotate for 0.75s
     }
-    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.25 ends at 7.25 (1s)
+    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.25 ends at 7.55 (1.3s)
     {
         m_drive->AutoMotivateBackward(); //drive back for 1s
     }

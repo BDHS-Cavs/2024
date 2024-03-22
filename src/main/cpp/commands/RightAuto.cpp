@@ -82,7 +82,7 @@ void RightAuto::Execute() {
     }
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 5.5 ends at 6.25 (0.75s)
     {
-        m_drive->AutoMotivateRotateRight(); //drive back for 0.75s
+        m_drive->AutoMotivateRotateRight(); //rotate for 0.75s
     }
     else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.25 ends at 7.65 (1.4s)
     {
