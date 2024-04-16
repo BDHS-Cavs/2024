@@ -82,8 +82,8 @@ void Drive::AutoMotivateRotateLeft() {
 
 void Drive::AutoMotivateRotateRight() {
 
-    double autoLeftSpeed = -1.0;
-    double autoRightSpeed = 1.0;
+    double autoLeftSpeed = 1.0;
+    double autoRightSpeed = -1.0;
     m_differentialDrive.ArcadeDrive(autoLeftSpeed, autoRightSpeed, true);
 }
 
