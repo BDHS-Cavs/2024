@@ -44,15 +44,15 @@ FOR THE MXP ENCODER PORTS
 9 is 23 etc.
 */
 
-constexpr int kFrontLeftDriveMotorPort = 3;                //sm4d
-constexpr int kRearLeftDriveMotorPort = 5;                 //sm3d
-constexpr int kFrontRightDriveMotorPort = 9;               //sm1d
-constexpr int kRearRightDriveMotorPort = 7;                //sm2d
+constexpr int kFrontLeftDriveMotorPort = 3;                  //sm4d
+constexpr int kRearLeftDriveMotorPort = 5;                   //sm3d
+constexpr int kFrontRightDriveMotorPort = 9;                 //sm1d
+constexpr int kRearRightDriveMotorPort = 7;                  //sm2d
 
-constexpr int kFrontLeftTurningMotorPort = 4;              //sm4s
-constexpr int kRearLeftTurningMotorPort = 6;               //sm3s
-constexpr int kFrontRightTurningMotorPort = 10;            //sm1s
-constexpr int kRearRightTurningMotorPort = 2;              //sm2s
+constexpr int kFrontLeftTurningMotorPort = 4;                //sm4s
+constexpr int kRearLeftTurningMotorPort = 6;                 //sm3s
+constexpr int kFrontRightTurningMotorPort = 10;              //sm1s
+constexpr int kRearRightTurningMotorPort = 2;                //sm2s
 
 //constexpr int kFrontLeftTurningEncoderChannelA = 2;        //sm4s
 //constexpr int kRearLeftTurningEncoderChannelA = 6;         //sm3s
@@ -65,9 +65,9 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 //constexpr int kRearRightTurningEncoderChannelB = 19;       //sm2s
 
 //constexpr bool kFrontLeftTurningEncoderReversed = false;   //sm4s
-//constexpr bool kRearLeftTurningEncoderReversed = false;     //sm3s
+//constexpr bool kRearLeftTurningEncoderReversed = false;    //sm3s
 //constexpr bool kFrontRightTurningEncoderReversed = false;  //sm1s
-//constexpr bool kRearRightTurningEncoderReversed = false;    //sm2s
+//constexpr bool kRearRightTurningEncoderReversed = false;   //sm2s
 
 //constexpr int kFrontLeftDriveEncoderChannelA = 1;          //sm4d
 //constexpr int kRearLeftDriveEncoderChannelA = 5;           //sm3d
@@ -80,9 +80,9 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 //constexpr int kRearRightDriveEncoderChannelB = 9;          //sm2d
 
 //constexpr bool kFrontLeftDriveEncoderReversed = false;     //sm4d
-//constexpr bool kRearLeftDriveEncoderReversed = false;       //sm3d
+//constexpr bool kRearLeftDriveEncoderReversed = false;      //sm3d
 //constexpr bool kFrontRightDriveEncoderReversed = false;    //sm1d
-//constexpr bool kRearRightDriveEncoderReversed = false;      //sm2d
+//constexpr bool kRearRightDriveEncoderReversed = false;     //sm2d
 
 // These are example values only - DO NOT USE THESE FOR YOUR OWN ROBOT!
 // These characterization values MUST be determined either experimentally or
@@ -100,16 +100,20 @@ constexpr int kRearRightTurningMotorPort = 2;              //sm2s
 
 
 //pid stuff
-constexpr int TIMEOUT = 0;                           //time? like 0ms?
-constexpr double L = 20.125;                         //wheelbase
-constexpr double W = 22.25;                          //trackwidth
-constexpr double COUNTPERDEG = 0.0;                  //nicks number is 16.2539
-constexpr double angleP = 2.0;                       //TODO find              //nicks numbers: double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
-constexpr double angleI = 0.0;                       //TODO find
-constexpr double angleD = 0.0;                       //TODO find
-constexpr double angleF = 2.91;                      //(100% (the speed we ran it at) * 1023) / 263 (phoenix tuner x pid0 velocity while running at 100% speed)
-constexpr int angleV = 132;                          //motion magic
-constexpr int angleA = 132;                          //motion magic
+constexpr int TIMEOUT = 10;                                          //time? like 0ms? //10 is cyborg's number, 0 is nicks number
+constexpr double L = 20.125;                                        //wheelbase
+constexpr double W = 22.25;                                         //trackwidth
+constexpr double COUNTPERDEG = 0.0;                                 //nicks number is 16.2539
+constexpr double angleP = 15.0;                                     //TODO find           //nicks numbers: double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
+constexpr double angleI = 0.0;                                      //TODO find
+constexpr double angleD = 2.0;                                      //TODO find
+//unused constexpr double angleF = 2.91;                            //(100% (the speed we ran it at) * 1023) / 263 (phoenix tuner x pid0 velocity while running at 100% speed)
+//unused constexpr int angleV = 132;                                //motion magic
+//unused constexpr int angleA = 132;                                //motion magic
+constexpr double kTurningGearRatio = 1.0;                           //TODO find
+
+constexpr double kDriveGearRatio = 40.0/3.0;                        //TODO find
+constexpr double kDriveWheelCircumference = 2.625*std::numbers::pi; //TODO find //inches
 
 //joystick stuff
 constexpr double DEADZONE_XY = 0.1;

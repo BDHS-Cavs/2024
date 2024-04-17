@@ -20,41 +20,41 @@ Vision::Vision(){
 
 void Vision::Periodic() {
     // Put code here to be run every loop
-    photon::PhotonPipelineResult result = camera.GetLatestResult();
-    bool hasTargets = result.HasTargets();
-    frc::SmartDashboard::PutBoolean("Has AprilTag Targets", hasTargets);
-    double yaw;
-    double pitch;
-    double area;
-    double skew;
-    int apriltagID;
+    //TODO photon::PhotonPipelineResult result = camera.GetLatestResult();
+    //TODO bool hasTargets = result.HasTargets();
+    //TODO frc::SmartDashboard::PutBoolean("Has AprilTag Targets", hasTargets);
+    //TODO double yaw;
+    //TODO double pitch;
+    //TODO double area;
+    //TODO double skew;
+    //TODO int apriltagID;
 
     //TODO do we need? - Estimating Field Relative Pose with AprilTags      BROKEN        frc::Pose3d robotpose = photon::PhotonUtils::EstimateFieldToRobot(result.GetBestTarget().GetBestCameraToTarget(), frc::AprilTagFieldLayout::GetTagPose(result.GetBestTarget().GetFiducialId()), photon::PhotonUtils::EstimateFieldToRobot);
 
-    if(hasTargets)
-    {
-        photon::PhotonTrackedTarget target = result.GetBestTarget();
-        double yaw = target.GetYaw();
-        double pitch = target.GetPitch();
-        double area = target.GetArea();
-        double skew = target.GetSkew();
-        int apriltagID = target.GetFiducialId();
+    //TODO if(hasTargets)
+    //TODO {
+    //TODO     photon::PhotonTrackedTarget target = result.GetBestTarget();
+    //TODO     double yaw = target.GetYaw();
+    //TODO     double pitch = target.GetPitch();
+    //TODO     double area = target.GetArea();
+    //TODO     double skew = target.GetSkew();
+    //TODO     int apriltagID = target.GetFiducialId();
 
-        frc::SmartDashboard::PutNumber("AprilTag Yaw", yaw);
-        frc::SmartDashboard::PutNumber("AprilTag Pitch", pitch);
-        frc::SmartDashboard::PutNumber("AprilTag Area", area);
-        frc::SmartDashboard::PutNumber("AprilTag Skew", skew);
-        frc::SmartDashboard::PutNumber("AprilTag ID", apriltagID);
+    //TODO     frc::SmartDashboard::PutNumber("AprilTag Yaw", yaw);
+    //TODO     frc::SmartDashboard::PutNumber("AprilTag Pitch", pitch);
+    //TODO     frc::SmartDashboard::PutNumber("AprilTag Area", area);
+    //TODO     frc::SmartDashboard::PutNumber("AprilTag Skew", skew);
+    //TODO     frc::SmartDashboard::PutNumber("AprilTag ID", apriltagID);
 
         //TODO do we need? it calculates distance to targer - we don't know camera height, target height, and camera pitch (1_m, 1_m, 1_rad)       units::meter_t range = photon::PhotonUtils::CalculateDistanceToTarget(1_m, 1_m, 1_rad, units::degree_t{result.GetBestTarget().GetPitch()});
 
     }
 
-    else
-    {
+    //TODO else
+    //TODO {
         //do nothing
-    }
-}
+    //TODO }
+//TODO }
 
 void Vision::SimulationPeriodic() {
 }

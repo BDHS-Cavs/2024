@@ -15,10 +15,12 @@
 #include <optional>
 
 #include <frc2/command/Commands.h>
+#include <frc2/command/button/POVButton.h>
 #include <frc/MathUtil.h>
 #include <frc/Joystick.h>
 #include <frc2/command/button/JoystickButton.h>
 #include <frc/XboxController.h>
+#include <frc/PS4Controller.h>
 #include <frc/filter/SlewRateLimiter.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 #include <frc/smartdashboard/SendableChooser.h>
@@ -44,7 +46,10 @@
 #include "commands/ConveyerForwardCommand.h"
 #include "commands/ConveyerBackwardCommand.h"
 
-#include "commands/AutonomousCommand.h"
+//#include "commands/AutonomousCommand.h"
+#include "commands/CenterAuto.h"
+#include "commands/LeftAuto.h"
+#include "commands/RightAuto.h"
 
 class RobotContainer {
 
@@ -72,10 +77,10 @@ public:
     Conveyer m_conveyer;
 
     // Get the control values
-    frc::Joystick *getJoystick();
+    frc::PS4Controller *getJoystick();
     frc::XboxController *getController();
 
-    frc::Joystick m_drivecontroller{0};
+    frc::PS4Controller m_drivecontroller{0};
     frc::XboxController m_controller{1};
 
 private:
@@ -95,8 +100,16 @@ private:
     //frc2::CommandPtr m_rightAuto = autos::RightAuto(&m_arm, &m_drive, &m_grabber);
     //frc2::CommandPtr m_centerAuto = autos::CenterAuto(&m_arm, &m_drive, &m_grabber);
 
-    frc::SendableChooser<frc2::Command*> m_chooser; //if i remove all the chooser stuff, auto crashes, so i just leave it alone but still use the single autonomouscommand.cpp
+    //frc::SendableChooser<frc2::Command*> m_chooser; //if i remove all the chooser stuff, auto crashes, so i just leave it alone but still use the single autonomouscommand.cpp
 
     static RobotContainer* m_robotContainer;
     void ConfigureButtonBindings();
+
+      // The autonomous routines
+  LeftAuto m_leftAuto{&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  RightAuto m_rightAuto{&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+  CenterAuto m_centerAuto{&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision, &m_conveyer};
+
+  // The chooser for the autonomous routines
+  frc::SendableChooser<frc2::Command*> m_chooser;
 };

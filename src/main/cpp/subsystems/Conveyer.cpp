@@ -19,7 +19,7 @@ Conveyer::Conveyer(){
     SetSubsystem("Conveyer");
 
     //AddChild("ConveyerMotor", &m_conveyerMotor);
-    m_conveyerMotor.SetInverted(true);
+    m_conveyerMotor.SetInverted(false);
 }
 
 void Conveyer::Periodic() {

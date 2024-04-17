@@ -25,6 +25,10 @@ Climber::Climber(){
     m_climberMotor2.SetInverted(true);
 
     //AddChild("ClimberMotors", &m_climberMotors);
+
+    m_climberMotor1.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
+    m_climberMotor2.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
+	
 }
 
 void Climber::Periodic() {
@@ -74,12 +78,6 @@ void Climber::ClimberStop(){
     // stop the Climber motor
     m_climberMotor1.Set(0.0);
     m_climberMotor2.Set(0.0);  
-}
-
-void Climber::ClimberIdleMode(){
-    // set their idle mode to brake
-    m_climberMotor1.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
-    m_climberMotor2.SetIdleMode(rev::CANSparkBase::IdleMode::kBrake);
 }
 
 void Climber::ClimberScanEncoders(){

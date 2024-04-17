@@ -32,7 +32,6 @@ public:
     void ClimberRaise();
     void ClimberLower();
     void ClimberStop();
-    void ClimberIdleMode();
     void ClimberScanEncoders();
 
     rev::SparkRelativeEncoder m_climberEncoder1 = m_climberMotor1.GetEncoder();

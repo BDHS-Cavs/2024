@@ -10,11 +10,15 @@
 void Robot::RobotInit() {
   frc::CameraServer::GetVideo(); //i dont know if we need this line because it says use this if you want to use vision processing on the roborio but we do it on the 2nd camera (the limelight 2+) with photonvision
   frc::CameraServer::StartAutomaticCapture(); //make usb cam (microsoft lifecam hd-3000) work
+    usbcamera1 = frc::CameraServer::StartAutomaticCapture(0);
+    usbcamera2 = frc::CameraServer::StartAutomaticCapture(1);
 
-  m_container->m_climber.ClimberIdleMode(); //set climber spark max's idle mode to brake
-  m_container->m_shooter.ShooterIdleMode(); //set shooter spark max's idle mode to brake
+    usbcamera1.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
+    usbcamera2.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
 
-  m_container->m_swerve.m_gyro.Calibrate(); //calibrate gyro
+    cameraserver = frc::CameraServer::GetServer();
+
+  //TODO m_container->m_swerve.m_gyro.Calibrate(); //calibrate gyro
 }
 
 /**
@@ -131,7 +135,7 @@ void Robot::AutonomousInit() {
 void Robot::AutonomousPeriodic() {
 //TODO CRASHES AUTO? but i dont think we need bc joystick disabled in auto anyway //  DriveWithJoystick(false);
 //TODO remove? remove the whole function? m_container->m_swerve.UpdateOdometry();
-m_autonomousCommand->Execute();
+//m_autonomousCommand->Execute();
 }
 
 void Robot::TeleopInit() {
