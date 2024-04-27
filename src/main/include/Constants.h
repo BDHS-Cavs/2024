@@ -54,6 +54,11 @@ constexpr int kRearLeftTurningMotorPort = 6;                 //sm3s
 constexpr int kFrontRightTurningMotorPort = 10;              //sm1s
 constexpr int kRearRightTurningMotorPort = 2;                //sm2s
 
+constexpr int kFrontLeftTurningAnalogEncoderPort = 2;        //sm4s
+constexpr int kRearLeftTurningAnalogEncoderPort = 3;         //sm3s
+constexpr int kFrontRightTurningAnalogEncoderPort = 0;       //sm1s
+constexpr int kRearRightTurningAnalogEncoderPort = 1;        //sm2s
+
 //constexpr int kFrontLeftTurningEncoderChannelA = 2;        //sm4s
 //constexpr int kRearLeftTurningEncoderChannelA = 6;         //sm3s
 //constexpr int kFrontRightTurningEncoderChannelA = 12;      //sm1s
@@ -100,16 +105,16 @@ constexpr int kRearRightTurningMotorPort = 2;                //sm2s
 
 
 //pid stuff
-constexpr int TIMEOUT = 10;                                          //time? like 0ms? //10 is cyborg's number, 0 is nicks number
+constexpr int TIMEOUT = 10;                                         //time? like 0ms? //10 is cyborg's number, 0 is nicks number
 constexpr double L = 20.125;                                        //wheelbase
 constexpr double W = 22.25;                                         //trackwidth
-constexpr double COUNTPERDEG = 0.0;                                 //nicks number is 16.2539
+constexpr double COUNTPERDEG = 1.0;                                 //nicks number is 16.2539
 constexpr double angleP = 15.0;                                     //TODO find           //nicks numbers: double angleP = 1.03858, angleI = 0.004, angleD = 8, angleF = 0.51, angleV = 4012, angleA = 4012;
 constexpr double angleI = 0.0;                                      //TODO find
 constexpr double angleD = 2.0;                                      //TODO find
-//unused constexpr double angleF = 2.91;                            //(100% (the speed we ran it at) * 1023) / 263 (phoenix tuner x pid0 velocity while running at 100% speed)
-//unused constexpr int angleV = 132;                                //motion magic
-//unused constexpr int angleA = 132;                                //motion magic
+constexpr double angleF = 2.91;                                     //(100% (the speed we ran it at) * 1023) / 263 (phoenix tuner x pid0 velocity while running at 100% speed)
+constexpr int angleV = 132;                                         //motion magic
+constexpr int angleA = 132;                                         //motion magic
 constexpr double kTurningGearRatio = 1.0;                           //TODO find
 
 constexpr double kDriveGearRatio = 40.0/3.0;                        //TODO find

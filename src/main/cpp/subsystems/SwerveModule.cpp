@@ -1,8 +1,9 @@
 #include "subsystems/SwerveModule.h"
 
-SwerveModule::SwerveModule(int turningMotorPort, int driveMotorPort)
+SwerveModule::SwerveModule(int turningMotorPort, int driveMotorPort, int turningAnalogEncoderPort)
                           : m_turningMotor(turningMotorPort),
-                            m_driveMotor(driveMotorPort)
+                            m_driveMotor(driveMotorPort),
+                            m_turningAnalogEncoder(turningAnalogEncoderPort)
 {
     m_driveMotor.ConfigPeakOutputForward(1);
     m_driveMotor.ConfigPeakOutputReverse(-1);
@@ -10,16 +11,16 @@ SwerveModule::SwerveModule(int turningMotorPort, int driveMotorPort)
     m_turningMotor.Config_kP(0, DriveConstants::angleP, DriveConstants::TIMEOUT);
     m_turningMotor.Config_kI(0, DriveConstants::angleI, DriveConstants::TIMEOUT);
     m_turningMotor.Config_kD(0, DriveConstants::angleD, DriveConstants::TIMEOUT);
-    //TODO remove? m_turningMotor.Config_kF(0, DriveConstants::angleF, DriveConstants::TIMEOUT);
+    m_turningMotor.Config_kF(0, DriveConstants::angleF, DriveConstants::TIMEOUT);
     //"Try not to use this if possible and if you do wait until PIDF have been set." m_turningMotor.Config_IntegralZone(0, 50, DriveConstants::TIMEOUT);
     //"These two are needed if you're using motion magic for setting the angle motor"
     //"If you do, calculate F, V, A, and then P, D, and then I."
-    //TODO remove? m_turningMotor.ConfigMotionCruiseVelocity(DriveConstants::angleV, DriveConstants::TIMEOUT);
-    //TODO remove? m_turningMotor.ConfigMotionAcceleration(DriveConstants::angleA, DriveConstants::TIMEOUT);
+    m_turningMotor.ConfigMotionCruiseVelocity(DriveConstants::angleV, DriveConstants::TIMEOUT);
+    m_turningMotor.ConfigMotionAcceleration(DriveConstants::angleA, DriveConstants::TIMEOUT);
     m_turningMotor.SetInverted(true);
 
-    m_driveMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
-    m_turningMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
+    //m_driveMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
+    //m_turningMotor.ConfigSelectedFeedbackSensor(ctre::phoenix::motorcontrol::FeedbackDevice::CTRE_MagEncoder_Relative, 0, 0);
 
     m_driveMotor.ConfigNominalOutputForward(0.9166, 0);//% delay to wait for the error code, cyborg's numbers. TODO
     m_driveMotor.ConfigNominalOutputReverse(-0.9166, 0);
@@ -40,9 +41,10 @@ void SwerveModule::Drive(double speed, double angle)
 }
 
 int SwerveModule::getAnglePosition() {
-    return m_turningMotor.GetSelectedSensorPosition(0);
+    //return m_turningMotor.GetSelectedSensorPosition(0);
+    return m_turningAnalogEncoder.GetAbsolutePosition();
 }
 
 int SwerveModule::getDrivePosition() {
-    return m_driveMotor.GetSelectedSensorPosition(0);
+    //return m_driveMotor.GetSelectedSensorPosition(0);
 }

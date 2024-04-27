@@ -20,10 +20,10 @@
 RobotContainer* RobotContainer::m_robotContainer = NULL;
 
 RobotContainer::RobotContainer() 
-: fl(DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort),
-  fr(DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort),
-  bl(DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort),
-  br(DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort),
+: fl(DriveConstants::kFrontLeftDriveMotorPort, DriveConstants::kFrontLeftTurningMotorPort, DriveConstants::kFrontLeftTurningAnalogEncoderPort),
+  fr(DriveConstants::kFrontRightDriveMotorPort, DriveConstants::kFrontRightTurningMotorPort, DriveConstants::kFrontRightTurningAnalogEncoderPort),
+  bl(DriveConstants::kRearLeftDriveMotorPort, DriveConstants::kRearLeftTurningMotorPort, DriveConstants::kRearLeftTurningAnalogEncoderPort),
+  br(DriveConstants::kRearRightDriveMotorPort, DriveConstants::kRearRightTurningMotorPort, DriveConstants::kRearRightTurningAnalogEncoderPort),
   m_swerve(fl, fr, bl, br)
 {
 //RobotContainer::RobotContainer() : m_autonomousCommand(&m_swerve, &m_climber, &m_shooter, &m_intake, &m_vision) { //broken??

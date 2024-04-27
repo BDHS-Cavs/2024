@@ -75,6 +75,13 @@ void Robot::RobotPeriodic() {
     //frc::SmartDashboard::PutNumber("Back Right Drive Encoder", m_container->m_swerve.m_backRight.m_driveEncoder.GetDistance());
     //frc::SmartDashboard::PutNumber("Back Right Turning Encoder", m_container->m_swerve.m_backRight.m_turningEncoder.GetDistance());
 
+
+    frc::SmartDashboard::PutNumber("Front Left Absolute Encoder Value", m_container->m_swerve.m_fl.m_turningAnalogEncoder.GetAbsolutePosition());
+    frc::SmartDashboard::PutNumber("Front Right Absolute Encoder Value", m_container->m_swerve.m_fr.m_turningAnalogEncoder.GetAbsolutePosition());
+    frc::SmartDashboard::PutNumber("Back Left Absolute Encoder Value", m_container->m_swerve.m_bl.m_turningAnalogEncoder.GetAbsolutePosition());
+    frc::SmartDashboard::PutNumber("Back Right Absolute Encoder Value", m_container->m_swerve.m_br.m_turningAnalogEncoder.GetAbsolutePosition());
+
+
     //gyro
     frc::SmartDashboard::PutNumber("gyro get angle", m_container->m_swerve.m_gyro.GetAngle());
     frc::SmartDashboard::PutNumber("gyro get rate", m_container->m_swerve.m_gyro.GetRate());
@@ -101,12 +108,6 @@ void Robot::RobotPeriodic() {
     //TODO remove? m_container->m_vision.VisionTrack();
     //TODO remove? frc::SmartDashboard::PutNumber("Photon current ID", m_container->m_vision.target.GetFiducialId());
     //TODO remove? frc::SmartDashboard::PutBoolean("Photon HasTargets", m_container->m_vision.result.HasTargets());
-
-    frc::SmartDashboard::PutNumber("FL turning motor error", m_container->m_swerve.m_fl.m_turningMotor.GetClosedLoopError());
-    frc::SmartDashboard::PutNumber("bl turnin motor error", m_container->m_swerve.m_bl.m_turningMotor.GetClosedLoopError());
-
-        frc::SmartDashboard::PutNumber("bl turn encoder position", m_container->m_swerve.m_bl.m_turningMotor.GetSelectedSensorPosition());
-        frc::SmartDashboard::PutNumber("bl turn encoder velocity", m_container->m_swerve.m_bl.m_turningMotor.GetSelectedSensorVelocity());
 
 }
 
@@ -159,7 +160,7 @@ void Robot::TeleopPeriodic() {
   //DriveWithJoystick(true);
 
 //swerve drive with joystick
-//m_container->m_swerve.calculateVectors(m_container->getX(), m_container->getY(), m_container->getZ());
+m_container->m_swerve.calculateVectors(m_container->getX(), m_container->getY(), m_container->getZ());
 //m_container->m_swerve.calculateVectors(1, 1, 0);
 
 }
