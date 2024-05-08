@@ -2,173 +2,58 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-#include "Robot.h"
-
+#include <frc/MathUtil.h>
+#include <frc/TimedRobot.h>
+#include <frc/PS4Controller.h>
+#include <frc/filter/SlewRateLimiter.h>
 #include <frc/smartdashboard/SmartDashboard.h>
-#include <frc2/command/CommandScheduler.h>
 
-void Robot::RobotInit() {
-  frc::CameraServer::GetVideo(); //i dont know if we need this line because it says use this if you want to use vision processing on the roborio but we do it on the 2nd camera (the limelight 2+) with photonvision
-  frc::CameraServer::StartAutomaticCapture(); //make usb cam (microsoft lifecam hd-3000) work
-    usbcamera1 = frc::CameraServer::StartAutomaticCapture(0);
-    usbcamera2 = frc::CameraServer::StartAutomaticCapture(1);
+#include "Drivetrain.h"
 
-    usbcamera1.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
-    usbcamera2.SetConnectionStrategy(cs::VideoSource::ConnectionStrategy::kConnectionKeepOpen);
-
-    cameraserver = frc::CameraServer::GetServer();
-
-  //TODO m_container->m_swerve.m_gyro.Calibrate(); //calibrate gyro
-}
-
-/**
- * This function is called every 20 ms, no matter the mode. Use
- * this for items like diagnostics that you want to run during disabled,
- * autonomous, teleoperated and test.
- *
- * <p> This runs after the mode specific periodic functions, but before
- * LiveWindow and SmartDashboard integrated updating.
- */
-void Robot::RobotPeriodic() {
-  frc2::CommandScheduler::GetInstance().Run();
-
-
-
-  //swerve
-    //front left
-    //TODO frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Percent)", m_container->m_swerve.m_frontLeft.m_driveMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Percent)", m_container->m_swerve.m_frontLeft.m_turningMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Volts)", m_container->m_swerve.m_frontLeft.m_driveMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Volts)", m_container->m_swerve.m_frontLeft.m_turningMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Front Left Drive Motor Output (Amps)", m_container->m_swerve.m_frontLeft.m_driveMotor.GetStatorCurrent());
-    //TODO frc::SmartDashboard::PutNumber("Front Left Turning Motor Output (Amps)", m_container->m_swerve.m_frontLeft.m_turningMotor.GetStatorCurrent());
-    //frc::SmartDashboard::PutNumber("Front Left Drive Encoder", m_container->m_swerve.m_frontLeft.m_driveEncoder.GetDistance());
-    //frc::SmartDashboard::PutNumber("Front Left Turning Encoder", m_container->m_swerve.m_frontLeft.m_turningEncoder.GetDistance());
-
-    //front right
-    //TODO frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Percent)", m_container->m_swerve.m_frontRight.m_driveMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Percent)", m_container->m_swerve.m_frontRight.m_turningMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Volts)", m_container->m_swerve.m_frontRight.m_driveMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Volts)", m_container->m_swerve.m_frontRight.m_turningMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Front Right Drive Motor Output (Amps)", m_container->m_swerve.m_frontRight.m_driveMotor.GetStatorCurrent());
-    //TODO frc::SmartDashboard::PutNumber("Front Right Turning Motor Output (Amps)", m_container->m_swerve.m_frontRight.m_turningMotor.GetStatorCurrent());
-    //frc::SmartDashboard::PutNumber("Front Right Drive Encoder", m_container->m_swerve.m_frontRight.m_driveEncoder.GetDistance());
-    //frc::SmartDashboard::PutNumber("Front Right Turning Encoder", m_container->m_swerve.m_frontRight.m_turningEncoder.GetDistance());
-
-    //back left
-    //TODO frc::SmartDashboard::PutNumber("Back Left Drive Motor Output (Percent)", m_container->m_swerve.m_backLeft.m_driveMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Back Left Turning Motor Output (Percent)", m_container->m_swerve.m_backLeft.m_turningMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Back Left Drive Motor Output (Volts)", m_container->m_swerve.m_backLeft.m_driveMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Back Left Turning Motor Output (Volts)", m_container->m_swerve.m_backLeft.m_turningMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Back Left Drive Motor Output (Amps)", m_container->m_swerve.m_backLeft.m_driveMotor.GetStatorCurrent());
-    //TODO frc::SmartDashboard::PutNumber("Back Left Turning Motor Output (Amps)", m_container->m_swerve.m_backLeft.m_turningMotor.GetStatorCurrent());
-    //frc::SmartDashboard::PutNumber("Back Left Drive Encoder", m_container->m_swerve.m_backLeft.m_driveEncoder.GetDistance());
-    //frc::SmartDashboard::PutNumber("Back Left Turning Encoder", m_container->m_swerve.m_backLeft.m_turningEncoder.GetDistance());
-
-    //back right
-    //TODO frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Percent)", m_container->m_swerve.m_backRight.m_driveMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Percent)", m_container->m_swerve.m_backRight.m_turningMotor.GetMotorOutputPercent());
-    //TODO frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Volts)", m_container->m_swerve.m_backRight.m_driveMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Volts)", m_container->m_swerve.m_backRight.m_turningMotor.GetMotorOutputVoltage());
-    //TODO frc::SmartDashboard::PutNumber("Back Right Drive Motor Output (Amps)", m_container->m_swerve.m_backRight.m_driveMotor.GetStatorCurrent());
-    //TODO frc::SmartDashboard::PutNumber("Back Right Turning Motor Output (Amps)", m_container->m_swerve.m_backRight.m_turningMotor.GetStatorCurrent());
-    //frc::SmartDashboard::PutNumber("Back Right Drive Encoder", m_container->m_swerve.m_backRight.m_driveEncoder.GetDistance());
-    //frc::SmartDashboard::PutNumber("Back Right Turning Encoder", m_container->m_swerve.m_backRight.m_turningEncoder.GetDistance());
-
-
-    frc::SmartDashboard::PutNumber("Front Left Absolute Encoder Value", m_container->m_swerve.m_fl.m_turningAnalogEncoder.GetAbsolutePosition());
-    frc::SmartDashboard::PutNumber("Front Right Absolute Encoder Value", m_container->m_swerve.m_fr.m_turningAnalogEncoder.GetAbsolutePosition());
-    frc::SmartDashboard::PutNumber("Back Left Absolute Encoder Value", m_container->m_swerve.m_bl.m_turningAnalogEncoder.GetAbsolutePosition());
-    frc::SmartDashboard::PutNumber("Back Right Absolute Encoder Value", m_container->m_swerve.m_br.m_turningAnalogEncoder.GetAbsolutePosition());
-
-
-    //gyro
-    frc::SmartDashboard::PutNumber("gyro get angle", m_container->m_swerve.m_gyro.GetAngle());
-    frc::SmartDashboard::PutNumber("gyro get rate", m_container->m_swerve.m_gyro.GetRate());
-
-    //getperiod
-    frc::SmartDashboard::PutNumber("Swerve GetPeriod", GetPeriod().value());
-    //frc::SmartDashboard::PutNumber("Gyro Rotation2d", m_container->m_swerve.m_gyro.GetRotation2d()); //BROKEN
-
-  //shooter
-    frc::SmartDashboard::PutNumber("Shooter Encoder 1 Position", m_container->m_shooter.m_shooterEncoder1.GetPosition());
-    frc::SmartDashboard::PutNumber("Shooter Encoder 2 Position", m_container->m_shooter.m_shooterEncoder2.GetPosition());
-
-    frc::SmartDashboard::PutNumber("Shooter Encoder 1 Velocity", m_container->m_shooter.m_shooterEncoder1.GetVelocity());
-    frc::SmartDashboard::PutNumber("Shooter Encoder 2 Velocity", m_container->m_shooter.m_shooterEncoder2.GetVelocity());
-
-  //climber
-    frc::SmartDashboard::PutNumber("Climber Encoder 1 Position", m_container->m_climber.m_climberEncoder1.GetPosition());
-    frc::SmartDashboard::PutNumber("Climber Encoder 2 Position", m_container->m_climber.m_climberEncoder2.GetPosition());
-
-    frc::SmartDashboard::PutNumber("Climber Encoder 1 Velocity", m_container->m_shooter.m_shooterEncoder1.GetVelocity());
-    frc::SmartDashboard::PutNumber("Climber Encoder 2 Velocity", m_container->m_shooter.m_shooterEncoder2.GetVelocity());
-
-  //vision
-    //TODO remove? m_container->m_vision.VisionTrack();
-    //TODO remove? frc::SmartDashboard::PutNumber("Photon current ID", m_container->m_vision.target.GetFiducialId());
-    //TODO remove? frc::SmartDashboard::PutBoolean("Photon HasTargets", m_container->m_vision.result.HasTargets());
-
-}
-
-/**
- * This function is called once each time the robot enters Disabled mode. You
- * can use it to reset any subsystem information you want to clear when the
- * robot is disabled.
- */
-void Robot::DisabledInit() {}
-
-void Robot::DisabledPeriodic() {}
-
-/**
- * This autonomous runs the autonomous command selected by your {@link
- * RobotContainer} class.
- */
-
-void Robot::AutonomousInit() {
-  m_autonomousCommand = m_container->GetAutonomousCommand();
-
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Schedule();
+class Robot : public frc::TimedRobot {
+ public:
+  void AutonomousPeriodic() override {
+    DriveWithJoystick(false);
+    m_swerve.UpdateOdometry();
   }
-}
 
-void Robot::AutonomousPeriodic() {
-//TODO CRASHES AUTO? but i dont think we need bc joystick disabled in auto anyway //  DriveWithJoystick(false);
-//TODO remove? remove the whole function? m_container->m_swerve.UpdateOdometry();
-//m_autonomousCommand->Execute();
-}
+  void TeleopPeriodic() override { DriveWithJoystick(true); }
 
-void Robot::TeleopInit() {
-  // This makes sure that the autonomous stops running when
-  // teleop starts running. If you want the autonomous to
-  // continue until interrupted by another command, remove
-  // this line or comment it out.
+ private:
+  frc::PS4Controller m_controller{0};
+  Drivetrain m_swerve;
 
-  //TODO: might want to swerve update odometry and might want to reset climber/shooter encoders
-  
-  if (m_autonomousCommand != nullptr) {
-    m_autonomousCommand->Cancel();
-    m_autonomousCommand = nullptr;
+  // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0
+  // to 1.
+  frc::SlewRateLimiter<units::scalar> m_xspeedLimiter{3 / 1_s};
+  frc::SlewRateLimiter<units::scalar> m_yspeedLimiter{3 / 1_s};
+  frc::SlewRateLimiter<units::scalar> m_rotLimiter{3 / 1_s};
+
+  void DriveWithJoystick(bool fieldRelative) {
+    // Get the x speed. We are inverting this because Xbox controllers return
+    // negative values when we push forward.
+    const auto xSpeed = -m_xspeedLimiter.Calculate(
+                            frc::ApplyDeadband(m_controller.GetLeftY(), 0.15)) *
+                        Drivetrain::kMaxSpeed;
+
+    // Get the y speed or sideways/strafe speed. We are inverting this because
+    // we want a positive value when we pull to the left. Xbox controllers
+    // return positive values when you pull to the right by default.
+    const auto ySpeed = -m_yspeedLimiter.Calculate(
+                            frc::ApplyDeadband(m_controller.GetLeftX(), 0.15)) *
+                        Drivetrain::kMaxSpeed;
+
+    // Get the rate of angular rotation. We are inverting this because we want a
+    // positive value when we pull to the left (remember, CCW is positive in
+    // mathematics). Xbox controllers return positive values when you pull to
+    // the right by default.
+    const auto rot = -m_rotLimiter.Calculate(
+                         frc::ApplyDeadband(m_controller.GetRightX(), 0.15)) *
+                     Drivetrain::kMaxAngularSpeed;
+
+    m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());
   }
-}
-
-/**
- * This function is called periodically during operator control.
- */
-void Robot::TeleopPeriodic() {
-  //DriveWithJoystick(true);
-
-//swerve drive with joystick
-m_container->m_swerve.calculateVectors(m_container->getX(), m_container->getY(), m_container->getZ());
-//m_container->m_swerve.calculateVectors(1, 1, 0);
-
-}
-
-/**
- * This function is called periodically during test mode.
- */
-void Robot::TestPeriodic() {}
+};
 
 #ifndef RUNNING_FRC_TESTS
 int main() {
