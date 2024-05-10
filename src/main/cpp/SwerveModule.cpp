@@ -8,15 +8,18 @@
 
 #include <frc/geometry/Rotation2d.h>
 
+/*  SwerveModule(int driveMotorChannel, int turningMotorChannel,
+               int turningEncoderChannel, std::string turningEncoderCanbus);*/
+
 SwerveModule::SwerveModule(const int driveMotorChannel,
+                           const rev::CANSparkMax::MotorType driveMotorType,
                            const int turningMotorChannel,
-                           const int driveEncoderChannelA,
-                           const int driveEncoderChannelB,
-                           const int turningEncoderChannel)
-    : m_driveMotor(driveMotorChannel),
-      m_turningMotor(turningMotorChannel),
-      m_driveEncoder(driveEncoderChannelA, driveEncoderChannelB),
-      m_turningEncoder(turningEncoderChannel) {
+                           const rev::CANSparkMax::MotorType turningMotorType,
+                           const int turningEncoderChannel,
+                           const std::string turningEncoderCanbus)
+    : m_driveMotor(driveMotorChannel, driveMotorType),
+      m_turningMotor(turningMotorChannel, turningMotorType),
+      m_turningEncoder(turningEncoderChannel, turningEncoderCanbus) {
   // Set the distance per pulse for the drive encoder. We can simply use the
   // distance traveled for one rotation of the wheel divided by the encoder
   // resolution.
@@ -26,7 +29,7 @@ SwerveModule::SwerveModule(const int driveMotorChannel,
   // Set the distance (in this case, angle) per pulse for the turning encoder.
   // This is the the angle through an entire rotation (2 * std::numbers::pi)
   // divided by the encoder resolution.
-  m_turningEncoder.SetDistancePerRotation(2 * std::numbers::pi /
+  m_turningEncoder.SetDistancePerPulse(2 * std::numbers::pi /
                                        kEncoderResolution);
 
   // Limit the PID Controller's input range between -pi and pi and set the input

@@ -4,9 +4,8 @@
 
 #include <frc/MathUtil.h>
 #include <frc/TimedRobot.h>
-#include <frc/PS4Controller.h>
+#include <frc/XboxController.h>
 #include <frc/filter/SlewRateLimiter.h>
-#include <frc/smartdashboard/SmartDashboard.h>
 
 #include "Drivetrain.h"
 
@@ -20,7 +19,7 @@ class Robot : public frc::TimedRobot {
   void TeleopPeriodic() override { DriveWithJoystick(true); }
 
  private:
-  frc::PS4Controller m_controller{0};
+  frc::XboxController m_controller{0};
   Drivetrain m_swerve;
 
   // Slew rate limiters to make joystick inputs more gentle; 1/3 sec from 0
@@ -33,14 +32,14 @@ class Robot : public frc::TimedRobot {
     // Get the x speed. We are inverting this because Xbox controllers return
     // negative values when we push forward.
     const auto xSpeed = -m_xspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_controller.GetLeftY(), 0.15)) *
+                            frc::ApplyDeadband(m_controller.GetLeftY(), 0.02)) *
                         Drivetrain::kMaxSpeed;
 
     // Get the y speed or sideways/strafe speed. We are inverting this because
     // we want a positive value when we pull to the left. Xbox controllers
     // return positive values when you pull to the right by default.
     const auto ySpeed = -m_yspeedLimiter.Calculate(
-                            frc::ApplyDeadband(m_controller.GetLeftX(), 0.15)) *
+                            frc::ApplyDeadband(m_controller.GetLeftX(), 0.02)) *
                         Drivetrain::kMaxSpeed;
 
     // Get the rate of angular rotation. We are inverting this because we want a
@@ -48,7 +47,7 @@ class Robot : public frc::TimedRobot {
     // mathematics). Xbox controllers return positive values when you pull to
     // the right by default.
     const auto rot = -m_rotLimiter.Calculate(
-                         frc::ApplyDeadband(m_controller.GetRightX(), 0.15)) *
+                         frc::ApplyDeadband(m_controller.GetRightX(), 0.02)) *
                      Drivetrain::kMaxAngularSpeed;
 
     m_swerve.Drive(xSpeed, ySpeed, rot, fieldRelative, GetPeriod());

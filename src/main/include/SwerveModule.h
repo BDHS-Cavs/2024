@@ -6,15 +6,16 @@
 
 #include <numbers>
 
-#include <frc/Encoder.h>
+//#include <frc/Encoder.h>
+#include <rev/SparkRelativeEncoder.h>
+#include <ctre/phoenix6/CANcoder.hpp> //#include <ctre/phoenix/sensors/CANCoder.h>
 #include <frc/controller/PIDController.h>
 #include <frc/controller/ProfiledPIDController.h>
 #include <frc/controller/SimpleMotorFeedforward.h>
 #include <frc/kinematics/SwerveModulePosition.h>
 #include <frc/kinematics/SwerveModuleState.h>
 //#include <frc/motorcontrol/PWMSparkMax.h>
-#include "ctre/phoenix/motorcontrol/can/WPI_TalonSRX.h"
-#include "frc/AnalogEncoder.h"
+#include <rev/CANSparkMax.h>
 #include <units/angular_velocity.h>
 #include <units/time.h>
 #include <units/velocity.h>
@@ -22,18 +23,11 @@
 
 class SwerveModule {
  public:
-  SwerveModule(int driveMotorChannel, int turningMotorChannel,
-               int driveEncoderChannelA, int driveEncoderChannelB,
-               int turningEncoderChannel);
+  SwerveModule(int driveMotorChannel, rev::CANSparkMax::MotorType driveMotorType, int turningMotorChannel, rev::CANSparkMax::MotorType turningMotorType,
+               int turningEncoderChannel, std::string turningEncoderCanbus);
   frc::SwerveModuleState GetState() const;
   frc::SwerveModulePosition GetPosition() const;
   void SetDesiredState(const frc::SwerveModuleState& state);
-
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_driveMotor;
-  ctre::phoenix::motorcontrol::can::WPI_TalonSRX m_turningMotor;
-
-  frc::Encoder m_driveEncoder;
-  frc::AnalogEncoder m_turningEncoder;
 
  private:
   static constexpr double kWheelRadius = 0.0508;
@@ -43,6 +37,12 @@ class SwerveModule {
       std::numbers::pi * 1_rad_per_s;  // radians per second
   static constexpr auto kModuleMaxAngularAcceleration =
       std::numbers::pi * 2_rad_per_s / 1_s;  // radians per second^2
+
+  rev::CANSparkMax m_driveMotor;
+  rev::CANSparkMax m_turningMotor;
+
+  rev::SparkRelativeEncoder m_driveEncoder = m_driveMotor.GetEncoder();
+  ctre::phoenix6::hardware::CANcoder m_turningEncoder;
 
   frc::PIDController m_drivePIDController{1.0, 0, 0};
   frc::ProfiledPIDController<units::radians> m_turningPIDController{

@@ -26,9 +26,9 @@ class Drivetrain {
   void UpdateOdometry();
 
   static constexpr units::meters_per_second_t kMaxSpeed =
-      3.0_mps;  // (3) meters per second
+      3.0_mps;  // 3 meters per second
   static constexpr units::radians_per_second_t kMaxAngularSpeed{
-      std::numbers::pi};  // (1/2) rotation per second
+      std::numbers::pi};  // 1/2 rotation per second
 
  private:
   frc::Translation2d m_frontLeftLocation{+0.381_m, +0.381_m};
@@ -36,10 +36,19 @@ class Drivetrain {
   frc::Translation2d m_backLeftLocation{-0.381_m, +0.381_m};
   frc::Translation2d m_backRightLocation{-0.381_m, -0.381_m};
 
-  SwerveModule m_frontLeft{3, 4, 0, 1, 2};
-  SwerveModule m_frontRight{9, 10, 6, 7, 0};
-  SwerveModule m_backLeft{5, 6, 2, 3, 3};
-  SwerveModule m_backRight{7, 2, 4, 5, 1};
+/*                         
+const int driveMotorChannel,
+const rev::CANSparkMax::MotorType driveMotorType,
+const int turningMotorChannel,
+const rev::CANSparkMax::MotorType turningMotorType,
+const int turningEncoderChannel,
+const std::string turningEncoderCanbus
+*/
+
+  SwerveModule m_frontLeft{0, rev::CanSparkMax::MotorType::kBrushless, 4, rev::CanSparkMax::MotorType::kBrushless, 1, "rio"};
+  SwerveModule m_frontRight{1, rev::CanSparkMax::MotorType::kBrushless, 5, rev::CanSparkMax::MotorType::kBrushless, 2, "rio"};
+  SwerveModule m_backLeft{2, rev::CanSparkMax::MotorType::kBrushless, 6, rev::CanSparkMax::MotorType::kBrushless, 3, "rio"};
+  SwerveModule m_backRight{3, rev::CanSparkMax::MotorType::kBrushless, 8, rev::CanSparkMax::MotorType::kBrushless, 4, "rio"};
 
   frc::ADXRS450_Gyro m_gyro;
 
