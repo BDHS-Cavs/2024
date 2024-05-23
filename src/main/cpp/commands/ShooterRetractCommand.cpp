@@ -25,7 +25,7 @@ void ShooterRetractCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ShooterRetractCommand::Execute() {
-   m_shooter->ShooterShoot();
+   m_shooter->ShooterRetract();
 }
 
 // Make this return true when this Command no longer needs to run execute()
