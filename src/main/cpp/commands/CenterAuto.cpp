@@ -46,17 +46,17 @@ void CenterAuto::Initialize() {
 void CenterAuto::Execute() {
 
     units::second_t period1 = 1_s; //starts at 1 (2s)
-    units::second_t period2 = 3_s; //starts at 3 (3s)
-    units::second_t period3 = 5_s; //starts at 5 (5s)
-    units::second_t period4 = 5.3_s; //starts at 6 (1s)
-    units::second_t period5 = 6.8_s; //starts at 7 (1s)
-    units::second_t period6 = 8.3_s; 
-    units::second_t period7 = 9.4_s;
-    units::second_t period8 = 10.5_s;
-    units::second_t period9 = 12.5_s;
-    units::second_t period10 = 13.5_s;
-    units::second_t period11 = 15.0_s;
-
+    units::second_t period2 = 3_s; //starts at 3 (2s)
+    units::second_t period3 = 5_s; //starts at 5 (0.3s)
+    units::second_t period4 = 5.3_s; //starts at 5.3 (1.5s)
+    units::second_t period5 = 6.8_s; //starts at 6.8 (1.5s)
+    units::second_t period6 = 8.3_s; //starts at 8.3 (1.1s)
+    units::second_t period7 = 9.4_s; //starts at 9.4 (1.1s)
+    units::second_t period8 = 10.5_s; //starts at 10.5 (2s)
+    units::second_t period9 = 12.5_s; //starts at 12.5 (1s)
+    units::second_t period10 = 13.5_s; //starts at 13.5 (1s)
+    units::second_t period11 = 15.0_s; //starts at 15.0 (1.5s)
+    //units::second_t period12 = X_s; //starts at X (Xs)
     if(m_firstTime)
     {
         m_timer.Reset();
@@ -73,50 +73,50 @@ void CenterAuto::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 ends at 3 (2s)
     {
-        m_shooter->ShooterShoot(); //spin shooter
+        m_shooter->ShooterShoot(); //start running the shooter
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 ends at 5 (2s)
     {
-        m_conveyer->ConveyerForward(); //run conveyer
+        m_conveyer->ConveyerForward(); //start running the conveyer
     }
-    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.5 (0.5s)
+    else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.3 (0.3s)
     {
-        m_shooter->ShooterStop(); //stop spinning shooter
-        m_conveyer->ConveyerStop(); //stop running conveyer
+        m_shooter->ShooterStop(); //stop running the shooter
+        m_conveyer->ConveyerStop(); //stop running the conveyer
     }
-    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 5.3 ends at 6.8 (1.5s)
     {
-        m_drive->AutoMotivateBackward(); //drive for 0.85s
-        m_intake->IntakeRun();
+        m_drive->AutoMotivateBackward(); //start driving backwards
+        m_intake->IntakeRun(); //start running the intake
     }
-    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.8 ends at 8.3 (1.5s)
     {
-        m_drive->AutoMotivateForward(); //drive for 0.85s
+        m_drive->AutoMotivateForward(); //start driving forward
     }
-    else if(m_timer.Get() >= period6 && m_timer.Get() < period7) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period6 && m_timer.Get() < period7) //starts at 8.3 ends at 9.4 (1.1s)
     {
-            m_drive->DriveStop();
-            m_shooter->ShooterShoot();
-            m_intake->IntakeStop();
+            m_drive->DriveStop(); //stop driving
+            m_shooter->ShooterShoot(); //start running the shooter
+            m_intake->IntakeStop(); //stop running the intake
     }
-    else if(m_timer.Get() >= period7 && m_timer.Get() < period8) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period7 && m_timer.Get() < period8) //starts at 9.4 ends at 10.5 (1.1s)
     {
-            m_shooter->ShooterShoot(); //TODO its already running
+            m_shooter->ShooterShoot(); //TODO - its already running...
     }
-    else if(m_timer.Get() >= period8 && m_timer.Get() < period9) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period8 && m_timer.Get() < period9) //starts at 10.5 ends at 12.5 (2s)
     {
-            m_conveyer->ConveyerForward();
+            m_conveyer->ConveyerForward(); //start running the conveyer forward
     }
-    else if(m_timer.Get() >= period9 && m_timer.Get() < period10) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period9 && m_timer.Get() < period10) //starts at 12.5 ends at 13.5 (1s)
     {
-            m_conveyer->ConveyerStop();
-            m_shooter->ShooterStop();
+            m_conveyer->ConveyerStop(); //stop running the conveyer
+            m_shooter->ShooterStop(); //stop running the shooter
     }
-    else if(m_timer.Get() >= period10 && m_timer.Get() < period11) //starts at 6 ends at 6.85 (0.85s)
+    else if(m_timer.Get() >= period10 && m_timer.Get() < period11) //starts at 13.5 ends at 15.0 (1.5s)
     {
-            m_drive->AutoMotivateBackward();
+            m_drive->AutoMotivateBackward(); //start driving backwards -- will not stop until end of auto
     }
-/*    else if(m_timer.Get() >= period11 && m_timer.Get() < period12) //starts at 6 ends at 6.85 (0.85s)
+/*TODO delete    else if(m_timer.Get() >= period11 && m_timer.Get() < period12) //starts at X ends at X (Xs)
     {
             m_drive->DriveStop();
     }*/

@@ -68,25 +68,25 @@ void LeftAuto::Execute() {
     }
     else if(m_timer.Get() >= period1 && m_timer.Get() < period2) //starts at 1 ends at 3 (2s)
     {
-        m_shooter->ShooterShoot(); //spin shooter
+        m_shooter->ShooterShoot(); //start running the shooter
     }
     else if(m_timer.Get() >= period2 && m_timer.Get() < period3) //starts at 3 ends at 5 (2s)
     {
-        m_conveyer->ConveyerForward(); //run conveyer
+        m_conveyer->ConveyerForward(); //start running the conveyer
     }
     else if(m_timer.Get() >= period3 && m_timer.Get() < period4) //starts at 5 ends at 5.5 (0.5s)
     {
-        m_shooter->ShooterStop(); //stop spinning shooter
-        m_conveyer->ConveyerStop(); //stop running conveyer
-        m_drive->AutoMotivateBackward(); //drive back for 0.5s
+        m_shooter->ShooterStop(); //stop running the shooter
+        m_conveyer->ConveyerStop(); //stop running the conveyer
+        m_drive->AutoMotivateBackward(); //start driving backwards
     }
     else if(m_timer.Get() >= period4 && m_timer.Get() < period5) //starts at 5.5 ends at 6.25 (0.75s)
     {
-        m_drive->AutoMotivateRotateLeft(); //rotate for 0.75s
+        m_drive->AutoMotivateRotateLeft(); //start rotating to the left
     }
     else if(m_timer.Get() >= period5 && m_timer.Get() < period6) //starts at 6.25 ends at 7.55 (1.3s)
     {
-        m_drive->AutoMotivateBackward(); //drive back for 1s
+        m_drive->AutoMotivateBackward(); //start driving backwards for 1.3s
     }
     else
     {
