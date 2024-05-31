@@ -49,14 +49,13 @@ void CenterAuto::Execute() {
     units::second_t period2 = 3_s; //starts at 3 (3s)
     units::second_t period3 = 5_s; //starts at 5 (5s)
     units::second_t period4 = 5.3_s; //starts at 6 (1s)
-    units::second_t period5 = 6.6_s; //starts at 7 (1s)
-    units::second_t period6 = 8.1_s; 
+    units::second_t period5 = 6.8_s; //starts at 7 (1s)
+    units::second_t period6 = 8.3_s; 
     units::second_t period7 = 9.4_s;
     units::second_t period8 = 10.5_s;
     units::second_t period9 = 12.5_s;
     units::second_t period10 = 13.5_s;
-    units::second_t period11 = 14.8_s;
-    units::second_t period12 = 14.9_s;
+    units::second_t period11 = 15.0_s;
 
     if(m_firstTime)
     {
@@ -102,7 +101,7 @@ void CenterAuto::Execute() {
     }
     else if(m_timer.Get() >= period7 && m_timer.Get() < period8) //starts at 6 ends at 6.85 (0.85s)
     {
-            m_shooter->ShooterShoot();
+            m_shooter->ShooterShoot(); //TODO its already running
     }
     else if(m_timer.Get() >= period8 && m_timer.Get() < period9) //starts at 6 ends at 6.85 (0.85s)
     {
@@ -117,10 +116,10 @@ void CenterAuto::Execute() {
     {
             m_drive->AutoMotivateBackward();
     }
-    else if(m_timer.Get() >= period11 && m_timer.Get() < period12) //starts at 6 ends at 6.85 (0.85s)
+/*    else if(m_timer.Get() >= period11 && m_timer.Get() < period12) //starts at 6 ends at 6.85 (0.85s)
     {
             m_drive->DriveStop();
-    }
+    }*/
     else
     {
         // do nothing
